@@ -1,0 +1,873 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>例题全集 | 电磁场与波</title>
+    <meta name="description" content="第 7、8 章课件例题全集：逐题列出原题并详细作答。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">电磁场与波</span>
+          <span class="brand-subtitle">例题驱动学习笔记</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索章节" aria-label="搜索章节" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">
+            ◐
+          </button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a data-search-item href="chap7.html">Chapter 7 时变场与麦克斯韦方程</a></li>
+            <li><a data-search-item href="chap8.html">Chapter 8 平面电磁波</a></li>
+            <li><a class="active" data-search-item href="examples.html">例题全集</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb"><a href="./">首页</a> / 例题全集</div>
+          <h1>第 7、8 章例题全集</h1>
+          <p class="meta">按 PPT 中出现的例题顺序整理。每题先列原题，再给完整作答。</p>
+        </header>
+
+        <article>
+          <blockquote>
+            <p>
+              说明：部分 PPT 公式为图片对象，网页中采用等价数学表达重排。若课件原文有英文语序或排版错误，这里保留题意并用中文说明。
+            </p>
+          </blockquote>
+
+          <h2 id="例题总览">例题总览</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>章节</th>
+                <th>题号</th>
+                <th>主题</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Chapter 7</td><td>7-1</td><td>矩形回路感应电动势</td></tr>
+              <tr><td>Chapter 7</td><td>7-2</td><td>瞬时场到复矢量</td></tr>
+              <tr><td>Chapter 7</td><td>7-3</td><td>复矢量到瞬时场</td></tr>
+              <tr><td>Chapter 8</td><td>8-1</td><td>由磁场复矢量求波矢、频率、参数和电场</td></tr>
+              <tr><td>Chapter 8</td><td>8-2</td><td>极化方式判断</td></tr>
+              <tr><td>Chapter 8</td><td>8-3</td><td>海水中有耗平面波传播</td></tr>
+              <tr><td>Chapter 8</td><td>8-4</td><td>聚乙烯中无耗平面波参数</td></tr>
+              <tr><td>Chapter 8</td><td>8-5</td><td>由传播方向和磁场写出 \(E,H\)</td></tr>
+              <tr><td>Chapter 8</td><td>8-6</td><td>由给定最大值确定相位常数和瞬时场</td></tr>
+              <tr><td>Chapter 8</td><td>8-7</td><td>坡印廷矢量、能量密度、损耗功率密度计算模板</td></tr>
+              <tr><td>Chapter 8</td><td>8-8</td><td>平均坡印廷矢量与圆面平均功率</td></tr>
+              <tr><td>Chapter 8</td><td>8-9</td><td>铜板电磁屏蔽厚度</td></tr>
+              <tr><td>Chapter 8</td><td>8-10</td><td>正入射到理想导体边界</td></tr>
+              <tr><td>Chapter 8</td><td>8-11</td><td>由驻波比和波长比求介质参数</td></tr>
+              <tr><td>Chapter 8</td><td>8-12</td><td>正入射到无耗介质，求透射场</td></tr>
+              <tr><td>Chapter 8</td><td>8-13</td><td>两无耗介质正入射的反射和透射</td></tr>
+            </tbody>
+          </table>
+
+          <h2 id="chap7">Chapter 7 例题</h2>
+
+          <h3 id="ex7-1">例题 7-1：矩形回路的感应电动势</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>
+              A uniform magnetic field \( \vec B \) vertical through a rectangular ring with a length of \(a\) and a width of \(b\), as shown in figure.
+              In the following three cases, solve the induction electromotive force.
+            </p>
+            <ol>
+              <li>\(\vec B=\vec e_zB_0\cos(\omega t)\)，rectangular loop is static.</li>
+              <li>\(\vec B=\vec e_zB_0\)，the width \(b\) equals a constant, but the long side increases with time because sliding conductor \(L\) moves with velocity \(\vec v=\vec e_xv\).</li>
+              <li>\(\vec B=\vec e_zB_0\cos(\omega t)\)，and sliding conductor \(L\) moves with velocity \(\vec v=\vec e_xv\).</li>
+            </ol>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p><strong>第 1 种情况：</strong>回路静止，磁通变化只来自 \(B(t)\)。</p>
+            <p class="formula">\[
+            \Phi=abB_0\cos(\omega t)
+            \]</p>
+            <p class="formula">\[
+            \varepsilon_{in}=-\frac{d\Phi}{dt}
+            =-\frac{d}{dt}[abB_0\cos(\omega t)]
+            =\omega abB_0\sin(\omega t)
+            \]</p>
+            <p><strong>第 2 种情况：</strong>磁场不变，电动势来自导体运动。</p>
+            <p class="formula">\[
+            \varepsilon_{in}=\oint_C(\vec v\times\vec B)\cdot d\vec l
+            =\int_C(\vec e_xv\times\vec e_zB_0)\cdot\vec e_y\,dl
+            =-vB_0b
+            \]</p>
+            <p>也可用磁通法。面积随时间为 \(S=bvt\)，因此</p>
+            <p class="formula">\[
+            \varepsilon_{in}=-\frac{d}{dt}(bB_0vt)=-bB_0v
+            \]</p>
+            <p><strong>第 3 种情况：</strong>磁场变化与导体运动同时存在，两项相加：</p>
+            <p class="formula">\[
+            \varepsilon_{in}
+            =-\int_S\frac{\partial\vec B}{\partial t}\cdot d\vec S
+            +\oint_C(\vec v\times\vec B)\cdot d\vec l
+            \]</p>
+            <p>此时面积 \(S=bvt\)，代入得</p>
+            <p class="formula">\[
+            \varepsilon_{in}
+            =vt\,\omega bB_0\sin(\omega t)-vbB_0\cos(\omega t)
+            \]</p>
+            <p>第一项是变压器电动势，第二项是运动电动势。</p>
+          </div>
+
+          <h3 id="ex7-2">例题 7-2：由瞬时场写复矢量</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>Find the complex vector form of the following time-harmonic field:</p>
+            <p class="formula">\[
+            \vec E(z,t)=\vec e_xE_{xm}\cos(\omega t-kz+\phi_x)
+            +\vec e_yE_{ym}\sin(\omega t-kz+\phi_y)
+            \]</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>复矢量约定为</p>
+            <p class="formula">\[
+            \vec E(z,t)=\operatorname{Re}[\vec E_m(z)e^{j\omega t}]
+            \]</p>
+            <p>先把正弦改写成余弦：</p>
+            <p class="formula">\[
+            \sin(\omega t-kz+\phi_y)=
+            \cos(\omega t-kz+\phi_y-\pi/2)
+            \]</p>
+            <p>因此</p>
+            <p class="formula">\[
+            \vec E(z,t)=
+            \operatorname{Re}\left[
+            \vec e_xE_{xm}e^{j(\omega t-kz+\phi_x)}
+            +\vec e_yE_{ym}e^{j(\omega t-kz+\phi_y-\pi/2)}
+            \right]
+            \]</p>
+            <p>取出公共因子 \(e^{j\omega t}\)，得复矢量：</p>
+            <p class="formula">\[
+            \vec E_m(z)
+            =\vec e_xE_{xm}e^{j(-kz+\phi_x)}
+            +\vec e_yE_{ym}e^{j(-kz+\phi_y-\pi/2)}
+            \]</p>
+            <p>也可写成</p>
+            <p class="formula">\[
+            \vec E_m(z)=
+            (\vec e_xE_{xm}e^{j\phi_x}
+            -j\vec e_yE_{ym}e^{j\phi_y})e^{-jkz}
+            \]</p>
+          </div>
+
+          <h3 id="ex7-3">例题 7-3：由复矢量求瞬时场</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>The complex vector of electric field intensity is</p>
+            <p class="formula">\[
+            \vec E_m(z)=\vec e_xjE_{xm}\cos(k_zz)
+            \]</p>
+            <p>\(k_z\) and \(E_{xm}\) are constant values. Find the instantaneous value of the electric field intensity.</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>按复矢量定义：</p>
+            <p class="formula">\[
+            \vec E(z,t)=\operatorname{Re}[\vec E_m(z)e^{j\omega t}]
+            =\operatorname{Re}[\vec e_xjE_{xm}\cos(k_zz)e^{j\omega t}]
+            \]</p>
+            <p>因为 \(j=e^{j\pi/2}\)，所以</p>
+            <p class="formula">\[
+            \vec E(z,t)=
+            \vec e_xE_{xm}\cos(k_zz)\cos(\omega t+\pi/2)
+            \]</p>
+            <p>最终</p>
+            <p class="formula">\[
+            \boxed{\vec E(z,t)=-\vec e_xE_{xm}\cos(k_zz)\sin(\omega t)}
+            \]</p>
+          </div>
+
+          <h2 id="chap8">Chapter 8 例题</h2>
+
+          <h3 id="ex8-1">例题 8-1：由磁场复矢量求平面波参数</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>The complex expression magnetic field intensity of plane wave in air is</p>
+            <p class="formula">\[
+            \vec H=(-\vec e_xA+\vec e_y2+\vec e_z4)e^{-j\pi(4x+3z)}
+            \]</p>
+            <p>Where \(A\) is constant. Get: 1) \(\vec k\); 2) wavelength and frequency; 3) the value of \(A\); 4) the complex expression electric field.</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>与标准形式 \( \vec H=\vec H_me^{-j\vec k\cdot\vec r} \) 比较：</p>
+            <p class="formula">\[
+            \vec k\cdot\vec r=4\pi x+3\pi z
+            \Rightarrow
+            \vec k=4\pi\vec e_x+3\pi\vec e_z
+            \]</p>
+            <p class="formula">\[
+            k=|\vec k|=\sqrt{(4\pi)^2+(3\pi)^2}=5\pi
+            \]</p>
+            <p>所以</p>
+            <p class="formula">\[
+            \lambda=\frac{2\pi}{k}=\frac{2}{5}\text{ m},
+            \qquad
+            f=\frac{c}{\lambda}=7.5\times10^8\text{ Hz}
+            \]</p>
+            <p>平面波为横波，故 \( \vec k\cdot\vec H_m=0 \)：</p>
+            <p class="formula">\[
+            4\pi(-A)+3\pi\cdot4=0
+            \Rightarrow
+            A=3
+            \]</p>
+            <p>传播方向单位矢量为</p>
+            <p class="formula">\[
+            \vec e_n=\frac{\vec k}{k}=\frac45\vec e_x+\frac35\vec e_z
+            \]</p>
+            <p>空气中 \( \eta_0=120\pi\Omega \)，且 \( \vec E=\eta_0\vec H\times\vec e_n \)。代入 \(\vec H_m=-3\vec e_x+2\vec e_y+4\vec e_z\)：</p>
+            <p class="formula">\[
+            \vec H_m\times\vec e_n
+            =1.2\vec e_x+5\vec e_y-1.6\vec e_z
+            \]</p>
+            <p class="formula">\[
+            \boxed{\vec E
+            =120\pi(1.2\vec e_x+5\vec e_y-1.6\vec e_z)e^{-j\pi(4x+3z)}\text{ V/m}}
+            \]</p>
+          </div>
+
+          <h3 id="ex8-2">例题 8-2：判断均匀平面波极化方式</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>Illustrate the following uniform plane wave polarization mode.</p>
+            <ol>
+              <li>\(\vec E=\vec e_xE_me^{-jkz}-\vec e_yjE_me^{-jkz}\)</li>
+              <li>\(\vec E=\vec e_xE_m\sin(\omega t-kz+\pi/4)+\vec e_yE_m\cos(\omega t-kz-\pi/4)\)</li>
+              <li>\(\vec E=\vec e_xE_m\sin(\omega t+kz)+\vec e_y2E_m\cos(\omega t+kz)\)</li>
+            </ol>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>判断极化看两个正交分量的幅值和初相位差 \( \Delta\phi=\phi_y-\phi_x \)。</p>
+            <p><strong>第 1 小题：</strong>传播沿 \(+z\)，\(E_{xm}=E_{ym}\)，\(\phi_x=0,\phi_y=-\pi/2\)。</p>
+            <p class="formula">\[
+            \Delta\phi=-\frac{\pi}{2}
+            \]</p>
+            <p>幅值相等、相位差为 \(-\pi/2\)，按课件约定为右旋圆极化：RHCP。</p>
+            <p><strong>第 2 小题：</strong>令 \(\psi=\omega t-kz\)，则</p>
+            <p class="formula">\[
+            \sin(\psi+\pi/4)=\cos(\psi-\pi/4)
+            \]</p>
+            <p>两个分量都等价为相位 \(-\pi/4\)，所以 \(\Delta\phi=0\)，为线极化。</p>
+            <p><strong>第 3 小题：</strong>相位为 \(\omega t+kz\)，传播沿 \(-z\)。</p>
+            <p class="formula">\[
+            E_x=E_m\cos(\omega t+kz-\pi/2),\qquad
+            E_y=2E_m\cos(\omega t+kz)
+            \]</p>
+            <p>幅值不相等，\(\Delta\phi=\pi/2\)，按课件结论为右旋椭圆极化：RH elliptical polarized wave。</p>
+          </div>
+
+          <h3 id="ex8-3">例题 8-3：海水中的有耗平面波</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>
+              Polarized in the \(x\) direction waves propagating in sea along \(+z\).
+              The parameters of the sea are \(\varepsilon_r=81,\mu_r=1,\sigma=4\text{ S/m}\).
+              At \(z=0\), \(E_x=100\cos(10^7\pi t)\text{ V/m}\). Please work out:
+            </p>
+            <ol>
+              <li>attenuation constant, phase constant, intrinsic impedance, phase velocity, wavelength and skin depth;</li>
+              <li>the distance when the amplitude is reduced to \(1/1000\) of the value at \(z=0\);</li>
+              <li>instantaneous electric and magnetic field at \(z=0.8\text{ m}\);</li>
+              <li>average power per \(1\text{ m}^2\) at \(z=0.8\text{ m}\).</li>
+            </ol>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>角频率 \(\omega=10^7\pi\)，频率</p>
+            <p class="formula">\[
+            f=\frac{\omega}{2\pi}=5\times10^6\text{ Hz}
+            \]</p>
+            <p>先判断介质：</p>
+            <p class="formula">\[
+            \frac{\sigma}{\omega\varepsilon}
+            \approx180\gg1
+            \]</p>
+            <p>因此海水可视为良导体。良导体近似：</p>
+            <p class="formula">\[
+            \alpha=\sqrt{\pi f\mu\sigma}
+            =\sqrt{\pi\cdot5\times10^6\cdot4\pi\times10^{-7}\cdot4}
+            =8.89\text{ Np/m}
+            \]</p>
+            <p class="formula">\[
+            \beta=\alpha=8.89\text{ rad/m}
+            \]</p>
+            <p>复波阻抗为</p>
+            <p class="formula">\[
+            \eta_c=\sqrt{\frac{\omega\mu}{\sigma}}e^{j\pi/4}
+            =\pi e^{j\pi/4}\Omega
+            \]</p>
+            <p>相速度、波长、皮肤深度为</p>
+            <p class="formula">\[
+            v_p=\frac{\omega}{\beta}
+            =\frac{10^7\pi}{8.89}=3.53\times10^6\text{ m/s}
+            \]</p>
+            <p class="formula">\[
+            \lambda=\frac{2\pi}{\beta}=0.707\text{ m},
+            \qquad
+            \delta=\frac{1}{\alpha}=0.112\text{ m}
+            \]</p>
+            <p>幅度衰减到 \(1/1000\)：</p>
+            <p class="formula">\[
+            e^{-\alpha z}=\frac{1}{1000}
+            \Rightarrow
+            z=\frac{\ln1000}{8.89}=0.777\text{ m}
+            \]</p>
+            <p>电场瞬时表达式为</p>
+            <p class="formula">\[
+            \vec E(z,t)=\vec e_x100e^{-8.89z}\cos(10^7\pi t-8.89z)\text{ V/m}
+            \]</p>
+            <p>在 \(z=0.8\text{ m}\) 处：</p>
+            <p class="formula">\[
+            \boxed{\vec E(0.8,t)=\vec e_x0.082\cos(10^7\pi t-7.11)\text{ V/m}}
+            \]</p>
+            <p>磁场滞后电场 \(45^\circ\)，幅值除以 \(|\eta_c|=\pi\)：</p>
+            <p class="formula">\[
+            \boxed{\vec H(0.8,t)=\vec e_y0.026\cos(10^7\pi t-1.61)\text{ A/m}}
+            \]</p>
+            <p>平均坡印廷矢量：</p>
+            <p class="formula">\[
+            \vec S_{av}
+            =\vec e_z\frac{1}{2|\eta_c|}E_{xm}^2e^{-2\alpha z}\cos\frac{\pi}{4}
+            \]</p>
+            <p>代入 \(z=0.8\text{ m}\)：</p>
+            <p class="formula">\[
+            \boxed{\vec S_{av}=\vec e_z0.75\text{ mW/m}^2}
+            \]</p>
+            <p>穿过 \(1\text{ m}^2\) 的平均功率为 \(0.75\text{ mW}\)。</p>
+          </div>
+
+          <h3 id="ex8-4">例题 8-4：聚乙烯中无耗平面波</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>
+              9.4 GHz uniform plane wave propagation in polyethylene, assuming lossless medium, \(\varepsilon_r=2.26\).
+              The amplitude of magnetic field is \(7\text{ mA/m}\). Get phase velocity, wavelength, wave impedance and amplitude of electric field.
+            </p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>无耗非磁介质中</p>
+            <p class="formula">\[
+            v=\frac{c}{\sqrt{\varepsilon_r}}
+            =\frac{3\times10^8}{\sqrt{2.26}}
+            =1.996\times10^8\text{ m/s}
+            \]</p>
+            <p class="formula">\[
+            \eta=\frac{\eta_0}{\sqrt{\varepsilon_r}}
+            =\frac{377}{\sqrt{2.26}}
+            =251\Omega
+            \]</p>
+            <p>电场幅值：</p>
+            <p class="formula">\[
+            E_m=H_m\eta=7\times10^{-3}\times251=1.757\text{ V/m}
+            \]</p>
+            <p>按题干 \(f=9.4\text{ GHz}\)：</p>
+            <p class="formula">\[
+            \lambda=\frac{v}{f}
+            =\frac{1.996\times10^8}{9.4\times10^9}
+            =2.12\times10^{-2}\text{ m}
+            \]</p>
+            <p>课件页中若显示 \(2.12\text{ m}\)，与 GHz 频率不一致，应为 \(2.12\text{ cm}\)。</p>
+          </div>
+
+          <h3 id="ex8-5">例题 8-5：由磁场、传播方向写出 \(E,H\)</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>
+              The amplitude of magnetic field of uniform plane wave is \(1/(3\pi)\text{ A/m}\), phase constant is \(30\text{ rad/m}\),
+              spread in air along the \(-\vec e_z\) direction. If the direction of \(\vec H\) is \(-\vec e_y\),
+              write out \( \vec E,\vec H \), and the frequency and wavelength.
+            </p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>沿 \(-z\) 传播，相位写为 \(\omega t+\beta z\)。</p>
+            <p class="formula">\[
+            \vec H(z,t)=-\vec e_y\frac{1}{3\pi}\cos(\omega t+30z)\text{ A/m}
+            \]</p>
+            <p>空气中 \(\eta_0=120\pi\Omega\)，因此</p>
+            <p class="formula">\[
+            E_m=\eta_0H_m=120\pi\cdot\frac{1}{3\pi}=40\text{ V/m}
+            \]</p>
+            <p>为使 \(\vec E\times\vec H\) 指向 \(-z\)，\(\vec E\) 沿 \(+x\)：</p>
+            <p class="formula">\[
+            \vec E(z,t)=\vec e_x40\cos(\omega t+30z)\text{ V/m}
+            \]</p>
+            <p>由 \(\beta=30\)：</p>
+            <p class="formula">\[
+            \lambda=\frac{2\pi}{30}=0.21\text{ m}
+            \]</p>
+            <p class="formula">\[
+            f=\frac{c}{\lambda}
+            =\frac{3\times10^8}{\pi/15}
+            =1.43\times10^9\text{ Hz}
+            \]</p>
+          </div>
+
+          <h3 id="ex8-6">例题 8-6：由给定最大值确定瞬时场</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>
+              100 MHz uniform EM wave propagation in lossless medium \((\varepsilon_r=4,\mu_r=1)\) along \(+z\).
+              Electric field is in \(+\vec e_x\) direction. When \(t=0\) and \(z=1/8\text{ m}\), the amplitude of electric field is \(10^{-4}\text{ V/m}\).
+              Find the instantaneous value of electric and magnetic field.
+            </p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>设</p>
+            <p class="formula">\[
+            \vec E(z,t)=\vec e_x10^{-4}\cos(\omega t-\beta z+\phi)
+            \]</p>
+            <p>频率 \(f=100\text{ MHz}=10^8\text{ Hz}\)，所以</p>
+            <p class="formula">\[
+            \omega=2\pi f=2\pi\times10^8\text{ rad/s}
+            \]</p>
+            <p>相位常数</p>
+            <p class="formula">\[
+            \beta=\frac{\omega}{c}\sqrt{\varepsilon_r\mu_r}
+            =\frac{2\pi\times10^8}{3\times10^8}\cdot2
+            =\frac{4\pi}{3}\text{ rad/m}
+            \]</p>
+            <p>在 \(t=0,z=1/8\text{ m}\) 时电场达到最大，故</p>
+            <p class="formula">\[
+            -\beta\frac18+\phi=0
+            \Rightarrow
+            \phi=\frac{\beta}{8}=\frac{\pi}{6}
+            \]</p>
+            <p>因此</p>
+            <p class="formula">\[
+            \boxed{\vec E(z,t)=\vec e_x10^{-4}\cos\left(2\pi\times10^8t-\frac{4\pi}{3}z+\frac{\pi}{6}\right)\text{ V/m}}
+            \]</p>
+            <p>也可写为</p>
+            <p class="formula">\[
+            \vec E(z,t)=\vec e_x10^{-4}\cos\left[2\pi\times10^8t-\frac{4\pi}{3}\left(z-\frac18\right)\right]\text{ V/m}
+            \]</p>
+            <p>介质波阻抗</p>
+            <p class="formula">\[
+            \eta=\frac{\eta_0}{\sqrt{\varepsilon_r}}=60\pi\Omega
+            \]</p>
+            <p>沿 \(+z\) 传播且 \(E\parallel x\)，故 \(H\parallel y\)：</p>
+            <p class="formula">\[
+            \boxed{\vec H(z,t)=\vec e_y\frac{10^{-4}}{60\pi}
+            \cos\left[2\pi\times10^8t-\frac{4\pi}{3}\left(z-\frac18\right)\right]\text{ A/m}}
+            \]</p>
+          </div>
+
+          <h3 id="ex8-7">例题 8-7：能流、能量密度与损耗功率密度计算模板</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>
+              Ex: The calculation of the instantaneous Poynting vector. Ex: Calculation of the electric field energy density of instantaneous storage.
+              Ex: Calculation of instantaneous power density consumption. When solving the problems, the instantaneous expression of the field must be written.
+            </p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>若题目要求瞬时量，必须先写出 \(\vec E(\vec r,t)\)、\(\vec H(\vec r,t)\)。</p>
+            <p>瞬时坡印廷矢量：</p>
+            <p class="formula">\[
+            \vec S(\vec r,t)=\vec E(\vec r,t)\times\vec H(\vec r,t)
+            \]</p>
+            <p>瞬时电场能量密度：</p>
+            <p class="formula">\[
+            w_E(\vec r,t)=\frac12\vec D(\vec r,t)\cdot\vec E(\vec r,t)
+            =\frac12\varepsilon|\vec E(\vec r,t)|^2
+            \]</p>
+            <p>瞬时焦耳损耗功率密度：</p>
+            <p class="formula">\[
+            p_J(\vec r,t)=\vec J(\vec r,t)\cdot\vec E(\vec r,t)
+            =\sigma|\vec E(\vec r,t)|^2
+            \]</p>
+            <p>若题目要求时谐平均量，可直接用复矢量：</p>
+            <p class="formula">\[
+            \vec S_{av}=\frac12\operatorname{Re}(\vec E\times\vec H^*)
+            \]</p>
+            <p class="formula">\[
+            w_{E,av}=\frac14\operatorname{Re}(\vec D\cdot\vec E^*)
+            =\frac14\varepsilon|\vec E|^2
+            \]</p>
+            <p class="formula">\[
+            w_{M,av}=\frac14\operatorname{Re}(\vec B\cdot\vec H^*)
+            =\frac14\mu|\vec H|^2
+            \]</p>
+            <p class="formula">\[
+            p_{J,av}=\frac12\operatorname{Re}(\sigma\vec E\cdot\vec E^*)
+            =\frac12\sigma|\vec E|^2
+            \]</p>
+          </div>
+
+          <h3 id="ex8-8">例题 8-8：自由空间平面波穿过圆面的平均功率</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>The electric field intensity of plane wave in free space is</p>
+            <p class="formula">\[
+            \vec E=\vec e_x50\cos(\omega t-kz)\text{ V/m}
+            \]</p>
+            <p>Find the average power vertical cross a round plane with radius \(2.5\text{ m}\) at \(z=z_0\).</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>复矢量为</p>
+            <p class="formula">\[
+            \vec E=\vec e_x50e^{-jkz}
+            \]</p>
+            <p>自由空间波阻抗 \(\eta_0=120\pi\Omega\)，所以</p>
+            <p class="formula">\[
+            \vec H=\vec e_y\frac{50}{120\pi}e^{-jkz}
+            =\vec e_y\frac{5}{12\pi}e^{-jkz}\text{ A/m}
+            \]</p>
+            <p>平均坡印廷矢量：</p>
+            <p class="formula">\[
+            \vec S_{av}=
+            \frac12\operatorname{Re}(\vec E\times\vec H^*)
+            =\vec e_z\frac12\cdot50\cdot\frac{5}{12\pi}
+            =\vec e_z\frac{125}{12\pi}\text{ W/m}^2
+            \]</p>
+            <p>圆面面积 \(A=\pi R^2=\pi(2.5)^2\)，故</p>
+            <p class="formula">\[
+            \boxed{P_{av}=S_{av}A
+            =\frac{125}{12\pi}\pi(2.5)^2
+            =65.1\text{ W}}
+            \]</p>
+          </div>
+
+          <h3 id="ex8-9">例题 8-9：铜板屏蔽室厚度</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>
+              In electromagnetic measurement, in order to prevent indoor electronic equipment from outside electromagnetic field,
+              copper plate can be used to construct shielding room. Usually require copper thickness greater than \(5\delta\).
+              If the required frequency range is from \(10\text{ kHz}\) to \(100\text{ MHz}\), calculate how thick copper plate at least.
+              Cu parameters: \(\mu=\mu_0,\varepsilon=\varepsilon_0,\sigma=5.8\times10^7\text{ S/m}\).
+            </p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>铜在该频段可视为良导体，皮肤深度为</p>
+            <p class="formula">\[
+            \delta=\frac{1}{\sqrt{\pi f\mu\sigma}}
+            \]</p>
+            <p>低端频率 \(f_L=10\text{ kHz}=10^4\text{ Hz}\)：</p>
+            <p class="formula">\[
+            \delta_L=
+            \frac{1}{\sqrt{\pi\cdot10^4\cdot4\pi\times10^{-7}\cdot5.8\times10^7}}
+            =0.66\text{ mm}
+            \]</p>
+            <p>高端频率 \(f_H=100\text{ MHz}=10^8\text{ Hz}\)：</p>
+            <p class="formula">\[
+            \delta_H=
+            \frac{1}{\sqrt{\pi\cdot10^8\cdot4\pi\times10^{-7}\cdot5.8\times10^7}}
+            =6.6\mu\text{m}
+            \]</p>
+            <p>频率越低皮肤深度越大，因此按 \(f_L\) 设计：</p>
+            <p class="formula">\[
+            \boxed{d\ge5\delta_L=3.3\text{ mm}}
+            \]</p>
+          </div>
+
+          <h3 id="ex8-10">例题 8-10：正入射到理想导体平板</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>Uniform plane wave propagates along \(+z\). The electric field intensity vector is</p>
+            <p class="formula">\[
+            \vec E_i=\vec e_x100\sin(\omega t-\beta z)+\vec e_y200\cos(\omega t-\beta z)\text{ V/m}
+            \]</p>
+            <p>Find:</p>
+            <ol>
+              <li>the corresponding magnetic field intensity;</li>
+              <li>if at \(z=0\) an infinite ideal conducting plate is placed, write electric and magnetic fields in \(z&lt;0\);</li>
+              <li>the electric current density on the surface of ideal conductor;</li>
+              <li>state the polarization mode of incident wave and reflected wave.</li>
+            </ol>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>先将入射电场写成复矢量。因为 \(\sin\psi=\cos(\psi-\pi/2)\)：</p>
+            <p class="formula">\[
+            \vec E_i(z)
+            =\vec e_x100e^{-j\beta z}e^{-j\pi/2}
+            +\vec e_y200e^{-j\beta z}
+            \]</p>
+            <p>沿 \(+z\) 传播，所以</p>
+            <p class="formula">\[
+            \vec H_i(z)=\frac{1}{\eta_0}\vec e_z\times\vec E_i
+            =\frac{1}{\eta_0}\left[
+            -\vec e_x200e^{-j\beta z}
+            +\vec e_y100e^{-j\beta z}e^{-j\pi/2}
+            \right]
+            \]</p>
+            <p>瞬时形式：</p>
+            <p class="formula">\[
+            \vec H_i(z,t)=\frac{1}{\eta_0}
+            \left[-\vec e_x200\cos(\omega t-\beta z)
+            +\vec e_y100\cos(\omega t-\beta z-\pi/2)\right]
+            \]</p>
+            <p>理想导体表面切向电场为零，所以在 \(z=0\) 处 \(\vec E_r=-\vec E_i\)。反射波沿 \(-z\) 传播：</p>
+            <p class="formula">\[
+            \vec E_r(z)=
+            -\vec e_x100e^{j\beta z}e^{-j\pi/2}
+            -\vec e_y200e^{j\beta z}
+            \]</p>
+            <p class="formula">\[
+            \vec H_r(z)=\frac{1}{\eta_0}(-\vec e_z\times\vec E_r)
+            =\frac{1}{\eta_0}\left[
+            -\vec e_x200e^{j\beta z}
+            +\vec e_y100e^{j\beta z}e^{-j\pi/2}
+            \right]
+            \]</p>
+            <p>总场为入射波与反射波叠加：</p>
+            <p class="formula">\[
+            \vec E_1(z)=\vec E_i+\vec E_r
+            =-\vec e_xj200e^{-j\pi/2}\sin(\beta z)-\vec e_yj400\sin(\beta z)
+            \]</p>
+            <p class="formula">\[
+            \vec H_1(z)=\vec H_i+\vec H_r
+            =\frac{1}{\eta_0}\left[
+            -\vec e_x400\cos(\beta z)
+            +\vec e_y200e^{-j\pi/2}\cos(\beta z)
+            \right]
+            \]</p>
+            <p>导体表面电流密度：</p>
+            <p class="formula">\[
+            \vec J_s=-\vec e_z\times\vec H_1\big|_{z=0}
+            =\vec e_x\frac{200}{\eta_0}e^{-j\pi/2}
+            +\vec e_y\frac{400}{\eta_0}
+            \]</p>
+            <p class="formula">\[
+            \boxed{\vec J_s=-\vec e_xj0.53+\vec e_y1.06\text{ A/m}}
+            \]</p>
+            <p>极化：入射波两个正交分量幅值不等，相位差为 \(\pi/2\)，沿 \(+z\) 传播，故为左旋椭圆极化；反射波沿 \(-z\) 传播，按课件约定为右旋椭圆极化。</p>
+          </div>
+
+          <h3 id="ex8-11">例题 8-11：由驻波比和波长比求介质参数</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>
+              In free space, uniform plane wave vertical incidence to the semi-infinite plane of lossless dielectric.
+              Given SWR \(=3\) in free space, the wavelength in the dielectric is \(1/6\) of that in free space.
+              The point of minimum value of standing wave is on the interface.
+              Work out the relative permeability and relative permittivity of the dielectric.
+            </p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>由驻波比</p>
+            <p class="formula">\[
+            S=\frac{1+|\Gamma|}{1-|\Gamma|}=3
+            \Rightarrow
+            |\Gamma|=\frac12
+            \]</p>
+            <p>电场最小点在界面，说明界面处反射电场与入射电场反相：</p>
+            <p class="formula">\[
+            \Gamma=-\frac12
+            \]</p>
+            <p>反射系数</p>
+            <p class="formula">\[
+            \Gamma=\frac{\eta_2-\eta_1}{\eta_2+\eta_1}
+            \]</p>
+            <p>区域 1 是自由空间，\(\eta_1=\eta_0\)，代入 \(\Gamma=-1/2\)：</p>
+            <p class="formula">\[
+            \eta_2=\frac13\eta_0
+            \]</p>
+            <p>又</p>
+            <p class="formula">\[
+            \eta_2=\eta_0\sqrt{\frac{\mu_r}{\varepsilon_r}}
+            \Rightarrow
+            \frac{\mu_r}{\varepsilon_r}=\frac19
+            \]</p>
+            <p>波长关系：</p>
+            <p class="formula">\[
+            \lambda_2=\frac{\lambda_0}{\sqrt{\mu_r\varepsilon_r}}=\frac{\lambda_0}{6}
+            \Rightarrow
+            \mu_r\varepsilon_r=36
+            \]</p>
+            <p>联立两式：</p>
+            <p class="formula">\[
+            \boxed{\mu_r=2,\qquad\varepsilon_r=18}
+            \]</p>
+          </div>
+
+          <h3 id="ex8-12">例题 8-12：正入射到无耗介质，求透射场</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>
+              The electric field of incidence wave is
+              \( \vec E_i=\vec e_x10\cos(3\pi\times10^9t-10\pi z)\text{ V/m} \).
+              It vertically incidents to the interface at \(z=0\) from region \(z&lt;0\) of free space to region \(z&gt;0\) with \(\mu_r=1,\varepsilon_r=4\).
+              Find the electric and magnetic fields in \(z&gt;0\).
+            </p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>区域 1 为自由空间：</p>
+            <p class="formula">\[
+            \eta_1=\eta_0=120\pi\Omega
+            \]</p>
+            <p>区域 2 的波阻抗：</p>
+            <p class="formula">\[
+            \eta_2=\eta_0\sqrt{\frac{\mu_{r2}}{\varepsilon_{r2}}}
+            =120\pi\sqrt{\frac{1}{4}}=60\pi\Omega
+            \]</p>
+            <p>电场透射系数：</p>
+            <p class="formula">\[
+            \tau=\frac{2\eta_2}{\eta_1+\eta_2}
+            =\frac{2\cdot60\pi}{120\pi+60\pi}
+            =0.667
+            \]</p>
+            <p>区域 2 中的相位常数：</p>
+            <p class="formula">\[
+            \beta_2=\frac{\omega}{c}\sqrt{\mu_{r2}\varepsilon_{r2}}
+            =\frac{3\pi\times10^9}{3\times10^8}\cdot2
+            =20\pi\text{ rad/m}
+            \]</p>
+            <p>透射电场幅值：</p>
+            <p class="formula">\[
+            E_{2m}=\tau E_{im}=0.667\times10=6.67\text{ V/m}
+            \]</p>
+            <p>所以</p>
+            <p class="formula">\[
+            \boxed{\vec E_2=\vec e_x6.67\cos(3\pi\times10^9t-20\pi z)\text{ V/m}}
+            \]</p>
+            <p>磁场幅值为 \(H_{2m}=E_{2m}/\eta_2\)：</p>
+            <p class="formula">\[
+            \boxed{\vec H_2=\vec e_y0.036\cos(3\pi\times10^9t-20\pi z)\text{ A/m}}
+            \]</p>
+          </div>
+
+          <h3 id="ex8-13">例题 8-13：两无耗介质正入射</h3>
+          <div class="problem">
+            <p class="problem-title">原题</p>
+            <p>
+              Given medium 1: \(\varepsilon_{r1}=4,\mu_{r1}=1,\sigma_1=0\);
+              medium 2: \(\varepsilon_{r2}=10,\mu_{r2}=4,\sigma_2=0\).
+              A uniform plane wave with angular frequency \(\omega=5\times10^8\text{ rad/s}\) vertically incidents to the interface from medium 1.
+              The incidence wave is linearly polarized in \(x\) direction. When \(t=0,z=0\), the amplitude of incidence wave is \(2.4\text{ V/m}\).
+              Find:
+            </p>
+            <ol>
+              <li>\(\beta_1,\beta_2\);</li>
+              <li>reflection coefficient \(\Gamma\) and transmission coefficient \(\tau\);</li>
+              <li>electric field in region 1;</li>
+              <li>electric field in region 2.</li>
+            </ol>
+          </div>
+          <div class="answer">
+            <p class="answer-title">详细作答</p>
+            <p>相位常数：</p>
+            <p class="formula">\[
+            \beta_1=\frac{\omega}{c}\sqrt{\mu_{r1}\varepsilon_{r1}}
+            =\frac{5\times10^8}{3\times10^8}\cdot2
+            =3.33\text{ rad/m}
+            \]</p>
+            <p class="formula">\[
+            \beta_2=\frac{\omega}{c}\sqrt{\mu_{r2}\varepsilon_{r2}}
+            =\frac{5\times10^8}{3\times10^8}\sqrt{40}
+            =10.54\text{ rad/m}
+            \]</p>
+            <p>波阻抗：</p>
+            <p class="formula">\[
+            \eta_1=\eta_0\sqrt{\frac{1}{4}}=60\pi\Omega
+            \]</p>
+            <p class="formula">\[
+            \eta_2=\eta_0\sqrt{\frac{4}{10}}\approx75.9\pi\Omega
+            \]</p>
+            <p>反射系数：</p>
+            <p class="formula">\[
+            \Gamma=\frac{\eta_2-\eta_1}{\eta_2+\eta_1}
+            =\frac{75.9-60}{75.9+60}=0.117
+            \]</p>
+            <p>透射系数：</p>
+            <p class="formula">\[
+            \tau=\frac{2\eta_2}{\eta_1+\eta_2}\approx1.12
+            \]</p>
+            <p>入射电场幅值 \(E_{im}=2.4\text{ V/m}\)。区域 1 中有入射波和反射波：</p>
+            <p class="formula">\[
+            \vec E_1(z)
+            =\vec e_xE_{im}\left(e^{-j\beta_1z}+\Gamma e^{j\beta_1z}\right)
+            \]</p>
+            <p>代入数值：</p>
+            <p class="formula">\[
+            \vec E_1(z)=\vec e_x2.4e^{-j3.33z}+\vec e_x0.281e^{j3.33z}
+            \]</p>
+            <p>瞬时形式：</p>
+            <p class="formula">\[
+            \boxed{
+            \vec E_1(z,t)=
+            \vec e_x2.4\cos(5\times10^8t-3.33z)
+            +\vec e_x0.281\cos(5\times10^8t+3.33z)
+            }
+            \]</p>
+            <p>区域 2 只有透射波：</p>
+            <p class="formula">\[
+            \vec E_2(z)=\vec e_x\tau E_{im}e^{-j\beta_2z}
+            =\vec e_x2.68e^{-j10.54z}
+            \]</p>
+            <p>瞬时形式：</p>
+            <p class="formula">\[
+            \boxed{\vec E_2(z,t)=\vec e_x2.68\cos(5\times10^8t-10.54z)\text{ V/m}}
+            \]</p>
+          </div>
+        </article>
+
+        <footer class="footer">
+          <p><a href="chap7.html">Chapter 7 知识梳理</a> / <a href="chap8.html">Chapter 8 知识梳理</a></p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#例题总览">例题总览</a></li>
+          <li><a href="#chap7">Chapter 7</a></li>
+          <li><a href="#ex7-1">7-1 矩形回路</a></li>
+          <li><a href="#ex7-2">7-2 瞬时场到复矢量</a></li>
+          <li><a href="#ex7-3">7-3 复矢量到瞬时场</a></li>
+          <li><a href="#chap8">Chapter 8</a></li>
+          <li><a href="#ex8-1">8-1 波矢参数</a></li>
+          <li><a href="#ex8-2">8-2 极化判断</a></li>
+          <li><a href="#ex8-3">8-3 海水传播</a></li>
+          <li><a href="#ex8-4">8-4 聚乙烯</a></li>
+          <li><a href="#ex8-5">8-5 写 E/H</a></li>
+          <li><a href="#ex8-6">8-6 瞬时场</a></li>
+          <li><a href="#ex8-7">8-7 能流模板</a></li>
+          <li><a href="#ex8-8">8-8 平均功率</a></li>
+          <li><a href="#ex8-9">8-9 铜屏蔽</a></li>
+          <li><a href="#ex8-10">8-10 理想导体</a></li>
+          <li><a href="#ex8-11">8-11 驻波比</a></li>
+          <li><a href="#ex8-12">8-12 透射场</a></li>
+          <li><a href="#ex8-13">8-13 介质边界</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>
