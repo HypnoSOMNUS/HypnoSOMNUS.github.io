@@ -1,0 +1,20 @@
+# 电磁场与波学习笔记完整文本源
+
+这份站点整理第 7、8 章课件内容，围绕例题讲解。
+
+Chapter 7 重点：
+
+- 法拉第电磁感应：变化的磁场产生旋涡电场。
+- 感应电动势可来自磁场变化、导体运动，或二者叠加。
+- 位移电流密度为 Jd = partial D / partial t。
+- 麦克斯韦方程组包括法拉第定律、全电流定律、电场高斯定律、磁场高斯定律。
+- 时谐场用复矢量表示，瞬时值取实部。
+
+Chapter 8 重点：
+
+- 均匀平面波满足 E、H、k 两两垂直。
+- 无耗介质中 eta = sqrt(mu / epsilon)，v = 1 / sqrt(mu epsilon)，beta = omega sqrt(mu epsilon)。
+- 极化由两个正交电场分量的幅值和相位差决定。
+- 有耗介质先判断 sigma / (omega epsilon)，再求 alpha、beta、复波阻抗和皮肤深度。
+- 坡印廷矢量 S = E cross H，时谐平均值 Sav = 1/2 Re(E cross H*)。
+- 正入射边界使用反射系数 Gamma = (eta2 - eta1) / (eta2 + eta1) 与透射系数 tau = 2 eta2 / (eta1 + eta2)。

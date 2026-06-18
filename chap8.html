@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapter 8 平面电磁波</title>
+    <meta name="description" content="第 8 章学习笔记：无耗介质、有耗介质、极化、坡印廷矢量、正入射导体和介质边界。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">电磁场与波</span>
+          <span class="brand-subtitle">例题驱动学习笔记</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索章节" aria-label="搜索章节" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">
+            ◐
+          </button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a data-search-item href="chap7.html">Chapter 7 时变场与麦克斯韦方程</a></li>
+            <li><a class="active" data-search-item href="chap8.html">Chapter 8 平面电磁波</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb"><a href="./">首页</a> / Chapter 8</div>
+          <h1>平面电磁波</h1>
+          <p class="meta">用例题掌握传播、极化、衰减、能流和正入射边界。</p>
+        </header>
+
+        <article>
+          <blockquote>
+            <p>
+              第 8 章的题目看起来很多，但核心套路只有一个：先确定传播方向和相位项，再用波阻抗把 \( \vec E \)、\( \vec H \)、\( \vec k \) 联系起来。
+            </p>
+          </blockquote>
+
+          <h2 id="基本关系">基本关系</h2>
+          <p>均匀平面波在无耗介质中传播时：</p>
+          <p class="formula">\[
+          \eta=\sqrt{\frac{\mu}{\varepsilon}}
+          =\eta_0\sqrt{\frac{\mu_r}{\varepsilon_r}}
+          \]</p>
+          <p class="formula">\[
+          v=\frac{1}{\sqrt{\mu\varepsilon}},\qquad
+          \beta=\omega\sqrt{\mu\varepsilon},\qquad
+          \lambda=\frac{2\pi}{\beta}
+          \]</p>
+          <p>电场、磁场和传播方向三者互相垂直：</p>
+          <p class="formula">\[
+          \vec H=\frac{1}{\eta}\hat k\times\vec E
+          \]</p>
+          <p>若波沿 \(+z\) 传播，相位通常写成 \(\omega t-\beta z\)；若沿 \(-z\) 传播，则写成 \(\omega t+\beta z\)。</p>
+
+          <h2 id="例题一">例题一：由磁场表达式求波参数</h2>
+          <p>课件例题给出空气中平面波磁场复矢量：</p>
+          <p class="formula">\[
+          \vec H=(-\vec e_xA+\vec e_y2+\vec e_z4)e^{-j\pi(4x+3z)}
+          \]</p>
+          <p>与标准形式 \( \vec H=\vec H_me^{-j\vec k\cdot\vec r} \) 对比：</p>
+          <p class="formula">\[
+          \vec k=4\pi\vec e_x+3\pi\vec e_z,\qquad
+          k=\sqrt{(4\pi)^2+(3\pi)^2}=5\pi
+          \]</p>
+          <p>因此</p>
+          <p class="formula">\[
+          \lambda=\frac{2\pi}{k}=\frac{2}{5}\text{ m}
+          \]</p>
+          <p>空气中 \(v=c\)，所以</p>
+          <p class="formula">\[
+          f=\frac{c}{\lambda}=7.5\times10^8\text{ Hz}
+          \]</p>
+          <div class="callout">
+            <strong>解题要点：</strong> 指数项里谁乘 \(x,y,z\)，谁就是波矢分量。先找 \(\vec k\)，再找 \(\lambda\)、\(f\)。
+          </div>
+
+          <h2 id="例题二">例题二：无耗介质中的波速、波长和波阻抗</h2>
+          <p>聚乙烯中 \(f=9.4\text{ GHz}\)，\(\varepsilon_r=2.26\)，\(H_m=7\text{ mA/m}\)，介质近似无耗。</p>
+          <p class="formula">\[
+          v=\frac{c}{\sqrt{\varepsilon_r}}=\frac{3\times10^8}{\sqrt{2.26}}
+          =1.996\times10^8\text{ m/s}
+          \]</p>
+          <p class="formula">\[
+          \eta=\frac{\eta_0}{\sqrt{\varepsilon_r}}=\frac{377}{\sqrt{2.26}}
+          \approx251\Omega
+          \]</p>
+          <p class="formula">\[
+          E_m=H_m\eta=7\times10^{-3}\times251=1.757\text{ V/m}
+          \]</p>
+          <p>按题目 \(9.4\text{ GHz}\) 计算：</p>
+          <p class="formula">\[
+          \lambda=\frac{v}{f}=\frac{1.996\times10^8}{9.4\times10^9}
+          \approx2.12\times10^{-2}\text{ m}
+          \]</p>
+          <div class="callout">
+            <strong>课件核对：</strong> PPT 上若写成 \(2.12\text{ m}\)，与 \(9.4\text{ GHz}\) 不一致，数量级应为 \(2.12\text{ cm}\)。
+          </div>
+
+          <h2 id="例题三">例题三：由传播方向写出 \(E\) 与 \(H\)</h2>
+          <p>空气中均匀平面波沿 \(-\vec e_z\) 方向传播，\(\beta=30\text{ rad/m}\)，磁场方向为 \(-\vec e_y\)，幅值为 \(1/(3\pi)\text{ A/m}\)。</p>
+          <p>沿 \(-z\) 传播，所以相位为 \(\omega t+\beta z\)：</p>
+          <p class="formula">\[
+          \vec H(z,t)=-\vec e_y\frac{1}{3\pi}\cos(\omega t+30z)
+          \]</p>
+          <p>由 \(E_m=\eta_0H_m\)：</p>
+          <p class="formula">\[
+          E_m=120\pi\cdot\frac{1}{3\pi}=40
+          \]</p>
+          <p>为了使 \( \vec E\times\vec H \) 指向 \(-z\)，电场沿 \(+x\)：</p>
+          <p class="formula">\[
+          \vec E(z,t)=\vec e_x40\cos(\omega t+30z)\text{ V/m}
+          \]</p>
+          <p>波长和频率：</p>
+          <p class="formula">\[
+          \lambda=\frac{2\pi}{30}\approx0.21\text{ m},\qquad
+          f=\frac{c}{\lambda}\approx1.43\times10^9\text{ Hz}
+          \]</p>
+
+          <h2 id="极化">极化判断</h2>
+          <p>极化研究的是固定空间点处，电场矢量端点随时间的轨迹。令</p>
+          <p class="formula">\[
+          \Delta\phi=\phi_y-\phi_x
+          \]</p>
+          <table>
+            <thead>
+              <tr>
+                <th>条件</th>
+                <th>极化方式</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\Delta\phi=0,\pm\pi\)</td>
+                <td>线极化</td>
+              </tr>
+              <tr>
+                <td>\(E_{xm}=E_{ym},\ \Delta\phi=\pm\pi/2\)</td>
+                <td>圆极化</td>
+              </tr>
+              <tr>
+                <td>其他一般情况</td>
+                <td>椭圆极化</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>例题：</p>
+          <p class="formula">\[
+          \vec E=\vec e_xE_me^{-jkz}-\vec e_yjE_me^{-jkz}
+          \]</p>
+          <p>幅值相等，\(\phi_x=0\)，\(\phi_y=-\pi/2\)，所以</p>
+          <p class="formula">\[
+          \Delta\phi=-\frac{\pi}{2}
+          \]</p>
+          <p>按课件约定，沿 \(+z\) 传播时为右旋圆极化，即 RHCP。</p>
+
+          <h2 id="有耗介质">有耗介质与海水传播例题</h2>
+          <p>有耗介质中传播常数为复数，场会随传播距离衰减。先用</p>
+          <p class="formula">\[
+          \frac{\sigma}{\omega\varepsilon}
+          \]</p>
+          <p>判断介质类型。若远大于 1，可近似为良导体，此时</p>
+          <p class="formula">\[
+          \alpha\approx\beta\approx\sqrt{\frac{\omega\mu\sigma}{2}},
+          \qquad
+          \delta=\frac{1}{\alpha}
+          \]</p>
+          <p>海水例题中：</p>
+          <p class="formula">\[
+          \varepsilon_r=81,\quad \mu_r=1,\quad \sigma=4\text{ S/m},\quad
+          \omega=10^7\pi
+          \]</p>
+          <p>课件计算：</p>
+          <p class="formula">\[
+          \frac{\sigma}{\omega\varepsilon}\approx180\gg1
+          \]</p>
+          <p>所以海水可看作良导体，得到</p>
+          <p class="formula">\[
+          \alpha=\beta\approx8.89\text{ m}^{-1}
+          \]</p>
+          <p>若电场幅值衰减到 \(1/1000\)：</p>
+          <p class="formula">\[
+          e^{-\alpha z}=\frac{1}{1000}
+          \Rightarrow
+          z=\frac{\ln1000}{8.89}\approx0.777\text{ m}
+          \]</p>
+          <p>在 \(z=0.8\text{ m}\) 处：</p>
+          <p class="formula">\[
+          \vec E(0.8,t)=\vec e_x0.082\cos(10^7\pi t-7.11)\text{ V/m}
+          \]</p>
+          <p class="formula">\[
+          \vec H(0.8,t)=\vec e_y0.026\cos(10^7\pi t-1.61)\text{ A/m}
+          \]</p>
+          <div class="callout">
+            <strong>工程含义：</strong> 高频电磁波在海水中衰减极快，这解释了水下通信为什么倾向使用很低频率。
+          </div>
+
+          <h2 id="坡印廷矢量">坡印廷矢量与平均功率</h2>
+          <p>瞬时坡印廷矢量：</p>
+          <p class="formula">\[
+          \vec S=\vec E\times\vec H
+          \]</p>
+          <p>时谐平均坡印廷矢量：</p>
+          <p class="formula">\[
+          \vec S_{av}=\frac12\operatorname{Re}(\vec E\times\vec H^*)
+          \]</p>
+          <p>例题：自由空间中</p>
+          <p class="formula">\[
+          \vec E=\vec e_x50\cos(\omega t-kz)\text{ V/m}
+          \]</p>
+          <p>则</p>
+          <p class="formula">\[
+          \eta_0=120\pi\Omega,\qquad
+          \vec H=\vec e_y\frac{50}{120\pi}e^{-jkz}
+          =\vec e_y\frac{5}{12\pi}e^{-jkz}
+          \]</p>
+          <p>平均能流密度：</p>
+          <p class="formula">\[
+          \vec S_{av}
+          =\vec e_z\frac12\cdot50\cdot\frac{5}{12\pi}
+          =\vec e_z\frac{125}{12\pi}\text{ W/m}^2
+          \]</p>
+          <p>半径 \(R=2.5\text{ m}\) 的圆面平均功率：</p>
+          <p class="formula">\[
+          P_{av}=S_{av}\pi R^2
+          =\frac{125}{12\pi}\pi(2.5)^2
+          =65.1\text{ W}
+          \]</p>
+
+          <h2 id="理想导体边界">正入射到理想导体边界</h2>
+          <p>理想导体表面切向电场为零，因此电场反射系数为</p>
+          <p class="formula">\[
+          \Gamma=-1
+          \]</p>
+          <p>入射波与反射波叠加形成驻波：导体表面电场为零，磁场最大。表面电流密度可由边界磁场求：</p>
+          <p class="formula">\[
+          \vec J_s=\hat n\times\vec H\big|_{z=0}
+          \]</p>
+          <p>课件例题中，先把给定的瞬时电场改写成复矢量，再用 \( \vec H=(1/\eta_0)\hat k\times\vec E \) 求磁场；放置理想导体后，令反射电场在界面与入射电场相消。</p>
+
+          <h2 id="介质边界">正入射到介质边界</h2>
+          <p>两种无耗介质的正入射问题，关键是反射系数和透射系数：</p>
+          <p class="formula">\[
+          \Gamma=\frac{\eta_2-\eta_1}{\eta_2+\eta_1},
+          \qquad
+          \tau=\frac{2\eta_2}{\eta_1+\eta_2}
+          \]</p>
+          <p>区域 1 中有入射波和反射波：</p>
+          <p class="formula">\[
+          \vec E_1=\vec E_i+\vec E_r
+          \]</p>
+          <p>区域 2 中只有透射波：</p>
+          <p class="formula">\[
+          \vec E_2=\vec E_t
+          \]</p>
+
+          <h3 id="驻波比例题">驻波比例题</h3>
+          <p>自由空间中均匀平面波垂直入射到半无限无耗介质，已知自由空间中驻波比 \(S=3\)，介质中波长为自由空间的 \(1/6\)，且电场最小点在界面。</p>
+          <p class="formula">\[
+          S=\frac{1+|\Gamma|}{1-|\Gamma|}=3
+          \Rightarrow |\Gamma|=\frac12
+          \]</p>
+          <p>最小点在界面，说明反射电场与入射电场反相：</p>
+          <p class="formula">\[
+          \Gamma=-\frac12
+          \]</p>
+          <p>由</p>
+          <p class="formula">\[
+          \Gamma=\frac{\eta_2-\eta_1}{\eta_2+\eta_1}
+          \]</p>
+          <p>得</p>
+          <p class="formula">\[
+          \eta_2=\frac13\eta_0
+          \Rightarrow
+          \frac{\mu_r}{\varepsilon_r}=\frac19
+          \]</p>
+          <p>又因为</p>
+          <p class="formula">\[
+          \lambda_2=\frac{\lambda_0}{\sqrt{\mu_r\varepsilon_r}}=\frac{\lambda_0}{6}
+          \Rightarrow
+          \mu_r\varepsilon_r=36
+          \]</p>
+          <p>联立得到</p>
+          <p class="formula">\[
+          \mu_r=2,\qquad \varepsilon_r=18
+          \]</p>
+
+          <h3 id="反射透射例题">反射透射例题</h3>
+          <p>介质 1：\(\varepsilon_{r1}=4,\mu_{r1}=1,\sigma_1=0\)。介质 2：\(\varepsilon_{r2}=10,\mu_{r2}=4,\sigma_2=0\)。\(\omega=5\times10^8\text{ rad/s}\)，入射电场幅值 \(2.4\text{ V/m}\)。</p>
+          <p>相位常数：</p>
+          <p class="formula">\[
+          \beta_1=\frac{\omega}{c}\sqrt{\mu_{r1}\varepsilon_{r1}}=3.33\text{ rad/m}
+          \]</p>
+          <p class="formula">\[
+          \beta_2=\frac{\omega}{c}\sqrt{\mu_{r2}\varepsilon_{r2}}=10.54\text{ rad/m}
+          \]</p>
+          <p>波阻抗：</p>
+          <p class="formula">\[
+          \eta_1=60\pi\Omega,\qquad
+          \eta_2\approx75.9\pi\Omega
+          \]</p>
+          <p>反射系数：</p>
+          <p class="formula">\[
+          \Gamma=\frac{\eta_2-\eta_1}{\eta_2+\eta_1}\approx0.117
+          \]</p>
+          <p>区域 1 电场：</p>
+          <p class="formula">\[
+          \vec E_1(z,t)=\vec e_x2.4\cos(5\times10^8t-3.33z)
+          +\vec e_x0.281\cos(5\times10^8t+3.33z)
+          \]</p>
+          <p>透射系数：</p>
+          <p class="formula">\[
+          \tau=\frac{2\eta_2}{\eta_1+\eta_2}\approx1.12
+          \]</p>
+          <p>区域 2 电场：</p>
+          <p class="formula">\[
+          \vec E_2(z,t)=\vec e_x2.68\cos(5\times10^8t-10.54z)
+          \]</p>
+
+          <h2 id="本章小结">本章小结</h2>
+          <ul>
+            <li>相位项决定传播方向：\(\omega t-\beta z\) 沿 \(+z\)，\(\omega t+\beta z\) 沿 \(-z\)。</li>
+            <li>无耗介质中 \(E\) 与 \(H\) 同相，幅值相差 \(\eta\) 倍。</li>
+            <li>极化由两个正交电场分量的幅值和相位差决定。</li>
+            <li>有耗介质题先判断 \(\sigma/(\omega\varepsilon)\)，再求 \(\alpha,\beta,\eta_c,\delta\)。</li>
+            <li>边界题先写入射、反射、透射波，再用 \(\Gamma\)、\(\tau\)、SWR 或边界条件求未知量。</li>
+          </ul>
+        </article>
+
+        <footer class="footer">
+          <p><a href="chap7.html">回到 Chapter 7：时变场与麦克斯韦方程</a></p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#基本关系">基本关系</a></li>
+          <li><a href="#例题一">磁场表达式例题</a></li>
+          <li><a href="#例题二">无耗介质例题</a></li>
+          <li><a href="#例题三">写出 E 与 H</a></li>
+          <li><a href="#极化">极化判断</a></li>
+          <li><a href="#有耗介质">有耗介质</a></li>
+          <li><a href="#坡印廷矢量">坡印廷矢量</a></li>
+          <li><a href="#理想导体边界">理想导体边界</a></li>
+          <li><a href="#介质边界">介质边界</a></li>
+          <li><a href="#本章小结">本章小结</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapter 7 时变场与麦克斯韦方程</title>
+    <meta name="description" content="第 7 章学习笔记：法拉第电磁感应、位移电流、麦克斯韦方程、波动方程、势函数与时谐场。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">电磁场与波</span>
+          <span class="brand-subtitle">例题驱动学习笔记</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索章节" aria-label="搜索章节" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">
+            ◐
+          </button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a class="active" data-search-item href="chap7.html">Chapter 7 时变场与麦克斯韦方程</a></li>
+            <li><a data-search-item href="chap8.html">Chapter 8 平面电磁波</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb"><a href="./">首页</a> / Chapter 7</div>
+          <h1>时变场与麦克斯韦方程</h1>
+          <p class="meta">从电磁感应例题切入，建立时变电磁场的基本方程。</p>
+        </header>
+
+        <article>
+          <blockquote>
+            <p>
+              第 7 章的主线很清楚：静态场的电、磁可以分开讲；一旦场随时间变化，电场和磁场就互相激发，必须作为统一的电磁场处理。
+            </p>
+          </blockquote>
+
+          <h2 id="章节主线">章节主线</h2>
+          <ol>
+            <li>法拉第电磁感应说明变化的磁场会产生旋涡电场。</li>
+            <li>麦克斯韦引入位移电流，说明变化的电场也能产生磁场。</li>
+            <li>四个麦克斯韦方程、介质本构关系、边界条件共同构成时变电磁场问题的起点。</li>
+            <li>在无源区域，电磁场满足波动方程；在时谐情况下，复矢量把时间因子分离出去。</li>
+          </ol>
+
+          <h2 id="例题一">例题一：矩形回路的感应电动势</h2>
+          <p>
+            均匀磁场垂直穿过长为 \(a\)、宽为 \(b\) 的矩形回路。课件给出三种情况：回路静止但磁场变化、磁场恒定但导体棒运动、磁场变化且导体棒运动。
+          </p>
+
+          <h3 id="磁场变化">1. 磁场变化，回路静止</h3>
+          <p>若</p>
+          <p class="formula">\[
+          \vec B=\vec e_zB_0\cos(\omega t)
+          \]</p>
+          <p>回路面积为 \(ab\)，磁通为</p>
+          <p class="formula">\[
+          \Phi=abB_0\cos(\omega t)
+          \]</p>
+          <p>所以感应电动势为</p>
+          <p class="formula">\[
+          \varepsilon_{in}=-\frac{d\Phi}{dt}=\omega abB_0\sin(\omega t)
+          \]</p>
+          <div class="callout">
+            <strong>解题要点：</strong> 回路不动时，不需要写 \( \vec v\times\vec B \)。磁通变化完全来自 \(B(t)\)，这类电动势常称为变压器电动势。
+          </div>
+
+          <h3 id="导体运动">2. 磁场恒定，导体棒运动</h3>
+          <p>若</p>
+          <p class="formula">\[
+          \vec B=\vec e_zB_0,\qquad \vec v=\vec e_xv
+          \]</p>
+          <p>感应电动势来自导体切割磁感线：</p>
+          <p class="formula">\[
+          \varepsilon_{in}=\oint_C(\vec v\times\vec B)\cdot d\vec l
+          =-vB_0b
+          \]</p>
+          <p>也可以从磁通变化理解：</p>
+          <p class="formula">\[
+          \varepsilon_{in}=-\frac{d}{dt}(bB_0vt)=-bB_0v
+          \]</p>
+          <div class="callout">
+            <strong>符号提醒：</strong> 正负号取决于回路积分方向和面积法向。考试中如果只问大小，通常写 \(vB_0b\)；如果问方向，必须结合楞次定律。
+          </div>
+
+          <h3 id="二者叠加">3. 磁场变化，导体也运动</h3>
+          <p>两种来源同时存在：</p>
+          <p class="formula">\[
+          \varepsilon_{in}=
+          -\int_S\frac{\partial\vec B}{\partial t}\cdot d\vec S
+          +\oint_C(\vec v\times\vec B)\cdot d\vec l
+          \]</p>
+          <p>课件结果为</p>
+          <p class="formula">\[
+          \varepsilon_{in}=vt\omega bB_0\sin(\omega t)-vbB_0\cos(\omega t)
+          \]</p>
+          <p>前一项来自磁场随时间变化，后一项来自导体棒运动。这个例题是第 7 章最好的入口。</p>
+
+          <h2 id="法拉第定律">法拉第定律</h2>
+          <p>积分形式：</p>
+          <p class="formula">\[
+          \oint_C \vec E\cdot d\vec l=-\frac{d}{dt}\int_S\vec B\cdot d\vec S
+          \]</p>
+          <p>微分形式：</p>
+          <p class="formula">\[
+          \nabla\times\vec E=-\frac{\partial \vec B}{\partial t}
+          \]</p>
+          <p>物理意义是：时变磁场是电场的旋度源，感应电场不是保守场。</p>
+
+          <h2 id="位移电流">位移电流与麦克斯韦修正</h2>
+          <p>静磁场中的安培环路定律为</p>
+          <p class="formula">\[
+          \nabla\times\vec H=\vec J
+          \]</p>
+          <p>但在时变情况下，电荷分布随时间变化，若仍只保留传导电流，会与电流连续性方程矛盾。麦克斯韦加入位移电流密度：</p>
+          <p class="formula">\[
+          \vec J_d=\frac{\partial\vec D}{\partial t}
+          \]</p>
+          <p>于是得到修正后的全电流定律：</p>
+          <p class="formula">\[
+          \nabla\times\vec H=\vec J+\frac{\partial\vec D}{\partial t}
+          \]</p>
+          <div class="callout">
+            <strong>理解：</strong> 位移电流不是自由电荷真实流动，不产生焦耳热；它表示电位移随时间变化，也能像电流一样激发磁场。
+          </div>
+
+          <h2 id="麦克斯韦方程">麦克斯韦方程组</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>名称</th>
+                <th>微分形式</th>
+                <th>物理意义</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>法拉第定律</td>
+                <td>\(\nabla\times\vec E=-\partial\vec B/\partial t\)</td>
+                <td>时变磁场产生旋涡电场</td>
+              </tr>
+              <tr>
+                <td>全电流定律</td>
+                <td>\(\nabla\times\vec H=\vec J+\partial\vec D/\partial t\)</td>
+                <td>传导电流和时变电场产生磁场</td>
+              </tr>
+              <tr>
+                <td>电场高斯定律</td>
+                <td>\(\nabla\cdot\vec D=\rho\)</td>
+                <td>电荷是电通量源</td>
+              </tr>
+              <tr>
+                <td>磁场高斯定律</td>
+                <td>\(\nabla\cdot\vec B=0\)</td>
+                <td>无磁单极子，磁感线闭合</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>线性各向同性介质中还要配合本构关系：</p>
+          <p class="formula">\[
+          \vec D=\varepsilon\vec E,\qquad
+          \vec B=\mu\vec H,\qquad
+          \vec J=\sigma\vec E
+          \]</p>
+
+          <h2 id="波动方程">波动方程与势函数</h2>
+          <p>在无源、均匀介质中，麦克斯韦方程可推出电场和磁场的波动方程：</p>
+          <p class="formula">\[
+          \nabla^2\vec E-\mu\varepsilon\frac{\partial^2\vec E}{\partial t^2}=0
+          \]</p>
+          <p class="formula">\[
+          \nabla^2\vec H-\mu\varepsilon\frac{\partial^2\vec H}{\partial t^2}=0
+          \]</p>
+          <p>这说明时变电磁场可以脱离源，以波的形式传播。势函数方法则在有源区更有优势，常与洛伦兹规范一起使用。</p>
+
+          <h2 id="例题二">例题二：复矢量与瞬时值</h2>
+          <p>时谐场的统一写法是</p>
+          <p class="formula">\[
+          \vec F(\vec r,t)=\operatorname{Re}[\vec F_m(\vec r)e^{j\omega t}]
+          \]</p>
+          <p>例题给出：</p>
+          <p class="formula">\[
+          \vec E_m(z)=\vec e_x jE_{xm}\cos(k_zz)
+          \]</p>
+          <p>求瞬时值：</p>
+          <p class="formula">\[
+          \vec E(z,t)=\operatorname{Re}[\vec e_x jE_{xm}\cos(k_zz)e^{j\omega t}]
+          \]</p>
+          <p>由于 \(j=e^{j\pi/2}\)，所以</p>
+          <p class="formula">\[
+          \vec E(z,t)=\vec e_xE_{xm}\cos(k_zz)\cos(\omega t+\pi/2)
+          =-\vec e_xE_{xm}\cos(k_zz)\sin\omega t
+          \]</p>
+          <div class="callout">
+            <strong>解题要点：</strong> 复矢量题最怕混淆正弦和余弦。统一改成余弦相位形式，再取实部，就不容易出错。
+          </div>
+
+          <h2 id="本章小结">本章小结</h2>
+          <ul>
+            <li>磁场随时间变化会产生旋涡电场：\(\nabla\times\vec E=-\partial\vec B/\partial t\)。</li>
+            <li>电场随时间变化会产生磁场：\(\nabla\times\vec H=\vec J+\partial\vec D/\partial t\)。</li>
+            <li>无源区中时变电磁场满足波动方程。</li>
+            <li>时谐场用复矢量处理，计算结束后取实部得到瞬时值。</li>
+          </ul>
+        </article>
+
+        <footer class="footer">
+          <p><a href="chap8.html">继续 Chapter 8：平面电磁波</a></p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#章节主线">章节主线</a></li>
+          <li><a href="#例题一">矩形回路例题</a></li>
+          <li><a href="#法拉第定律">法拉第定律</a></li>
+          <li><a href="#位移电流">位移电流</a></li>
+          <li><a href="#麦克斯韦方程">麦克斯韦方程</a></li>
+          <li><a href="#波动方程">波动方程</a></li>
+          <li><a href="#例题二">复矢量例题</a></li>
+          <li><a href="#本章小结">本章小结</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>
