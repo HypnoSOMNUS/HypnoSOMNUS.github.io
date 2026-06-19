@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>往年题与模拟题分析 | 电磁场与波</title>
+    <meta name="description" content="基于 exam paper 文件夹下 2022-2025 往年题与 2026 期末模拟题的题型统计、知识点频率和复习优先级分析。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">电磁场与波</span>
+          <span class="brand-subtitle">知识点与例题笔记</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索章节" aria-label="搜索章节" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">
+            ◐
+          </button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a data-search-item href="final-review.html">期末复习</a></li>
+            <li><a class="active" data-search-item href="exam-analysis.html">真题题型统计</a></li>
+            <li><a data-search-item href="chap6.html">Chapter 6 静磁场</a></li>
+            <li><a data-search-item href="chap7.html">Chapter 7 时变场与麦克斯韦方程</a></li>
+            <li><a data-search-item href="chap8.html">Chapter 8 平面电磁波</a></li>
+            <li><a data-search-item href="examples.html">例题全集</a></li>
+            <li><a data-search-item href="formulas.html">公式总结</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb"><a href="./">首页</a> / 真题题型统计</div>
+          <h1>往年题与模拟题分析</h1>
+          <p class="meta">统计 exam paper 文件夹下 4 份往年题与 1 份期末模拟题。</p>
+        </header>
+
+        <article>
+          <blockquote>
+            <p>
+              这页参考 Quartz 风格课程站中“考题知识点统计”的排布：先说明统计口径，再给高频总览、知识点明细、按试卷反查和复习优先级。结论用于指导复习，不等同于官方命题概率。
+            </p>
+          </blockquote>
+
+          <h2 id="scope">统计口径</h2>
+          <ul>
+            <li>统计范围：`Final Mock Test 2026.doc`、2022、2023、2024、2025 四份期末题。</li>
+            <li>统计单位：按 Q1-Q4 的小问和子任务归类；同一综合题可能同时计入多个知识点。</li>
+            <li>公式对象：PDF 中文本提取较完整；2026 模拟题中的部分公式为嵌入对象，抽取后显示为占位符，因此只统计题型和文字信息。</li>
+            <li>优先级：`A` 表示必须熟练掌握，`B` 表示高频重要，`C` 表示低频但容易送分或丢分。</li>
+          </ul>
+
+          <h2 id="overview">高频总览</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>优先级</th>
+                <th>知识点</th>
+                <th>出现情况</th>
+                <th>主要考法</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>A</td>
+                <td>正入射反射、透射、驻波、理想导体边界</td>
+                <td>5/5</td>
+                <td>求 \(\Gamma,\tau,S\)，写总场，算反射功率、表面电流、节点/腹点</td>
+              </tr>
+              <tr>
+                <td>A</td>
+                <td>均匀平面波参数提取</td>
+                <td>5/5</td>
+                <td>由相位项求 \(\hat k,k,\lambda,f,\omega\)，由 \(E\) 求 \(H\)，求 \(\vec S_{av}\)</td>
+              </tr>
+              <tr>
+                <td>A</td>
+                <td>极化判断</td>
+                <td>5/5</td>
+                <td>说明线极化、圆极化、椭圆极化，并由两个正交分量相位差判断类型</td>
+              </tr>
+              <tr>
+                <td>A</td>
+                <td>静磁场边界、磁化与磁化电流</td>
+                <td>4/5</td>
+                <td>由 \(H\) 边界求 \(J_s\)，由 \(M\) 求 \(J_{SM}\)，处理磁介质界面线电流</td>
+              </tr>
+              <tr>
+                <td>A</td>
+                <td>自感、互感、磁能</td>
+                <td>4/5</td>
+                <td>同轴线自感、直导线-矩形回路互感、磁能密度积分</td>
+              </tr>
+              <tr>
+                <td>B</td>
+                <td>麦克斯韦方程、位移电流、时谐场</td>
+                <td>4/5</td>
+                <td>写积分/微分形式，解释位移电流和时谐复矢量的意义</td>
+              </tr>
+              <tr>
+                <td>B</td>
+                <td>标量势、矢量势、Coulomb/Lorentz 规范</td>
+                <td>3/5</td>
+                <td>说明适用场景，写 \(\vec B=\nabla\times\vec A\)、\(\vec E=-\nabla\varphi-\partial\vec A/\partial t\)</td>
+              </tr>
+              <tr>
+                <td>B</td>
+                <td>静电场、稳恒电流和边界条件</td>
+                <td>4/5</td>
+                <td>静电场定义、导体内 \(E=0\)、电势方程、电容、稳恒电流边界</td>
+              </tr>
+              <tr>
+                <td>C</td>
+                <td>波导/边值问题表述</td>
+                <td>1/5</td>
+                <td>描述电势满足的方程和边界条件；分离变量法本次复习不作为重点</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="paper-map">按试卷反查</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>试卷</th>
+                <th>Q1</th>
+                <th>Q2</th>
+                <th>Q3</th>
+                <th>Q4</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026 Mock</td>
+                <td>时变场势函数、规范、电场边界、极化</td>
+                <td>同轴线 \(H\)、单位长度磁能、自感</td>
+                <td>由磁场复矢量求波参数、电场、平均坡印廷矢量</td>
+                <td>空气到 \(\varepsilon_r=4\) 介质正入射，总场与驻波比改善</td>
+              </tr>
+              <tr>
+                <td>2025</td>
+                <td>介质极化、Coulomb/Lorentz 规范、波导电势边界、分层同轴电容</td>
+                <td>磁场边界 \(J_s\)、磁化面电流、同轴线内/外自感变化、直导线-矩形回路互感</td>
+                <td>无耗介质中平面波极化、波数与角频率</td>
+                <td>自由空间平面波参数、入射角、无反射条件、介质边界反射透射</td>
+              </tr>
+              <tr>
+                <td>2024</td>
+                <td>麦克斯韦方程、稳恒电流边界、位移电流、极化</td>
+                <td>无耗/良导体中 \(E,H\) 相位差、行波/驻波、磁化柱体、互感</td>
+                <td>空气中平面波传播方向、频率、极化、磁场、平均坡印廷矢量</td>
+                <td>空气到无耗介质正入射，写入射/反射/透射波和反射能量比例</td>
+              </tr>
+              <tr>
+                <td>2023</td>
+                <td>静电场、导体内场为零、电势方程、静电边界、电容、磁场边界</td>
+                <td>时谐场、Poynting 定理、极化、直导线-矩形回路互感</td>
+                <td>介质中平面波方向、波长频率、磁场、理想导体边界总场</td>
+                <td>自由空间平面波参数、平均坡印廷矢量、SWR 反求介质参数</td>
+              </tr>
+              <tr>
+                <td>2022</td>
+                <td>电磁场理论 vs 电路理论、标量势、磁场边界 \(J_s\)、极化</td>
+                <td>两磁介质界面上线电流，求 \(B,H,M,J_{SM}\) 和磁化线电流</td>
+                <td>位移电流、坡印廷矢量、圆极化 TEM、由相位项求 \(A,\lambda\)、极化</td>
+                <td>空气到理想导体正入射，由 \(H_i\) 求 \(E_i\)、总场、节点/腹点、表面电流</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="patterns">题型规律</h2>
+          <h3 id="q1-pattern">Q1：广覆盖概念 + 小计算</h3>
+          <p>Q1 每年都不是单一章节题，而是把前半本书概念、边界条件和第 7-8 章基础概念混在一起。常见组合是：一个定义题、一个边界条件题、一个简单计算题、一个极化或势函数题。</p>
+          <table>
+            <thead>
+              <tr>
+                <th>常见问法</th>
+                <th>答题抓手</th>
+                <th>最怕丢分</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>解释某个物理量或理论差异</td>
+                <td>先写定义，再写物理意义，最后写一条方程</td>
+                <td>只背中文名，不写对应数学表达</td>
+              </tr>
+              <tr>
+                <td>边界条件</td>
+                <td>先确定法向 \(\vec e_n\)，再分切向/法向</td>
+                <td>把 \(E_t,D_n,H_t,B_n\) 的条件混在一起</td>
+              </tr>
+              <tr>
+                <td>极化判断</td>
+                <td>统一写成余弦相位，比较幅值和 \(\Delta\phi\)</td>
+                <td>没有说明传播方向就判断旋向</td>
+              </tr>
+              <tr>
+                <td>电容或位移电流小计算</td>
+                <td>一两步代公式，注意单位</td>
+                <td>把 \(\omega\) 和 \(f\) 混用</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="q2-pattern">Q2：静磁场综合题</h3>
+          <p>往年 Q2 经常出现磁介质界面、磁化电流和互感；2026 模拟题则是同轴线自感和磁能。这和你给出的期末范围高度一致。</p>
+          <ol>
+            <li>先用安培环路定律求 \(\vec H\)，不要一开始就求 \(\vec B\)。</li>
+            <li>线性介质中 \(\vec B=\mu\vec H\)，\(\vec M=\vec B/\mu_0-\vec H=(\mu_r-1)\vec H\)。</li>
+            <li>磁化面电流用 \(\vec J_{SM}=\vec M\times\vec e_n\)，方向由外法向决定。</li>
+            <li>自感先求磁通或磁能：\(\Phi=\int\vec B\cdot d\vec S\)，\(L=\Psi/I\)，\(W_m=\frac12LI^2\)。</li>
+            <li>互感题通常是长直导线产生 \(B=\mu I/(2\pi\rho)\)，再对矩形回路面积积分。</li>
+          </ol>
+
+          <h3 id="q3-pattern">Q3：平面波传播题</h3>
+          <p>Q3 的核心是从复矢量中读传播方向和相位项。往年多考无耗介质和空气传播，但当前考试范围明确提到有耗媒质，因此有耗传播必须单独准备。</p>
+          <table>
+            <thead>
+              <tr>
+                <th>给定条件</th>
+                <th>常问结果</th>
+                <th>模板</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\vec E\) 或 \(\vec H\) 的复矢量</td>
+                <td>\(\hat k,k,\lambda,f,\omega\)</td>
+                <td>指数项 \(e^{-j\vec k\cdot\vec r}\) 直接读 \(\vec k\)，再用 \(k=|\vec k|\)</td>
+              </tr>
+              <tr>
+                <td>介质 \(\varepsilon_r,\mu_r\)</td>
+                <td>\(\eta,v,\beta,\lambda\)</td>
+                <td>\(\eta=\eta_0\sqrt{\mu_r/\varepsilon_r}\)，\(v=c/\sqrt{\mu_r\varepsilon_r}\)</td>
+              </tr>
+              <tr>
+                <td>已知 \(\vec E\)</td>
+                <td>求 \(\vec H\)</td>
+                <td>\(\vec H=\hat k\times\vec E/\eta\)</td>
+              </tr>
+              <tr>
+                <td>有耗媒质参数</td>
+                <td>\(\alpha,\beta,\eta_c,\delta\)</td>
+                <td>先算 \(\sigma/(\omega\varepsilon)\)，再判断是否良导体</td>
+              </tr>
+              <tr>
+                <td>平均功率</td>
+                <td>\(\vec S_{av}\)</td>
+                <td>\(\vec S_{av}=\frac12\operatorname{Re}(\vec E\times\vec H^*)\)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="q4-pattern">Q4：反射和透射边界题</h3>
+          <p>Q4 几乎稳定考边界。2022 偏理想导体，2023-2025 和模拟题偏无耗介质正入射、驻波比、无反射条件。</p>
+          <p class="formula">\[
+          \Gamma=\frac{\eta_2-\eta_1}{\eta_2+\eta_1},\qquad
+          \tau=\frac{2\eta_2}{\eta_1+\eta_2},\qquad
+          S=\frac{1+|\Gamma|}{1-|\Gamma|}
+          \]</p>
+          <p>从区域 1 入射到区域 2，且 \(\vec E\parallel\vec e_x\)、沿 \(+z\) 入射时，最稳的书写模板为：</p>
+          <p class="formula">\[
+          \vec E_1=\vec e_xE_i(e^{-j\beta_1z}+\Gamma e^{j\beta_1z}),\quad
+          \vec H_1=\vec e_y\frac{E_i}{\eta_1}(e^{-j\beta_1z}-\Gamma e^{j\beta_1z})
+          \]</p>
+          <p class="formula">\[
+          \vec E_2=\vec e_x\tau E_i e^{-j\beta_2z},\quad
+          \vec H_2=\vec e_y\frac{\tau E_i}{\eta_2}e^{-j\beta_2z}
+          \]</p>
+          <div class="callout">
+            <strong>命题习惯：</strong>Q4 常把“先求自由空间传播参数”与“再放边界求反射透射”连在一起。所以不要把平面波基础和边界题割裂复习。
+          </div>
+
+          <h2 id="priority">复习优先级建议</h2>
+          <h3 id="must-calc">1. 必须会算</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>计算类知识点</th>
+                <th>最低要求</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>磁介质界面与磁化电流</td>
+                <td>会从 \(\vec H\) 得到 \(J_s\)、\(M\)、\(J_{SM}\)，方向用叉乘确定</td>
+              </tr>
+              <tr>
+                <td>同轴线/长直导线磁场与电感</td>
+                <td>会用安培环路求 \(H_\phi\)，会积分求磁能和 \(L'\)</td>
+              </tr>
+              <tr>
+                <td>直导线-矩形回路互感</td>
+                <td>会写 \(B=\mu I/(2\pi\rho)\)，对回路面积积分求 \(\Phi\)，再 \(M=\Phi/I\)</td>
+              </tr>
+              <tr>
+                <td>平面波参数</td>
+                <td>会从相位项读 \(\vec k\)，求 \(\lambda,f,\omega,\eta\)，再求另一个场</td>
+              </tr>
+              <tr>
+                <td>平均坡印廷矢量</td>
+                <td>会用复矢量公式 \(\frac12\operatorname{Re}(\vec E\times\vec H^*)\)</td>
+              </tr>
+              <tr>
+                <td>反射透射</td>
+                <td>会写 \(\Gamma,\tau,S\) 和区域 1/2 的总场表达式</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="must-explain">2. 必须会辨析</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>概念类知识点</th>
+                <th>易错点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>极化</td>
+                <td>先比较幅值与相位差，再结合传播方向判断旋向</td>
+              </tr>
+              <tr>
+                <td>Coulomb gauge 与 Lorentz gauge</td>
+                <td>静磁场常用 Coulomb gauge；时变场常用 Lorentz gauge 使势函数方程解耦</td>
+              </tr>
+              <tr>
+                <td>位移电流</td>
+                <td>它不是自由电荷真实流动，但表示时变电场对磁场的贡献</td>
+              </tr>
+              <tr>
+                <td>行波、驻波、行驻波</td>
+                <td>行波传能，驻波平均不传能；部分反射形成行驻波</td>
+              </tr>
+              <tr>
+                <td>导体电流与磁化电流</td>
+                <td>导体电流来自自由电荷运动；磁化电流是介质磁化的等效描述</td>
+              </tr>
+              <tr>
+                <td>无耗介质与良导体</td>
+                <td>无耗介质中 \(E,H\) 同相；良导体中 \(H\) 与 \(E\) 有约 \(45^\circ\) 相位差</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="last-day">3. 考前最后一天</h3>
+          <ol>
+            <li>先背 Q4：\(\Gamma,\tau,S\)、区域 1/2 总场、PEC 边界 \(\Gamma=-1\)。</li>
+            <li>再练 Q2：同轴线磁场和 \(L'\)，磁介质界面 \(M,J_{SM}\)，直导线-回路互感。</li>
+            <li>最后刷 Q3：由复矢量读 \(\vec k\)，求 \(H\)、\(\vec S_{av}\)、极化。</li>
+            <li>Q1 用碎片时间背概念：Maxwell 方程、势函数和规范、边界条件、极化、位移电流。</li>
+          </ol>
+        </article>
+
+        <footer class="footer">
+          <p><a href="final-review.html">期末复习</a> / <a href="formulas.html">公式总结</a> / <a href="examples.html">例题全集</a></p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#scope">统计口径</a></li>
+          <li><a href="#overview">高频总览</a></li>
+          <li><a href="#paper-map">按试卷反查</a></li>
+          <li><a href="#patterns">题型规律</a></li>
+          <li><a href="#q1-pattern">Q1</a></li>
+          <li><a href="#q2-pattern">Q2</a></li>
+          <li><a href="#q3-pattern">Q3</a></li>
+          <li><a href="#q4-pattern">Q4</a></li>
+          <li><a href="#priority">复习优先级</a></li>
+          <li><a href="#must-calc">必须会算</a></li>
+          <li><a href="#must-explain">必须会辨析</a></li>
+          <li><a href="#last-day">最后一天</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>
