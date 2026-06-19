@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chapter 6 静磁场</title>
+    <meta name="description" content="第 6 章知识点整理：静磁场基本方程、磁矢位、毕奥-萨伐尔定律、磁化、边界条件、电感和磁能。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">电磁场与波</span>
+          <span class="brand-subtitle">知识点与例题笔记</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索章节" aria-label="搜索章节" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">
+            ◐
+          </button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a class="active" data-search-item href="chap6.html">Chapter 6 静磁场</a></li>
+            <li><a data-search-item href="chap7.html">Chapter 7 时变场与麦克斯韦方程</a></li>
+            <li><a data-search-item href="chap8.html">Chapter 8 平面电磁波</a></li>
+            <li><a data-search-item href="examples.html">例题全集</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb"><a href="./">首页</a> / Chapter 6</div>
+          <h1>静磁场</h1>
+          <p class="meta">围绕知识点整理，不展开例题全集。</p>
+        </header>
+
+        <article>
+          <blockquote>
+            <p>
+              第 6 章研究由稳恒电流产生的磁场。它的核心不是“电荷产生电场”，而是“电流产生有旋磁场”；磁感线闭合，无起点也无终点。
+            </p>
+          </blockquote>
+
+          <h2 id="知识地图">知识地图</h2>
+          <ol>
+            <li>基本方程：静磁场的旋度源是稳恒电流，磁通密度无散。</li>
+            <li>求场工具：安培环路定律适合高对称问题，毕奥-萨伐尔定律适合已知电流分布直接积分。</li>
+            <li>磁介质：磁化用磁化强度 \( \vec M \) 和等效磁化电流描述。</li>
+            <li>边界条件：\(B_n\) 连续，\(H_t\) 的跃变由面电流决定。</li>
+            <li>工程量：磁通、磁链、电感和磁能。</li>
+          </ol>
+
+          <h2 id="基本方程">6.1 静磁场基本方程</h2>
+          <p>真空中静磁场的两个基本假设为：</p>
+          <p class="formula">\[
+          \nabla\times\vec B=\mu_0\vec J,\qquad
+          \nabla\cdot\vec B=0
+          \]</p>
+          <p>其中</p>
+          <p class="formula">\[
+          \mu_0=4\pi\times10^{-7}\text{ H/m}
+          \]</p>
+          <p>积分形式为：</p>
+          <p class="formula">\[
+          \oint_C\vec B\cdot d\vec l=\mu_0 I
+          \]</p>
+          <p class="formula">\[
+          \oint_S\vec B\cdot d\vec S=0
+          \]</p>
+          <div class="callout">
+            <strong>物理图像：</strong> \( \nabla\times\vec B=\mu_0\vec J \) 说明电流是磁场的涡旋源；\( \nabla\cdot\vec B=0 \) 说明磁感线闭合，不存在孤立磁荷。
+          </div>
+
+          <h2 id="磁矢位">6.2 磁矢位</h2>
+          <p>由于</p>
+          <p class="formula">\[
+          \nabla\cdot\vec B=0
+          \]</p>
+          <p>\(\vec B\) 可以写成某个矢量场的旋度：</p>
+          <p class="formula">\[
+          \vec B=\nabla\times\vec A
+          \]</p>
+          <p>\(\vec A\) 称为磁矢位。为了唯一确定 \(\vec A\)，常采用库仑规范：</p>
+          <p class="formula">\[
+          \nabla\cdot\vec A=0
+          \]</p>
+          <p>在均匀介质中可得到磁矢位方程：</p>
+          <p class="formula">\[
+          \nabla^2\vec A=-\mu\vec J
+          \]</p>
+          <p>无源区为拉普拉斯方程：</p>
+          <p class="formula">\[
+          \nabla^2\vec A=0
+          \]</p>
+          <div class="callout">
+            <strong>什么时候用磁矢位：</strong> 当直接求 \(\vec B\) 比较困难，或问题和磁通、电感有关时，先求 \(\vec A\) 往往更方便。
+          </div>
+
+          <h2 id="求场方法">6.3 毕奥-萨伐尔定律与安培环路定律</h2>
+          <p>已知电流分布时，可用毕奥-萨伐尔定律直接积分。线电流形式为：</p>
+          <p class="formula">\[
+          d\vec B=\frac{\mu_0}{4\pi}\frac{I\,d\vec l\times\vec R}{R^3}
+          \]</p>
+          <p>任意线电流回路：</p>
+          <p class="formula">\[
+          \vec B=\frac{\mu_0 I}{4\pi}\oint_C\frac{d\vec l\times\vec R}{R^3}
+          \]</p>
+          <p>典型结果要熟：</p>
+          <table>
+            <thead>
+              <tr>
+                <th>电流分布</th>
+                <th>磁场结果</th>
+                <th>适用点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无限长直导线</td>
+                <td>\(B_\phi=\mu I/(2\pi\rho)\)</td>
+                <td>导线外部</td>
+              </tr>
+              <tr>
+                <td>半径 \(a\) 的圆环轴线上</td>
+                <td>\(B_z=\mu I a^2/[2(a^2+z^2)^{3/2}]\)</td>
+                <td>轴线上任意点</td>
+              </tr>
+              <tr>
+                <td>无限大电流片</td>
+                <td>\(H=J_s/2\)</td>
+                <td>两侧方向相反</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>对称性强的问题优先用安培环路定律：</p>
+          <p class="formula">\[
+          \oint_C\vec H\cdot d\vec l=I_{\text{enc}}
+          \]</p>
+          <p>常见步骤是：选坐标系、判断 \(\vec H\) 方向、选安培回路、求包围电流、代入积分。</p>
+
+          <h2 id="磁介质">6.4 磁化与等效电流密度</h2>
+          <p>介质在外磁场作用下，分子磁矩取向趋于一致，这叫磁化。磁化强度定义为单位体积内磁偶极矩矢量和：</p>
+          <p class="formula">\[
+          \vec M=\frac{\sum \vec m}{\Delta V}
+          \]</p>
+          <p>线性各向同性介质中：</p>
+          <p class="formula">\[
+          \vec M=\chi_m\vec H
+          \]</p>
+          <p>磁化可等效为磁化电流：</p>
+          <p class="formula">\[
+          \vec J_M=\nabla\times\vec M
+          \]</p>
+          <p class="formula">\[
+          \vec J_{SM}=\vec M\times\vec e_n
+          \]</p>
+          <p>其中 \(\vec J_M\) 是体磁化电流密度，\(\vec J_{SM}\) 是表面磁化电流密度。</p>
+
+          <h2 id="磁场强度">6.5 磁场强度与磁导率</h2>
+          <p>为了把磁化效应并入介质参数，引入磁场强度：</p>
+          <p class="formula">\[
+          \vec H=\frac{\vec B}{\mu_0}-\vec M
+          \]</p>
+          <p>宏观静磁场方程写为：</p>
+          <p class="formula">\[
+          \nabla\times\vec H=\vec J,\qquad
+          \nabla\cdot\vec B=0
+          \]</p>
+          <p>线性各向同性介质中：</p>
+          <p class="formula">\[
+          \vec B=\mu\vec H,\qquad
+          \mu=\mu_0\mu_r
+          \]</p>
+          <p>磁介质按磁化率可分为抗磁质、顺磁质和铁磁质。铁磁材料的 \(\mu_r\) 可远大于 1，但通常非线性，不能总用常数 \(\mu\) 简化。</p>
+
+          <h2 id="边界条件">6.6 静磁场边界条件</h2>
+          <p>由 \( \nabla\cdot\vec B=0 \) 得到磁通密度法向分量连续：</p>
+          <p class="formula">\[
+          \vec e_n\cdot(\vec B_1-\vec B_2)=0
+          \]</p>
+          <p>也就是</p>
+          <p class="formula">\[
+          B_{1n}=B_{2n}
+          \]</p>
+          <p>由安培环路定律得到磁场强度切向分量边界条件：</p>
+          <p class="formula">\[
+          \vec e_n\times(\vec H_1-\vec H_2)=\vec J_s
+          \]</p>
+          <p>若界面没有自由面电流 \( \vec J_s=0 \)，则</p>
+          <p class="formula">\[
+          H_{1t}=H_{2t}
+          \]</p>
+          <div class="callout">
+            <strong>记忆法：</strong> \(B\) 管磁通，所以法向连续；\(H\) 管自由电流，所以切向会被面电流“跳变”。
+          </div>
+
+          <h2 id="电感">6.7 磁通、磁链与电感</h2>
+          <p>磁通：</p>
+          <p class="formula">\[
+          \Phi=\int_S\vec B\cdot d\vec S
+          \]</p>
+          <p>磁链 \(\Psi\) 是所有匝链磁通的总和。单回路自感定义为：</p>
+          <p class="formula">\[
+          L=\frac{\Psi}{I}
+          \]</p>
+          <p>粗导体回路的自感可分为内自感和外自感：</p>
+          <p class="formula">\[
+          L=L_i+L_o
+          \]</p>
+          <p>自感只与回路几何形状、尺寸和周围磁介质有关，与电流大小无关。</p>
+          <p>两个回路之间的互感：</p>
+          <p class="formula">\[
+          M_{21}=\frac{\Psi_{21}}{I_1},\qquad
+          M_{12}=\frac{\Psi_{12}}{I_2}
+          \]</p>
+          <p>线性介质中通常有互易关系：</p>
+          <p class="formula">\[
+          M_{12}=M_{21}=M
+          \]</p>
+          <p>纽曼公式：</p>
+          <p class="formula">\[
+          M=\frac{\mu_0}{4\pi}\oint_{C_1}\oint_{C_2}
+          \frac{d\vec l_1\cdot d\vec l_2}{R}
+          \]</p>
+
+          <h2 id="磁能">6.8 磁能</h2>
+          <p>有磁场就有磁场能量。磁能密度为：</p>
+          <p class="formula">\[
+          w_m=\frac12\vec B\cdot\vec H
+          \]</p>
+          <p>在线性各向同性介质中：</p>
+          <p class="formula">\[
+          w_m=\frac12\mu H^2=\frac{B^2}{2\mu}
+          \]</p>
+          <p>区域 \(V\) 内磁场总能量：</p>
+          <p class="formula">\[
+          W_m=\frac12\int_V\vec B\cdot\vec H\,dV
+          \]</p>
+          <p>也可由电感计算。单个载流回路：</p>
+          <p class="formula">\[
+          W_m=\frac12 I\Psi=\frac12LI^2
+          \]</p>
+          <p>多个载流回路：</p>
+          <p class="formula">\[
+          W_m=\frac12\sum_{j=1}^{N}\sum_{k=1}^{N}I_jI_kM_{jk}
+          \]</p>
+          <p>两个回路时：</p>
+          <p class="formula">\[
+          W_m=\frac12L_1I_1^2+\frac12L_2I_2^2+MI_1I_2
+          \]</p>
+
+          <h2 id="解题路线">解题路线</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>题型</th>
+                <th>优先方法</th>
+                <th>判断信号</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无限长导线、同轴线、电流片</td>
+                <td>安培环路定律</td>
+                <td>圆柱、平面等高对称结构</td>
+              </tr>
+              <tr>
+                <td>有限线段、圆环轴线、任意电流元</td>
+                <td>毕奥-萨伐尔定律</td>
+                <td>给定明确电流路径，需要积分</td>
+              </tr>
+              <tr>
+                <td>含磁介质</td>
+                <td>\(\vec H\) 方程 + 本构关系</td>
+                <td>出现 \(\mu,\mu_r,\chi_m,\vec M\)</td>
+              </tr>
+              <tr>
+                <td>界面问题</td>
+                <td>边界条件</td>
+                <td>出现两种介质、面电流、法向/切向</td>
+              </tr>
+              <tr>
+                <td>电感与磁能</td>
+                <td>磁通/磁链或能量法</td>
+                <td>要求 \(L,M,W_m\)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="速记">本章速记</h2>
+          <ul>
+            <li>静磁场：有旋无散，稳恒电流是旋度源。</li>
+            <li>\(\vec B\) 的磁感线闭合，所以可以引入 \(\vec B=\nabla\times\vec A\)。</li>
+            <li>高对称用安培环路，低对称或给出电流路径用毕奥-萨伐尔。</li>
+            <li>磁介质问题尽量用 \(\vec H\)，再通过 \(\vec B=\mu\vec H\) 回到磁通密度。</li>
+            <li>边界条件记住 \(B_n\) 连续，\(H_t\) 受面电流影响。</li>
+            <li>电感是磁链与电流之比，磁能可由场积分或 \(W_m=\frac12LI^2\) 计算。</li>
+          </ul>
+        </article>
+
+        <footer class="footer">
+          <p><a href="chap7.html">继续 Chapter 7：时变场与麦克斯韦方程</a> / <a href="examples.html">查看第 7、8 章例题全集</a></p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#知识地图">知识地图</a></li>
+          <li><a href="#基本方程">基本方程</a></li>
+          <li><a href="#磁矢位">磁矢位</a></li>
+          <li><a href="#求场方法">求场方法</a></li>
+          <li><a href="#磁介质">磁介质</a></li>
+          <li><a href="#磁场强度">磁场强度</a></li>
+          <li><a href="#边界条件">边界条件</a></li>
+          <li><a href="#电感">电感</a></li>
+          <li><a href="#磁能">磁能</a></li>
+          <li><a href="#解题路线">解题路线</a></li>
+          <li><a href="#速记">本章速记</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>

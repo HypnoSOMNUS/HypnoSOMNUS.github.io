@@ -6,7 +6,7 @@
     <title>电磁场与波学习笔记</title>
     <meta
       name="description"
-      content="电磁场与波第 7、8 章学习资料整理：时变场、麦克斯韦方程与平面电磁波，围绕例题讲解。"
+      content="电磁场与波第 6、7、8 章学习资料整理：静磁场、时变场、麦克斯韦方程与平面电磁波。"
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -26,7 +26,7 @@
       <aside class="sidebar">
         <a class="brand" href="./">
           <span class="brand-title">电磁场与波</span>
-          <span class="brand-subtitle">例题驱动学习笔记</span>
+          <span class="brand-subtitle">知识点与例题笔记</span>
         </a>
         <div class="controls">
           <input class="search" data-search type="search" placeholder="搜索章节" aria-label="搜索章节" />
@@ -38,6 +38,7 @@
           <p class="nav-title">探索</p>
           <ul class="nav-list">
             <li><a class="active" data-search-item href="./">首页</a></li>
+            <li><a data-search-item href="chap6.html">Chapter 6 静磁场</a></li>
             <li><a data-search-item href="chap7.html">Chapter 7 时变场与麦克斯韦方程</a></li>
             <li><a data-search-item href="chap8.html">Chapter 8 平面电磁波</a></li>
             <li><a data-search-item href="examples.html">例题全集</a></li>
@@ -60,19 +61,23 @@
         <header class="page-header">
           <div class="breadcrumb">首页</div>
           <h1>电磁场与波学习笔记</h1>
-          <p class="meta">整理自第 7、8 章课件，重点按例题展开。</p>
+          <p class="meta">整理自第 6、7、8 章课件：第 6 章按知识点梳理，第 7、8 章配套例题全集。</p>
         </header>
 
         <article>
           <blockquote>
             <p>
-              这份笔记参考 Quartz 风格课程站的阅读结构：左侧目录，中间正文，右侧章节内目录。内容上围绕
-              <strong>chap7.pptx</strong> 与 <strong>chap8.pptx</strong> 的核心例题，把公式、物理意义和解题步骤串起来。
+              这份笔记参考 Quartz 风格课程站的阅读结构：左侧目录，中间正文，右侧章节内目录。内容覆盖
+              <strong>chap6.pptx</strong>、<strong>chap7.pptx</strong> 与 <strong>chap8.pptx</strong>。
             </p>
           </blockquote>
 
           <h2 id="目录">目录</h2>
           <div class="cards">
+            <a class="card" href="chap6.html">
+              <h2>Chapter 6</h2>
+              <p>按知识点整理静磁场：基本方程、磁矢位、毕奥-萨伐尔定律、磁化、边界条件、电感与磁能。</p>
+            </a>
             <a class="card" href="chap7.html">
               <h2>Chapter 7</h2>
               <p>从法拉第电磁感应出发，理解位移电流、麦克斯韦方程、边界条件、波动方程与时谐复矢量。</p>
@@ -89,10 +94,10 @@
 
           <h2 id="学习路线">学习路线</h2>
           <ol>
-            <li>先用第 7 章例题分清感应电动势来源：磁场变、回路动，或二者同时发生。</li>
-            <li>再把麦克斯韦方程记成两条互激发关系：变磁场生电场，变电场生磁场。</li>
+            <li>先用第 6 章建立静磁场框架：稳恒电流是磁场的旋度源，磁感线闭合无起止点。</li>
+            <li>再用第 7 章理解时变场：磁场变会生电场，电场变也会生磁场。</li>
             <li>进入第 8 章后，用传播方向、相位项和波阻抗建立 \( \vec E \)、\( \vec H \)、\( \vec k \) 的关系。</li>
-            <li>最后处理工程型题目：衰减、皮肤深度、平均功率、驻波比、反射系数与透射系数。</li>
+            <li>最后通过例题全集处理工程型题目：衰减、皮肤深度、平均功率、驻波比、反射系数与透射系数。</li>
           </ol>
 
           <h2 id="速查">速查</h2>
@@ -105,6 +110,11 @@
               </tr>
             </thead>
             <tbody>
+              <tr>
+                <td>静磁场基本方程</td>
+                <td>\(\nabla\times\vec H=\vec J,\ \nabla\cdot\vec B=0\)</td>
+                <td>安培环路定律与磁通连续性</td>
+              </tr>
               <tr>
                 <td>感应电动势</td>
                 <td>\(\varepsilon=-d\Phi/dt\)，或 \(\oint(\vec v\times\vec B)\cdot d\vec l\)</td>
