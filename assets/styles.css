@@ -339,7 +339,9 @@ code {
 }
 
 table {
+  display: block;
   width: 100%;
+  overflow-x: auto;
   border-collapse: collapse;
   margin: 1rem 0;
   font-size: 0.94rem;

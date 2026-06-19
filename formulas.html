@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>公式总结 | 电磁场与波</title>
+    <meta name="description" content="第 6、7、8 章公式总结：静磁场、时变场、麦克斯韦方程、平面电磁波、有耗介质、极化、能流与正入射边界。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">电磁场与波</span>
+          <span class="brand-subtitle">知识点与例题笔记</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索章节" aria-label="搜索章节" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">
+            ◐
+          </button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a data-search-item href="chap6.html">Chapter 6 静磁场</a></li>
+            <li><a data-search-item href="chap7.html">Chapter 7 时变场与麦克斯韦方程</a></li>
+            <li><a data-search-item href="chap8.html">Chapter 8 平面电磁波</a></li>
+            <li><a data-search-item href="examples.html">例题全集</a></li>
+            <li><a class="active" data-search-item href="formulas.html">公式总结</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb"><a href="./">首页</a> / 公式总结</div>
+          <h1>公式总结</h1>
+          <p class="meta">第 6、7、8 章公式速查：先看适用条件，再代入计算。</p>
+        </header>
+
+        <article>
+          <blockquote>
+            <p>
+              这页不是推导讲义，而是做题时翻得最快的公式表。遇到题目先判断“静磁场、时变场、传播、边界、能量”是哪一类，再选对应公式。
+            </p>
+          </blockquote>
+
+          <h2 id="常数">常数与符号</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>量</th>
+                <th>公式或数值</th>
+                <th>说明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>真空磁导率</td>
+                <td>\(\mu_0=4\pi\times10^{-7}\text{ H/m}\)</td>
+                <td>常用于空气近似</td>
+              </tr>
+              <tr>
+                <td>真空介电常数</td>
+                <td>\(\varepsilon_0\approx8.854\times10^{-12}\text{ F/m}\)</td>
+                <td>\(\varepsilon_0=1/(\mu_0c^2)\)</td>
+              </tr>
+              <tr>
+                <td>光速</td>
+                <td>\(c=1/\sqrt{\mu_0\varepsilon_0}\approx3\times10^8\text{ m/s}\)</td>
+                <td>真空或空气中电磁波速度</td>
+              </tr>
+              <tr>
+                <td>真空波阻抗</td>
+                <td>\(\eta_0=\sqrt{\mu_0/\varepsilon_0}=120\pi\Omega\approx377\Omega\)</td>
+                <td>平面波中 \(E/H\) 的比值</td>
+              </tr>
+              <tr>
+                <td>介质参数</td>
+                <td>\(\mu=\mu_0\mu_r,\quad \varepsilon=\varepsilon_0\varepsilon_r\)</td>
+                <td>非磁介质常取 \(\mu_r=1\)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="chap6">Chapter 6 静磁场</h2>
+          <h3 id="chap6-basic">基本方程与磁矢位</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>含义</th>
+                <th>使用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\nabla\times\vec B=\mu_0\vec J\)</td>
+                <td>真空中稳恒电流产生有旋磁场</td>
+                <td>静磁场基本假设</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\times\vec H=\vec J\)</td>
+                <td>宏观静磁场方程</td>
+                <td>含磁介质时优先用 \(H\)</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec B=0\)</td>
+                <td>磁通密度无散，磁感线闭合</td>
+                <td>判断 \(B_n\) 连续、引入磁矢位</td>
+              </tr>
+              <tr>
+                <td>\(\oint_C\vec H\cdot d\vec l=I_{\text{enc}}\)</td>
+                <td>安培环路定律</td>
+                <td>无限长导线、同轴线、电流片等高对称题</td>
+              </tr>
+              <tr>
+                <td>\(\oint_S\vec B\cdot d\vec S=0\)</td>
+                <td>穿过闭合面的净磁通为零</td>
+                <td>边界条件、磁通连续性</td>
+              </tr>
+              <tr>
+                <td>\(\vec B=\nabla\times\vec A\)</td>
+                <td>磁矢位定义</td>
+                <td>求磁通、电感或矢势法题目</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec A=0\)</td>
+                <td>库仑规范</td>
+                <td>使磁矢位方程简化</td>
+              </tr>
+              <tr>
+                <td>\(\nabla^2\vec A=-\mu\vec J\)</td>
+                <td>均匀介质中的磁矢位泊松方程</td>
+                <td>已知电流分布求 \(\vec A\)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="chap6-field">求磁场公式</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>适用条件</th>
+                <th>提醒</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(d\vec B=\dfrac{\mu I}{4\pi}\dfrac{d\vec l\times\vec R}{R^3}\)</td>
+                <td>线电流元</td>
+                <td>\(\vec R\) 从源点指向场点</td>
+              </tr>
+              <tr>
+                <td>\(\vec B=\dfrac{\mu I}{4\pi}\oint_C\dfrac{d\vec l\times\vec R}{R^3}\)</td>
+                <td>任意闭合线电流</td>
+                <td>低对称但路径明确时使用</td>
+              </tr>
+              <tr>
+                <td>\(B_\phi=\dfrac{\mu I}{2\pi\rho}\)</td>
+                <td>无限长直导线外部</td>
+                <td>方向按右手螺旋定则</td>
+              </tr>
+              <tr>
+                <td>\(B_z=\dfrac{\mu Ia^2}{2(a^2+z^2)^{3/2}}\)</td>
+                <td>半径 \(a\) 圆环轴线上</td>
+                <td>\(z=0\) 时 \(B=\mu I/(2a)\)</td>
+              </tr>
+              <tr>
+                <td>\(H=J_s/2\)</td>
+                <td>无限大均匀面电流两侧</td>
+                <td>两侧方向相反</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="chap6-media">磁介质、边界、电感与磁能</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>含义</th>
+                <th>使用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\vec H=\dfrac{\vec B}{\mu_0}-\vec M\)</td>
+                <td>磁场强度定义</td>
+                <td>把磁化效应从自由电流方程中分离出来</td>
+              </tr>
+              <tr>
+                <td>\(\vec M=\chi_m\vec H\)</td>
+                <td>线性磁化关系</td>
+                <td>顺磁、抗磁线性介质</td>
+              </tr>
+              <tr>
+                <td>\(\vec B=\mu\vec H\)</td>
+                <td>线性各向同性介质本构关系</td>
+                <td>铁磁材料通常不能简单当常数 \(\mu\)</td>
+              </tr>
+              <tr>
+                <td>\(\vec J_M=\nabla\times\vec M\)</td>
+                <td>体磁化电流密度</td>
+                <td>\(\vec M\) 在体内空间变化</td>
+              </tr>
+              <tr>
+                <td>\(\vec J_{SM}=\vec M\times\vec e_n\)</td>
+                <td>表面磁化电流密度</td>
+                <td>磁化介质表面</td>
+              </tr>
+              <tr>
+                <td>\(\vec e_n\cdot(\vec B_1-\vec B_2)=0\)</td>
+                <td>\(B_n\) 连续</td>
+                <td>任意静磁场边界</td>
+              </tr>
+              <tr>
+                <td>\(\vec e_n\times(\vec H_1-\vec H_2)=\vec J_s\)</td>
+                <td>\(H_t\) 的跃变由自由面电流决定</td>
+                <td>界面有面电流时最常用</td>
+              </tr>
+              <tr>
+                <td>\(\Phi=\int_S\vec B\cdot d\vec S\)</td>
+                <td>磁通</td>
+                <td>电感、磁能、感应电动势</td>
+              </tr>
+              <tr>
+                <td>\(L=\Psi/I,\quad M_{21}=\Psi_{21}/I_1\)</td>
+                <td>自感与互感定义</td>
+                <td>先求磁链，再除以电流</td>
+              </tr>
+              <tr>
+                <td>\(w_m=\dfrac12\vec B\cdot\vec H\)</td>
+                <td>磁能密度</td>
+                <td>场分布已知时积分求能量</td>
+              </tr>
+              <tr>
+                <td>\(W_m=\dfrac12\int_V\vec B\cdot\vec H\,dV=\dfrac12LI^2\)</td>
+                <td>磁场总能量</td>
+                <td>场能法或电感法二选一</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="chap7">Chapter 7 时变场与麦克斯韦方程</h2>
+          <h3 id="chap7-induced">感应电动势</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>含义</th>
+                <th>使用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\varepsilon=-\dfrac{d\Phi}{dt}\)</td>
+                <td>法拉第电磁感应定律</td>
+                <td>回路固定且磁通易求</td>
+              </tr>
+              <tr>
+                <td>\(\varepsilon=\oint_C(\vec v\times\vec B)\cdot d\vec l\)</td>
+                <td>运动电动势</td>
+                <td>导体棒切割磁感线</td>
+              </tr>
+              <tr>
+                <td>\(\varepsilon=-\int_S\dfrac{\partial\vec B}{\partial t}\cdot d\vec S+\oint_C(\vec v\times\vec B)\cdot d\vec l\)</td>
+                <td>时变磁场与运动导体共同作用</td>
+                <td>第 7 章矩形回路综合题</td>
+              </tr>
+              <tr>
+                <td>\(\oint_C\vec E\cdot d\vec l=-\dfrac{d}{dt}\int_S\vec B\cdot d\vec S\)</td>
+                <td>法拉第定律积分形式</td>
+                <td>从回路环量理解感应电场</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\times\vec E=-\dfrac{\partial\vec B}{\partial t}\)</td>
+                <td>法拉第定律微分形式</td>
+                <td>时变磁场是电场旋度源</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="chap7-maxwell">麦克斯韦方程组与边界条件</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>名称</th>
+                <th>物理意义</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\nabla\times\vec E=-\partial\vec B/\partial t\)</td>
+                <td>法拉第定律</td>
+                <td>时变磁场产生旋涡电场</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\times\vec H=\vec J+\partial\vec D/\partial t\)</td>
+                <td>全电流定律</td>
+                <td>传导电流与位移电流产生磁场</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec D=\rho\)</td>
+                <td>电场高斯定律</td>
+                <td>自由电荷是电通量源</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec B=0\)</td>
+                <td>磁场高斯定律</td>
+                <td>不存在孤立磁荷</td>
+              </tr>
+              <tr>
+                <td>\(\vec D=\varepsilon\vec E,\quad \vec B=\mu\vec H,\quad \vec J=\sigma\vec E\)</td>
+                <td>本构关系</td>
+                <td>线性各向同性介质</td>
+              </tr>
+              <tr>
+                <td>\(\vec J_d=\partial\vec D/\partial t\)</td>
+                <td>位移电流密度</td>
+                <td>电场随时间变化也能激发磁场</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec J=-\partial\rho/\partial t\)</td>
+                <td>电流连续性方程</td>
+                <td>电荷守恒</td>
+              </tr>
+              <tr>
+                <td>\(\vec e_n\times(\vec E_1-\vec E_2)=0\)</td>
+                <td>切向电场连续</td>
+                <td>普通介质边界</td>
+              </tr>
+              <tr>
+                <td>\(\vec e_n\times(\vec H_1-\vec H_2)=\vec J_s\)</td>
+                <td>切向磁场边界</td>
+                <td>有自由面电流时 \(H_t\) 跳变</td>
+              </tr>
+              <tr>
+                <td>\(\vec e_n\cdot(\vec D_1-\vec D_2)=\rho_s\)</td>
+                <td>法向电位移边界</td>
+                <td>有自由面电荷时 \(D_n\) 跳变</td>
+              </tr>
+              <tr>
+                <td>\(\vec e_n\cdot(\vec B_1-\vec B_2)=0\)</td>
+                <td>法向磁通密度连续</td>
+                <td>任意边界都常用</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="chap7-wave">波动方程、势函数与复矢量</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>适用条件</th>
+                <th>说明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\nabla^2\vec E-\mu\varepsilon\dfrac{\partial^2\vec E}{\partial t^2}=0\)</td>
+                <td>无源无耗均匀介质</td>
+                <td>电场波动方程</td>
+              </tr>
+              <tr>
+                <td>\(\nabla^2\vec H-\mu\varepsilon\dfrac{\partial^2\vec H}{\partial t^2}=0\)</td>
+                <td>无源无耗均匀介质</td>
+                <td>磁场波动方程</td>
+              </tr>
+              <tr>
+                <td>\(\nabla^2\vec E-\mu\sigma\dfrac{\partial\vec E}{\partial t}-\mu\varepsilon\dfrac{\partial^2\vec E}{\partial t^2}=0\)</td>
+                <td>无源有耗均匀介质</td>
+                <td>多了传导损耗项</td>
+              </tr>
+              <tr>
+                <td>\(\vec B=\nabla\times\vec A,\quad \vec E=-\nabla\varphi-\partial\vec A/\partial t\)</td>
+                <td>势函数表示</td>
+                <td>有源时变场常用</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec A+\mu\varepsilon\,\partial\varphi/\partial t=0\)</td>
+                <td>洛伦兹规范</td>
+                <td>使势函数方程解耦</td>
+              </tr>
+              <tr>
+                <td>\(\vec F(\vec r,t)=\operatorname{Re}[\vec F_m(\vec r)e^{j\omega t}]\)</td>
+                <td>时谐场</td>
+                <td>复矢量到瞬时值</td>
+              </tr>
+              <tr>
+                <td>\(\dfrac{\partial}{\partial t}\rightarrow j\omega\)</td>
+                <td>时谐稳态</td>
+                <td>把微分方程化成代数形式</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\times\vec E=-j\omega\vec B,\quad \nabla\times\vec H=(\sigma+j\omega\varepsilon)\vec E\)</td>
+                <td>时谐麦克斯韦方程</td>
+                <td>第 8 章平面波推导起点</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="chap8">Chapter 8 平面电磁波</h2>
+          <h3 id="chap8-lossless">无耗介质平面波</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>含义</th>
+                <th>使用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\eta=\sqrt{\mu/\varepsilon}=\eta_0\sqrt{\mu_r/\varepsilon_r}\)</td>
+                <td>本征阻抗</td>
+                <td>用 \(E/H\) 换算场强</td>
+              </tr>
+              <tr>
+                <td>\(v=1/\sqrt{\mu\varepsilon}=c/\sqrt{\mu_r\varepsilon_r}\)</td>
+                <td>相速度</td>
+                <td>求频率、波长、传播时间</td>
+              </tr>
+              <tr>
+                <td>\(\beta=\omega\sqrt{\mu\varepsilon},\quad \lambda=2\pi/\beta=v/f\)</td>
+                <td>相位常数与波长</td>
+                <td>从相位项读参数</td>
+              </tr>
+              <tr>
+                <td>\(\vec H=\dfrac{1}{\eta}\hat k\times\vec E,\quad \vec E=-\eta\hat k\times\vec H\)</td>
+                <td>\(\vec E,\vec H,\hat k\) 右手关系</td>
+                <td>由一个场求另一个场</td>
+              </tr>
+              <tr>
+                <td>\(\omega t-\beta z\)</td>
+                <td>沿 \(+z\) 传播</td>
+                <td>看相位项判断方向</td>
+              </tr>
+              <tr>
+                <td>\(\omega t+\beta z\)</td>
+                <td>沿 \(-z\) 传播</td>
+                <td>反射波常见相位</td>
+              </tr>
+              <tr>
+                <td>\(\vec S=\vec E\times\vec H\)</td>
+                <td>瞬时坡印廷矢量</td>
+                <td>瞬时能流密度</td>
+              </tr>
+              <tr>
+                <td>\(\vec S_{av}=\dfrac12\operatorname{Re}(\vec E\times\vec H^*)\)</td>
+                <td>时谐平均坡印廷矢量</td>
+                <td>平均功率题</td>
+              </tr>
+              <tr>
+                <td>\(S_{av}=\dfrac{|E_m|^2}{2\eta}=\dfrac{\eta|H_m|^2}{2}\)</td>
+                <td>无耗平面波平均能流大小</td>
+                <td>\(\eta\) 为实数时可直接用</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="chap8-lossy">有耗介质与良导体</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>含义</th>
+                <th>使用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\tan\delta=\dfrac{\sigma}{\omega\varepsilon}\)</td>
+                <td>损耗角正切</td>
+                <td>判断低损耗介质或良导体</td>
+              </tr>
+              <tr>
+                <td>\(\gamma=\alpha+j\beta=\sqrt{j\omega\mu(\sigma+j\omega\varepsilon)}\)</td>
+                <td>传播常数</td>
+                <td>场写成 \(e^{-\gamma z}\)</td>
+              </tr>
+              <tr>
+                <td>\(\eta_c=\sqrt{\dfrac{j\omega\mu}{\sigma+j\omega\varepsilon}}\)</td>
+                <td>复波阻抗</td>
+                <td>有耗介质中 \(E/H\) 一般有相位差</td>
+              </tr>
+              <tr>
+                <td>\(\alpha=\omega\sqrt{\dfrac{\mu\varepsilon}{2}}\left[\sqrt{1+\left(\dfrac{\sigma}{\omega\varepsilon}\right)^2}-1\right]^{1/2}\)</td>
+                <td>衰减常数</td>
+                <td>一般有耗介质精确式</td>
+              </tr>
+              <tr>
+                <td>\(\beta=\omega\sqrt{\dfrac{\mu\varepsilon}{2}}\left[\sqrt{1+\left(\dfrac{\sigma}{\omega\varepsilon}\right)^2}+1\right]^{1/2}\)</td>
+                <td>相位常数</td>
+                <td>一般有耗介质精确式</td>
+              </tr>
+              <tr>
+                <td>\(\alpha\approx\beta\approx\sqrt{\dfrac{\omega\mu\sigma}{2}}\)</td>
+                <td>良导体近似</td>
+                <td>\(\sigma/(\omega\varepsilon)\gg1\)</td>
+              </tr>
+              <tr>
+                <td>\(\eta_c\approx(1+j)\sqrt{\dfrac{\omega\mu}{2\sigma}}=\sqrt{\dfrac{\omega\mu}{\sigma}}e^{j\pi/4}\)</td>
+                <td>良导体复波阻抗</td>
+                <td>磁场相位相对电场滞后 \(45^\circ\)</td>
+              </tr>
+              <tr>
+                <td>\(\delta=1/\alpha\)</td>
+                <td>皮肤深度</td>
+                <td>幅值衰减到 \(1/e\) 的距离</td>
+              </tr>
+              <tr>
+                <td>\(E(z)=E_0e^{-\alpha z}\cos(\omega t-\beta z+\phi)\)</td>
+                <td>有耗介质瞬时场</td>
+                <td>海水、铜板屏蔽题</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="chap8-polarization">极化、能量与损耗</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>判据</th>
+                <th>结论</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\Delta\phi=\phi_y-\phi_x\)</td>
+                <td>两个正交分量相位差</td>
+                <td>极化判断核心量</td>
+              </tr>
+              <tr>
+                <td>\(\Delta\phi=0,\pm\pi\)</td>
+                <td>两个分量同相或反相</td>
+                <td>线极化</td>
+              </tr>
+              <tr>
+                <td>\(E_{xm}=E_{ym},\quad \Delta\phi=\pm\pi/2\)</td>
+                <td>等幅正交且相差 \(90^\circ\)</td>
+                <td>圆极化</td>
+              </tr>
+              <tr>
+                <td>其他一般情况</td>
+                <td>幅值不等或相位差非特殊值</td>
+                <td>椭圆极化</td>
+              </tr>
+              <tr>
+                <td>\(w_E=\dfrac12\varepsilon|\vec E(t)|^2,\quad w_H=\dfrac12\mu|\vec H(t)|^2\)</td>
+                <td>瞬时电、磁能量密度</td>
+                <td>题目要求瞬时量时先写瞬时场</td>
+              </tr>
+              <tr>
+                <td>\(w_{E,av}=\dfrac14\varepsilon|\vec E_m|^2,\quad w_{H,av}=\dfrac14\mu|\vec H_m|^2\)</td>
+                <td>时谐平均能量密度</td>
+                <td>使用复矢量幅值</td>
+              </tr>
+              <tr>
+                <td>\(p_J=\sigma|\vec E(t)|^2,\quad p_{J,av}=\dfrac12\sigma|\vec E_m|^2\)</td>
+                <td>焦耳损耗功率密度</td>
+                <td>有耗介质损耗题</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="chap8-boundary">正入射边界</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>含义</th>
+                <th>提醒</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\Gamma=\dfrac{\eta_2-\eta_1}{\eta_2+\eta_1}\)</td>
+                <td>电场反射系数</td>
+                <td>正入射、从介质 1 入射到介质 2</td>
+              </tr>
+              <tr>
+                <td>\(\tau=\dfrac{2\eta_2}{\eta_1+\eta_2}=1+\Gamma\)</td>
+                <td>电场透射系数</td>
+                <td>透射电场幅值 \(E_t=\tau E_i\)</td>
+              </tr>
+              <tr>
+                <td>\(S=\dfrac{1+|\Gamma|}{1-|\Gamma|}\)</td>
+                <td>驻波比</td>
+                <td>已知驻波比反求 \(|\Gamma|\)</td>
+              </tr>
+              <tr>
+                <td>\(\Gamma=-1\)</td>
+                <td>理想导体边界电场反射系数</td>
+                <td>导体表面切向电场为零</td>
+              </tr>
+              <tr>
+                <td>\(E_{\max}=E_i(1+|\Gamma|),\quad E_{\min}=E_i(1-|\Gamma|)\)</td>
+                <td>驻波最大值、最小值</td>
+                <td>反射波与入射波叠加</td>
+              </tr>
+              <tr>
+                <td>\(P_r/P_i=|\Gamma|^2\)</td>
+                <td>反射功率比</td>
+                <td>无耗介质中常用</td>
+              </tr>
+              <tr>
+                <td>\(P_t/P_i=1-|\Gamma|^2\)</td>
+                <td>透射功率比</td>
+                <td>\(\eta_1,\eta_2\) 为实数时成立</td>
+              </tr>
+              <tr>
+                <td>\(\vec J_s=\hat n\times\vec H\big|_{\text{surface}}\)</td>
+                <td>理想导体表面电流密度</td>
+                <td>\(\hat n\) 方向按题目边界法向统一</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="route">公式选用路线</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>题目关键词</th>
+                <th>先用公式</th>
+                <th>再检查</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无限长、同轴、面电流</td>
+                <td>\(\oint\vec H\cdot d\vec l=I_{\text{enc}}\)</td>
+                <td>对称性是否足够强</td>
+              </tr>
+              <tr>
+                <td>圆环轴线、有限导线、电流元</td>
+                <td>毕奥-萨伐尔定律</td>
+                <td>\(d\vec l\times\vec R\) 方向</td>
+              </tr>
+              <tr>
+                <td>回路动、磁场变</td>
+                <td>\(\varepsilon=-d\Phi/dt\) 与 \(\oint(\vec v\times\vec B)\cdot d\vec l\)</td>
+                <td>积分方向和法向符号</td>
+              </tr>
+              <tr>
+                <td>复矢量、瞬时值</td>
+                <td>\(\vec F(t)=\operatorname{Re}[\vec F_me^{j\omega t}]\)</td>
+                <td>正弦先化成余弦相位</td>
+              </tr>
+              <tr>
+                <td>平面波传播方向</td>
+                <td>\(\vec H=\hat k\times\vec E/\eta\)</td>
+                <td>\(\omega t-\beta z\) 还是 \(\omega t+\beta z\)</td>
+              </tr>
+              <tr>
+                <td>海水、铜、屏蔽、皮肤深度</td>
+                <td>\(\sigma/(\omega\varepsilon)\)、\(\alpha,\beta,\delta\)</td>
+                <td>是否满足良导体近似</td>
+              </tr>
+              <tr>
+                <td>反射、透射、驻波比</td>
+                <td>\(\Gamma,\tau,S\)</td>
+                <td>波阻抗属于入射介质还是透射介质</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <footer class="footer">
+          <p><a href="chap6.html">Chapter 6 静磁场</a> / <a href="examples.html">例题全集</a></p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#常数">常数</a></li>
+          <li><a href="#chap6">Chapter 6</a></li>
+          <li><a href="#chap6-basic">基本方程</a></li>
+          <li><a href="#chap6-field">求磁场</a></li>
+          <li><a href="#chap6-media">磁介质与磁能</a></li>
+          <li><a href="#chap7">Chapter 7</a></li>
+          <li><a href="#chap7-induced">感应电动势</a></li>
+          <li><a href="#chap7-maxwell">麦克斯韦方程</a></li>
+          <li><a href="#chap7-wave">波动与复矢量</a></li>
+          <li><a href="#chap8">Chapter 8</a></li>
+          <li><a href="#chap8-lossless">无耗平面波</a></li>
+          <li><a href="#chap8-lossy">有耗介质</a></li>
+          <li><a href="#chap8-polarization">极化与能量</a></li>
+          <li><a href="#chap8-boundary">正入射边界</a></li>
+          <li><a href="#route">公式选用路线</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>
