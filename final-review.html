@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>期末复习 | 电磁场与波</title>
+    <meta name="description" content="电磁场与波期末考试针对性复习：Q1 全书概念与小计算，Q2 静磁场，Q3 时变场与传播，Q4 反射和透射。" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">电磁场与波</span>
+          <span class="brand-subtitle">知识点与例题笔记</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索章节" aria-label="搜索章节" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">
+            ◐
+          </button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a class="active" data-search-item href="final-review.html">期末复习</a></li>
+            <li><a data-search-item href="chap6.html">Chapter 6 静磁场</a></li>
+            <li><a data-search-item href="chap7.html">Chapter 7 时变场与麦克斯韦方程</a></li>
+            <li><a data-search-item href="chap8.html">Chapter 8 平面电磁波</a></li>
+            <li><a data-search-item href="examples.html">例题全集</a></li>
+            <li><a data-search-item href="formulas.html">公式总结</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb"><a href="./">首页</a> / 期末复习</div>
+          <h1>期末考试针对性复习</h1>
+          <p class="meta">按 Q1-Q4 题型组织：先抓概念，再练计算模板。</p>
+        </header>
+
+        <article>
+          <blockquote>
+            <p>
+              考试范围明确后，复习重点要从“章节顺读”切到“题型命中”。本页把全书内容拆成四道题的答题路线：Q1 广覆盖，Q2 静磁场，Q3 传播，Q4 反射透射。
+            </p>
+          </blockquote>
+
+          <h2 id="exam-map">试卷结构与复习优先级</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>题号</th>
+                <th>覆盖范围</th>
+                <th>题型</th>
+                <th>复习目标</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Q1</td>
+                <td>全书内容，除去分离变量法</td>
+                <td>概念题、小计算题</td>
+                <td>会说清物理意义，会做一两步公式代入</td>
+              </tr>
+              <tr>
+                <td>Q2</td>
+                <td>Chapter 6 静磁场</td>
+                <td>概念题、大计算题</td>
+                <td>围绕 \(B,H,M,J_M,L,M,W_m\) 建立完整计算链</td>
+              </tr>
+              <tr>
+                <td>Q3</td>
+                <td>Chapter 7-8 时变场与传播</td>
+                <td>概念题、大计算题</td>
+                <td>会处理无耗媒质、有耗媒质中的平面波传播</td>
+              </tr>
+              <tr>
+                <td>Q4</td>
+                <td>Chapter 8 正入射边界</td>
+                <td>概念题、大计算题</td>
+                <td>会写入射、反射、透射场，计算 \(\Gamma,\tau,S\)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <strong>明确不考：</strong>第 4 章分离变量法不作为复习重点；但泊松方程、拉普拉斯方程、唯一性定理、镜像法的概念仍属于 Q1 范围。
+          </div>
+
+          <h2 id="q1">Q1 全书概念题与小计算</h2>
+          <p>Q1 的关键是“面广但不深”。复习时不要把时间耗在长推导上，要把每章的定义、物理意义、边界条件和典型一行计算吃牢。</p>
+
+          <h3 id="q1-concepts">必背概念清单</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>章节</th>
+                <th>概念题高频点</th>
+                <th>一句话答题模板</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Chap 1</td>
+                <td>场与路、电磁理论应用、场的定义</td>
+                <td>场是空间中每一点都有确定数值或矢量值的物理量分布；电路理论是电磁场理论在低频和尺寸远小于波长时的近似。</td>
+              </tr>
+              <tr>
+                <td>Chap 2</td>
+                <td>梯度、散度、旋度、无散场、无旋场</td>
+                <td>梯度指向标量增长最快方向；散度描述通量源强；旋度描述环量源强；无散场磁感线闭合，无旋场可由标量势表示。</td>
+              </tr>
+              <tr>
+                <td>Chap 3</td>
+                <td>静电场基本方程、电势、导体、介质、电位移、边界条件</td>
+                <td>静电场有散无旋，电荷是通量源，静电场为保守场，导体静电平衡时内部 \(E=0\) 且导体为等势体。</td>
+              </tr>
+              <tr>
+                <td>Chap 4</td>
+                <td>泊松方程、拉普拉斯方程、唯一性定理、镜像法</td>
+                <td>满足同一微分方程和同一边界条件的静电解唯一；镜像法用等效电荷替代简单导体边界的作用。</td>
+              </tr>
+              <tr>
+                <td>Chap 5</td>
+                <td>稳恒电流、欧姆定律、电流连续性、焦耳损耗、边界条件、电阻</td>
+                <td>稳恒电流场满足 \(\nabla\cdot\vec J=0\)，线性导电媒质中 \(\vec J=\sigma\vec E\)，功率密度为 \(\vec J\cdot\vec E\)。</td>
+              </tr>
+              <tr>
+                <td>Chap 6</td>
+                <td>静磁场、磁矢位、磁化、边界、电感、磁能</td>
+                <td>静磁场有旋无散，自由电流是 \(H\) 的旋度源，磁通密度 \(B\) 无散且磁感线闭合。</td>
+              </tr>
+              <tr>
+                <td>Chap 7</td>
+                <td>法拉第定律、位移电流、麦克斯韦方程、时谐场</td>
+                <td>变化的磁场产生旋涡电场，变化的电场通过位移电流产生磁场，时变电磁场可互相激发并传播。</td>
+              </tr>
+              <tr>
+                <td>Chap 8</td>
+                <td>平面波、TEM、极化、有耗媒质、坡印廷矢量、反射透射</td>
+                <td>均匀平面波中 \(\vec E,\vec H,\hat k\) 两两垂直，能量沿 \(\vec E\times\vec H\) 方向传播。</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="q1-small-calc">小计算速查</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>题型</th>
+                <th>直接用</th>
+                <th>检查点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>坐标微元</td>
+                <td>\(dV=\rho\,d\rho\,d\phi\,dz\)，\(dV=r^2\sin\theta\,dr\,d\theta\,d\phi\)</td>
+                <td>柱坐标别漏 \(\rho\)，球坐标别漏 \(r^2\sin\theta\)</td>
+              </tr>
+              <tr>
+                <td>电荷总量</td>
+                <td>\(q=\int_V\rho_vdV=\int_S\rho_sdS=\int_L\rho_ldl\)</td>
+                <td>先看题目给的是体、面、线还是点电荷</td>
+              </tr>
+              <tr>
+                <td>点电荷电场与电势</td>
+                <td>\(\vec E=\dfrac{q}{4\pi\varepsilon R^2}\vec e_R\)，\(\varphi=\dfrac{q}{4\pi\varepsilon R}\)</td>
+                <td>电场是矢量，电势是标量</td>
+              </tr>
+              <tr>
+                <td>无限长线电荷</td>
+                <td>\(E_\rho=\dfrac{\rho_l}{2\pi\varepsilon\rho}\)</td>
+                <td>由高斯定律选圆柱面</td>
+              </tr>
+              <tr>
+                <td>平行板电容</td>
+                <td>\(C=\varepsilon S/d\)，\(W_e=\dfrac12CV^2\)</td>
+                <td>忽略边缘效应时才可直接用</td>
+              </tr>
+              <tr>
+                <td>静电边界</td>
+                <td>\(\vec e_n\times(\vec E_1-\vec E_2)=0\)，\(\vec e_n\cdot(\vec D_1-\vec D_2)=\rho_s\)</td>
+                <td>无自由面电荷时 \(D_n\) 连续</td>
+              </tr>
+              <tr>
+                <td>镜像法</td>
+                <td>点电荷 \(q\) 对无限接地导体平面镜像为 \(-q\)</td>
+                <td>镜像电荷只放在非求解区域</td>
+              </tr>
+              <tr>
+                <td>稳恒电流</td>
+                <td>\(\vec J=\sigma\vec E\)，\(I=\int_S\vec J\cdot d\vec S\)，\(R=V/I\)</td>
+                <td>电流方向按正电荷运动方向</td>
+              </tr>
+              <tr>
+                <td>焦耳损耗</td>
+                <td>\(p=\vec J\cdot\vec E=\sigma E^2=J^2/\sigma\)</td>
+                <td>功率密度单位是 \(\text{W/m}^3\)</td>
+              </tr>
+              <tr>
+                <td>均匀导体电阻</td>
+                <td>\(R=l/(\sigma S)\)</td>
+                <td>电流线均匀且截面不变时使用</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <strong>Q1 最容易丢分：</strong>把 \(E\) 和 \(D\)、\(B\) 和 \(H\) 混用；把散度/旋度的物理意义背成空话；边界条件忘记“切向”和“法向”。
+          </div>
+
+          <h2 id="q2">Q2 Chapter 6 静磁场大题</h2>
+          <p>Q2 可能是一道完整链条题：先求 \(H\) 或 \(B\)，再求 \(M\)、磁化电流、磁通、电感和磁能。一定要按步骤写，别一上来乱代公式。</p>
+
+          <h3 id="q2-concepts">概念题命中点</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>概念</th>
+                <th>必须会说</th>
+                <th>常用公式</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(B\)</td>
+                <td>磁通密度，反映总磁场效果，满足无散性</td>
+                <td>\(\nabla\cdot\vec B=0\)</td>
+              </tr>
+              <tr>
+                <td>\(H\)</td>
+                <td>磁场强度，宏观方程中由自由电流产生旋度</td>
+                <td>\(\nabla\times\vec H=\vec J\)</td>
+              </tr>
+              <tr>
+                <td>\(M\)</td>
+                <td>磁化强度，单位体积磁偶极矩</td>
+                <td>\(\vec M=\chi_m\vec H\)</td>
+              </tr>
+              <tr>
+                <td>磁化电流</td>
+                <td>用等效电流描述介质磁化效应</td>
+                <td>\(\vec J_M=\nabla\times\vec M,\quad \vec J_{SM}=\vec M\times\vec e_n\)</td>
+              </tr>
+              <tr>
+                <td>边界条件</td>
+                <td>\(B_n\) 连续，\(H_t\) 由自由面电流决定</td>
+                <td>\(\vec e_n\cdot(\vec B_1-\vec B_2)=0\)，\(\vec e_n\times(\vec H_1-\vec H_2)=\vec J_s\)</td>
+              </tr>
+              <tr>
+                <td>自感</td>
+                <td>本回路电流产生并链过本回路的磁链与电流之比</td>
+                <td>\(L=\Psi/I\)</td>
+              </tr>
+              <tr>
+                <td>互感</td>
+                <td>一个回路电流在另一个回路中产生磁链</td>
+                <td>\(M_{21}=\Psi_{21}/I_1,\quad M_{12}=M_{21}\)</td>
+              </tr>
+              <tr>
+                <td>磁能</td>
+                <td>磁场中储存的能量</td>
+                <td>\(w_m=\dfrac12\vec B\cdot\vec H,\quad W_m=\dfrac12LI^2\)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="q2-template">大计算通用模板</h3>
+          <ol>
+            <li>判断对称性：圆柱、同轴、环形铁心优先用安培环路定律；有限导线或圆环轴线用毕奥-萨伐尔。</li>
+            <li>先求 \(H\)：\(\oint_C\vec H\cdot d\vec l=I_{\text{free,enc}}\)。注意 \(H\) 只看自由电流。</li>
+            <li>用本构关系求 \(B\)：线性介质中 \(\vec B=\mu\vec H=\mu_0\mu_r\vec H\)。</li>
+            <li>若题目给 \(\chi_m\) 或要求磁化，求 \(M=\chi_mH\)，再求 \(\vec J_M\) 和 \(\vec J_{SM}\)。</li>
+            <li>若求电感，先求磁通 \(\Phi=\int\vec B\cdot d\vec S\)，再求磁链 \(\Psi=N\Phi\)，最后 \(L=\Psi/I\)。</li>
+            <li>若求磁能，可用场积分 \(W_m=\frac12\int\vec B\cdot\vec H\,dV\)，也可用 \(W_m=\frac12LI^2\)。</li>
+          </ol>
+
+          <h3 id="q2-formulas">Q2 常见结构公式</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>结构</th>
+                <th>核心结果</th>
+                <th>用途</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>无限长实心圆导体，半径 \(a\)，均匀电流 \(I\)</td>
+                <td>\(H_\phi=\dfrac{I\rho}{2\pi a^2}\;(\rho<a)\)，\(H_\phi=\dfrac{I}{2\pi\rho}\;(\rho>a)\)</td>
+                <td>分区域求 \(B,H\)</td>
+              </tr>
+              <tr>
+                <td>无限长细导线</td>
+                <td>\(H_\phi=\dfrac{I}{2\pi\rho}\)，\(B_\phi=\dfrac{\mu I}{2\pi\rho}\)</td>
+                <td>基本磁场计算</td>
+              </tr>
+              <tr>
+                <td>同轴线 \(a<\rho<b\)</td>
+                <td>\(H_\phi=\dfrac{I}{2\pi\rho}\)，\(L'=\dfrac{\mu}{2\pi}\ln\dfrac{b}{a}\)</td>
+                <td>外自感、磁能</td>
+              </tr>
+              <tr>
+                <td>长螺线管</td>
+                <td>\(H=nI=\dfrac{NI}{l}\)，\(B=\mu nI\)，\(L=\dfrac{\mu N^2S}{l}\)</td>
+                <td>自感和能量</td>
+              </tr>
+              <tr>
+                <td>环形磁芯，内半径 \(a\)，外半径 \(b\)，高 \(h\)</td>
+                <td>\(H_\phi=\dfrac{NI}{2\pi\rho}\)，\(L=\dfrac{\mu N^2h}{2\pi}\ln\dfrac{b}{a}\)</td>
+                <td>磁路/环形线圈题</td>
+              </tr>
+              <tr>
+                <td>耦合线圈</td>
+                <td>\(M=\dfrac{\Psi_{21}}{I_1}\)，\(M=k\sqrt{L_1L_2}\)</td>
+                <td>互感与耦合系数</td>
+              </tr>
+              <tr>
+                <td>两个线圈磁能</td>
+                <td>\(W_m=\dfrac12L_1I_1^2+\dfrac12L_2I_2^2\pm MI_1I_2\)</td>
+                <td>正负号由磁通相助或相消决定</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <strong>Q2 答题顺序建议：</strong>先写“由对称性知 \(\vec H=H_\phi\vec e_\phi\)”这类方向判断，再写安培回路。方向写对，后面的公式才可信。
+          </div>
+
+          <h2 id="q3">Q3 Chapter 7-8 时变场与传播</h2>
+          <p>Q3 的大计算一般不是边界反射，而是在单一媒质中传播：无耗媒质求 \(\eta,v,\beta,\lambda,E,H\)，有耗媒质求 \(\alpha,\beta,\eta_c,\delta\) 和衰减后的场。</p>
+
+          <h3 id="q3-concepts">概念题命中点</h3>
+          <ul>
+            <li>法拉第定律：\(\nabla\times\vec E=-\partial\vec B/\partial t\)，说明时变磁场产生旋涡电场。</li>
+            <li>位移电流：\(\vec J_d=\partial\vec D/\partial t\)，解决时变情况下安培定律与电荷守恒的矛盾。</li>
+            <li>时谐场：\(\vec F(t)=\operatorname{Re}[\vec F_me^{j\omega t}]\)，计算用复矢量，最后取实部。</li>
+            <li>均匀平面波是 TEM 波：\(\vec E\perp\vec H\perp\hat k\)。</li>
+            <li>有耗媒质中场幅值按 \(e^{-\alpha z}\) 衰减，\(\alpha\) 为衰减常数，\(\beta\) 为相位常数。</li>
+            <li>坡印廷矢量 \(\vec S=\vec E\times\vec H\) 表示能流密度，时谐平均值用 \(\frac12\operatorname{Re}(\vec E\times\vec H^*)\)。</li>
+          </ul>
+
+          <h3 id="q3-lossless">无耗媒质大题模板</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>步骤</th>
+                <th>公式</th>
+                <th>写题时注意</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1. 参数</td>
+                <td>\(\omega=2\pi f\)，\(\eta=\eta_0\sqrt{\mu_r/\varepsilon_r}\)</td>
+                <td>空气通常取 \(\eta_0=120\pi\Omega\)</td>
+              </tr>
+              <tr>
+                <td>2. 传播速度</td>
+                <td>\(v=c/\sqrt{\mu_r\varepsilon_r}\)</td>
+                <td>非磁介质 \(\mu_r=1\)</td>
+              </tr>
+              <tr>
+                <td>3. 相位常数与波长</td>
+                <td>\(\beta=\omega/v=\omega\sqrt{\mu\varepsilon}\)，\(\lambda=2\pi/\beta=v/f\)</td>
+                <td>GHz 频率下波长常是 cm 级</td>
+              </tr>
+              <tr>
+                <td>4. 场关系</td>
+                <td>\(\vec H=\dfrac{1}{\eta}\hat k\times\vec E\)，\(\vec E=-\eta\hat k\times\vec H\)</td>
+                <td>先用右手关系确定方向，再算幅值</td>
+              </tr>
+              <tr>
+                <td>5. 瞬时场</td>
+                <td>沿 \(+z\)：\(\cos(\omega t-\beta z+\phi)\)；沿 \(-z\)：\(\cos(\omega t+\beta z+\phi)\)</td>
+                <td>传播方向由相位符号决定</td>
+              </tr>
+              <tr>
+                <td>6. 平均功率</td>
+                <td>\(S_{av}=|E_m|^2/(2\eta)=\eta|H_m|^2/2\)</td>
+                <td>只适用于无耗且 \(\eta\) 为实数</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="q3-lossy">有耗媒质大题模板</h3>
+          <ol>
+            <li>先算损耗判据：\(\sigma/(\omega\varepsilon)\)。若远大于 1，按良导体；若远小于 1，按低损耗介质；否则用一般公式。</li>
+            <li>一般公式：</li>
+          </ol>
+          <p class="formula">\[
+          \alpha=\omega\sqrt{\frac{\mu\varepsilon}{2}}
+          \left[\sqrt{1+\left(\frac{\sigma}{\omega\varepsilon}\right)^2}-1\right]^{1/2}
+          \]</p>
+          <p class="formula">\[
+          \beta=\omega\sqrt{\frac{\mu\varepsilon}{2}}
+          \left[\sqrt{1+\left(\frac{\sigma}{\omega\varepsilon}\right)^2}+1\right]^{1/2}
+          \]</p>
+          <p class="formula">\[
+          \eta_c=\sqrt{\frac{j\omega\mu}{\sigma+j\omega\varepsilon}}
+          \]</p>
+          <p>良导体近似：</p>
+          <p class="formula">\[
+          \alpha\approx\beta\approx\sqrt{\frac{\omega\mu\sigma}{2}},\qquad
+          \eta_c\approx(1+j)\sqrt{\frac{\omega\mu}{2\sigma}},\qquad
+          \delta=\frac{1}{\alpha}
+          \]</p>
+          <p>沿 \(+z\) 传播的典型瞬时电场写法：</p>
+          <p class="formula">\[
+          \vec E(z,t)=\vec e_xE_0e^{-\alpha z}\cos(\omega t-\beta z+\phi_E)
+          \]</p>
+          <p>磁场幅值除以 \(|\eta_c|\)，相位还要减去 \(\eta_c\) 的相角：</p>
+          <p class="formula">\[
+          \vec H(z,t)=\vec e_y\frac{E_0}{|\eta_c|}e^{-\alpha z}
+          \cos(\omega t-\beta z+\phi_E-\angle\eta_c)
+          \]</p>
+
+          <div class="callout">
+            <strong>Q3 易错点：</strong>有耗媒质的 \(\eta_c\) 是复数，\(E\) 和 \(H\) 不一定同相；平均坡印廷矢量要用 \(\frac12\operatorname{Re}(\vec E\times\vec H^*)\)。
+          </div>
+
+          <h2 id="q4">Q4 Chapter 8 反射和透射</h2>
+          <p>Q4 是边界大题，核心是把区域 1 写成“入射 + 反射”，区域 2 写成“透射”，再用波阻抗计算系数。</p>
+
+          <h3 id="q4-concepts">概念题命中点</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>概念</th>
+                <th>必须会说</th>
+                <th>公式</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>反射系数</td>
+                <td>反射电场幅值与入射电场幅值之比</td>
+                <td>\(\Gamma=E_r/E_i=(\eta_2-\eta_1)/(\eta_2+\eta_1)\)</td>
+              </tr>
+              <tr>
+                <td>透射系数</td>
+                <td>透射电场幅值与入射电场幅值之比</td>
+                <td>\(\tau=E_t/E_i=2\eta_2/(\eta_1+\eta_2)=1+\Gamma\)</td>
+              </tr>
+              <tr>
+                <td>驻波比</td>
+                <td>电场最大值与最小值之比</td>
+                <td>\(S=(1+|\Gamma|)/(1-|\Gamma|)\)</td>
+              </tr>
+              <tr>
+                <td>理想导体边界</td>
+                <td>表面切向电场为零，电场全反射且反相</td>
+                <td>\(\Gamma=-1\)</td>
+              </tr>
+              <tr>
+                <td>相位关系</td>
+                <td>\(\eta_2>\eta_1\) 时 \(\Gamma>0\)，反射电场同相；\(\eta_2<\eta_1\) 时 \(\Gamma<0\)，反射电场反相</td>
+                <td>看 \(\Gamma\) 正负</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="q4-template">正入射大计算模板</h3>
+          <p>设入射波从区域 1 的 \(z<0\) 垂直入射到 \(z=0\) 边界，进入区域 2 的 \(z>0\)，且 \(\vec E\parallel\vec e_x\)。</p>
+          <p>先算介质参数：</p>
+          <p class="formula">\[
+          \eta_1=\eta_0\sqrt{\frac{\mu_{r1}}{\varepsilon_{r1}}},\qquad
+          \eta_2=\eta_0\sqrt{\frac{\mu_{r2}}{\varepsilon_{r2}}}
+          \]</p>
+          <p class="formula">\[
+          \beta_1=\frac{\omega}{c}\sqrt{\mu_{r1}\varepsilon_{r1}},\qquad
+          \beta_2=\frac{\omega}{c}\sqrt{\mu_{r2}\varepsilon_{r2}}
+          \]</p>
+          <p>再算系数：</p>
+          <p class="formula">\[
+          \Gamma=\frac{\eta_2-\eta_1}{\eta_2+\eta_1},\qquad
+          \tau=\frac{2\eta_2}{\eta_1+\eta_2}
+          \]</p>
+          <p>区域 1 电场与磁场：</p>
+          <p class="formula">\[
+          \vec E_1(z)=\vec e_xE_i(e^{-j\beta_1z}+\Gamma e^{j\beta_1z})
+          \]</p>
+          <p class="formula">\[
+          \vec H_1(z)=\vec e_y\frac{E_i}{\eta_1}(e^{-j\beta_1z}-\Gamma e^{j\beta_1z})
+          \]</p>
+          <p>区域 2 电场与磁场：</p>
+          <p class="formula">\[
+          \vec E_2(z)=\vec e_x\tau E_i e^{-j\beta_2z},\qquad
+          \vec H_2(z)=\vec e_y\frac{\tau E_i}{\eta_2}e^{-j\beta_2z}
+          \]</p>
+          <p>若题目要求瞬时场，最后统一取实部：</p>
+          <p class="formula">\[
+          \operatorname{Re}[\vec E(z)e^{j\omega t}]
+          \]</p>
+
+          <h3 id="q4-power">功率与驻波补充</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>目标</th>
+                <th>公式</th>
+                <th>使用条件</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>反射功率比</td>
+                <td>\(P_r/P_i=|\Gamma|^2\)</td>
+                <td>无耗介质，正入射</td>
+              </tr>
+              <tr>
+                <td>透射功率比</td>
+                <td>\(P_t/P_i=(\eta_1/\eta_2)|\tau|^2=1-|\Gamma|^2\)</td>
+                <td>\(\eta_1,\eta_2\) 为实数</td>
+              </tr>
+              <tr>
+                <td>驻波比</td>
+                <td>\(S=(1+|\Gamma|)/(1-|\Gamma|)\)</td>
+                <td>区域 1 中入射波与反射波叠加</td>
+              </tr>
+              <tr>
+                <td>由驻波比反求反射系数</td>
+                <td>\(|\Gamma|=(S-1)/(S+1)\)</td>
+                <td>再根据最小/最大点判断 \(\Gamma\) 符号或相位</td>
+              </tr>
+              <tr>
+                <td>理想导体表面电流</td>
+                <td>\(\vec J_s=\hat n\times\vec H|_{\text{surface}}\)</td>
+                <td>先求边界处总磁场</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <strong>Q4 易错点：</strong>反射磁场方向和电场不一样，公式里是 \(e^{-j\beta z}-\Gamma e^{j\beta z}\)，中间是减号；透射系数 \(\tau\) 是电场系数，不是功率系数。
+          </div>
+
+          <h2 id="plan">考前复习安排</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>时间</th>
+                <th>任务</th>
+                <th>产出</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>第 1 轮</td>
+                <td>通读本页 Q1-Q4，每个公式确认物理量含义</td>
+                <td>知道每题考什么</td>
+              </tr>
+              <tr>
+                <td>第 2 轮</td>
+                <td>刷 <a href="examples.html">例题全集</a> 中 Chapter 7-8 例题，配合 <a href="formulas.html">公式总结</a></td>
+                <td>传播、衰减、功率、边界计算能独立写</td>
+              </tr>
+              <tr>
+                <td>第 3 轮</td>
+                <td>重做 Q2 静磁场模板：安培环路、电感、磁能、磁化电流</td>
+                <td>形成固定答题顺序</td>
+              </tr>
+              <tr>
+                <td>考前 30 分钟</td>
+                <td>只看边界条件、\(\Gamma,\tau,S\)、良导体近似、磁能/电感公式</td>
+                <td>防止符号和系数丢分</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="self-test">自测题清单</h2>
+          <ol>
+            <li>解释“静电场无旋、静磁场无散、时变场互相激发”分别对应哪条方程。</li>
+            <li>给出 \(\rho_l\)、\(\rho_s\)、\(\rho_v\) 时，分别如何求总电荷？</li>
+            <li>无限长直导线载流 \(I\)，写出导线外 \(H\) 和 \(B\)。</li>
+            <li>线性磁介质中已知 \(H\) 和 \(\chi_m\)，如何求 \(M\)、\(B\)、磁化面电流？</li>
+            <li>已知某线圈磁通 \(\Phi\)、匝数 \(N\)、电流 \(I\)，如何求自感和磁能？</li>
+            <li>已知 \(f,\varepsilon_r,\mu_r\)，如何求无耗媒质中的 \(\eta,v,\beta,\lambda\)？</li>
+            <li>给定 \(\sigma,\varepsilon,\mu,\omega\)，如何判断良导体并求皮肤深度？</li>
+            <li>电场沿 \(x\)、波沿 \(+z\) 传播，磁场方向是什么？如果波沿 \(-z\) 呢？</li>
+            <li>无耗介质正入射时，如何写区域 1 和区域 2 的总场？</li>
+            <li>已知驻波比 \(S\)，如何求 \(|\Gamma|\)，还需要什么信息判断 \(\Gamma\) 的符号？</li>
+          </ol>
+        </article>
+
+        <footer class="footer">
+          <p><a href="formulas.html">公式总结</a> / <a href="examples.html">例题全集</a></p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#exam-map">试卷结构</a></li>
+          <li><a href="#q1">Q1 全书</a></li>
+          <li><a href="#q1-concepts">Q1 概念</a></li>
+          <li><a href="#q1-small-calc">Q1 小计算</a></li>
+          <li><a href="#q2">Q2 静磁场</a></li>
+          <li><a href="#q2-template">Q2 模板</a></li>
+          <li><a href="#q2-formulas">Q2 公式</a></li>
+          <li><a href="#q3">Q3 传播</a></li>
+          <li><a href="#q3-lossless">无耗媒质</a></li>
+          <li><a href="#q3-lossy">有耗媒质</a></li>
+          <li><a href="#q4">Q4 反射透射</a></li>
+          <li><a href="#q4-template">Q4 模板</a></li>
+          <li><a href="#plan">复习安排</a></li>
+          <li><a href="#self-test">自测题</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>
