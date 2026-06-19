@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>公式总结 | 电磁场与波</title>
-    <meta name="description" content="第 6、7、8 章公式总结：静磁场、时变场、麦克斯韦方程、平面电磁波、有耗介质、极化、能流与正入射边界。" />
+    <meta name="description" content="电磁场与波全书公式总结：矢量分析、静电场、边值问题、稳恒电流、静磁场、时变场、平面电磁波与正入射边界。" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -50,13 +50,13 @@
         <header class="page-header">
           <div class="breadcrumb"><a href="./">首页</a> / 公式总结</div>
           <h1>公式总结</h1>
-          <p class="meta">第 6、7、8 章公式速查：先看适用条件，再代入计算。</p>
+          <p class="meta">第 1-8 章公式速查：先看适用条件，再代入计算。</p>
         </header>
 
         <article>
           <blockquote>
             <p>
-              这页不是推导讲义，而是做题时翻得最快的公式表。遇到题目先判断“静磁场、时变场、传播、边界、能量”是哪一类，再选对应公式。
+              这页不是推导讲义，而是做题时翻得最快的公式表。遇到题目先判断“矢量分析、静电、稳恒电流、静磁场、时变场、传播、边界、能量”是哪一类，再选对应公式。
             </p>
           </blockquote>
 
@@ -94,6 +94,429 @@
                 <td>介质参数</td>
                 <td>\(\mu=\mu_0\mu_r,\quad \varepsilon=\varepsilon_0\varepsilon_r\)</td>
                 <td>非磁介质常取 \(\mu_r=1\)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="chap1">Chapter 1 课程导论</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>关系</th>
+                <th>含义</th>
+                <th>考试用法</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>场：\(F=F(\vec r,t)\)</td>
+                <td>空间中每一点都有对应物理量</td>
+                <td>解释“场”和“路”的区别</td>
+              </tr>
+              <tr>
+                <td>电路近似条件：\(l\ll\lambda\)</td>
+                <td>系统尺寸远小于波长时可用集总参数</td>
+                <td>回答何时电路理论不再适用</td>
+              </tr>
+              <tr>
+                <td>波长：\(\lambda=v/f\)</td>
+                <td>频率越高，波长越短，分布效应越明显</td>
+                <td>判断高频时必须用电磁场理论</td>
+              </tr>
+              <tr>
+                <td>电磁场基本量：\(\vec E,\vec D,\vec H,\vec B\)</td>
+                <td>\(\vec E,\vec H\) 描述场强；\(\vec D,\vec B\) 描述通量密度</td>
+                <td>概念题中区分场量和通量密度</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="chap2">Chapter 2 矢量分析</h2>
+          <h3 id="chap2-coordinate">坐标系与微元</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>坐标系</th>
+                <th>线元</th>
+                <th>面积/体积微元</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>直角坐标</td>
+                <td>\(d\vec l=\vec e_xdx+\vec e_ydy+\vec e_zdz\)</td>
+                <td>\(dV=dxdydz\)</td>
+              </tr>
+              <tr>
+                <td>柱坐标</td>
+                <td>\(d\vec l=\vec e_\rho d\rho+\vec e_\phi\rho d\phi+\vec e_zdz\)</td>
+                <td>\(dV=\rho\,d\rho\,d\phi\,dz\)</td>
+              </tr>
+              <tr>
+                <td>球坐标</td>
+                <td>\(d\vec l=\vec e_rdr+\vec e_\theta r\,d\theta+\vec e_\phi r\sin\theta\,d\phi\)</td>
+                <td>\(dV=r^2\sin\theta\,dr\,d\theta\,d\phi\)</td>
+              </tr>
+              <tr>
+                <td>柱坐标面元</td>
+                <td>\(\rho=\text{const}:d\vec S=\vec e_\rho\rho d\phi dz\)</td>
+                <td>\(\phi=\text{const}:d\vec S=\vec e_\phi d\rho dz,\ z=\text{const}:d\vec S=\vec e_z\rho d\rho d\phi\)</td>
+              </tr>
+              <tr>
+                <td>球坐标面元</td>
+                <td>\(r=\text{const}:d\vec S=\vec e_r r^2\sin\theta d\theta d\phi\)</td>
+                <td>\(\theta=\text{const}:d\vec S=\vec e_\theta r\sin\theta drd\phi,\ \phi=\text{const}:d\vec S=\vec e_\phi rdrd\theta\)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="chap2-operator">梯度、散度、旋度与定理</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>含义</th>
+                <th>使用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\nabla u=\vec e_x\dfrac{\partial u}{\partial x}+\vec e_y\dfrac{\partial u}{\partial y}+\vec e_z\dfrac{\partial u}{\partial z}\)</td>
+                <td>直角坐标梯度</td>
+                <td>由电势求电场：\(\vec E=-\nabla\varphi\)</td>
+              </tr>
+              <tr>
+                <td>\(\nabla u=\vec e_\rho\dfrac{\partial u}{\partial\rho}+\vec e_\phi\dfrac1\rho\dfrac{\partial u}{\partial\phi}+\vec e_z\dfrac{\partial u}{\partial z}\)</td>
+                <td>柱坐标梯度</td>
+                <td>同轴线、圆柱对称问题</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec A=\dfrac{\partial A_x}{\partial x}+\dfrac{\partial A_y}{\partial y}+\dfrac{\partial A_z}{\partial z}\)</td>
+                <td>直角坐标散度</td>
+                <td>判断通量源，配合高斯定理</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec A=\dfrac1\rho\dfrac{\partial(\rho A_\rho)}{\partial\rho}+\dfrac1\rho\dfrac{\partial A_\phi}{\partial\phi}+\dfrac{\partial A_z}{\partial z}\)</td>
+                <td>柱坐标散度</td>
+                <td>柱对称场的散度</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\times\vec A=
+                \begin{vmatrix}
+                \vec e_x&\vec e_y&\vec e_z\\
+                \partial/\partial x&\partial/\partial y&\partial/\partial z\\
+                A_x&A_y&A_z
+                \end{vmatrix}\)</td>
+                <td>直角坐标旋度</td>
+                <td>判断环量源，配合法拉第/安培定律</td>
+              </tr>
+              <tr>
+                <td>\(\nabla^2u=\dfrac{\partial^2u}{\partial x^2}+\dfrac{\partial^2u}{\partial y^2}+\dfrac{\partial^2u}{\partial z^2}\)</td>
+                <td>直角坐标标量拉普拉斯</td>
+                <td>泊松方程、拉普拉斯方程</td>
+              </tr>
+              <tr>
+                <td>\(\nabla^2u=\dfrac1\rho\dfrac{\partial}{\partial\rho}\left(\rho\dfrac{\partial u}{\partial\rho}\right)+\dfrac1{\rho^2}\dfrac{\partial^2u}{\partial\phi^2}+\dfrac{\partial^2u}{\partial z^2}\)</td>
+                <td>柱坐标标量拉普拉斯</td>
+                <td>同轴结构电势、电阻、电容</td>
+              </tr>
+              <tr>
+                <td>\(\oint_S\vec A\cdot d\vec S=\int_V\nabla\cdot\vec A\,dV\)</td>
+                <td>高斯散度定理</td>
+                <td>积分式和微分式互化</td>
+              </tr>
+              <tr>
+                <td>\(\oint_C\vec A\cdot d\vec l=\int_S(\nabla\times\vec A)\cdot d\vec S\)</td>
+                <td>斯托克斯定理</td>
+                <td>环路积分与旋度互化</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\times\nabla u=0,\quad \nabla\cdot(\nabla\times\vec A)=0\)</td>
+                <td>梯度无旋，旋度无散</td>
+                <td>解释势函数和磁矢位</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="chap3">Chapter 3 静电场</h2>
+          <h3 id="chap3-charge">电荷、电场与电势</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>含义</th>
+                <th>使用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(q=\int_V\rho_vdV,\quad q=\int_S\rho_sdS,\quad q=\int_L\rho_ldl\)</td>
+                <td>由体/面/线电荷密度求总电荷</td>
+                <td>Q1 小计算</td>
+              </tr>
+              <tr>
+                <td>\(\vec E=\dfrac{\vec F}{q}\)</td>
+                <td>电场强度定义</td>
+                <td>概念题</td>
+              </tr>
+              <tr>
+                <td>\(\vec E=\dfrac{q}{4\pi\varepsilon R^2}\vec e_R\)</td>
+                <td>点电荷电场</td>
+                <td>库仑定律直接计算</td>
+              </tr>
+              <tr>
+                <td>\(d\vec E=\dfrac{\rho_vdV}{4\pi\varepsilon R^2}\vec e_R\)</td>
+                <td>连续电荷分布电场元</td>
+                <td>场源积分法</td>
+              </tr>
+              <tr>
+                <td>\(\oint_S\vec E\cdot d\vec S=\dfrac{q_{\text{enc}}}{\varepsilon}\)</td>
+                <td>高斯定律积分形式</td>
+                <td>球、柱、面对称电场</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec E=\rho_v/\varepsilon,\quad \nabla\times\vec E=0\)</td>
+                <td>静电场有散无旋</td>
+                <td>静电场基本性质</td>
+              </tr>
+              <tr>
+                <td>\(\vec E=-\nabla\varphi\)</td>
+                <td>电势与电场关系</td>
+                <td>由电势求场</td>
+              </tr>
+              <tr>
+                <td>\(\varphi=\dfrac{q}{4\pi\varepsilon R}\)</td>
+                <td>点电荷电势</td>
+                <td>叠加求电势</td>
+              </tr>
+              <tr>
+                <td>\(V_{ab}=\varphi_a-\varphi_b=\int_a^b\vec E\cdot d\vec l\)</td>
+                <td>两点电位差</td>
+                <td>由场积分求电压</td>
+              </tr>
+              <tr>
+                <td>\(E_\rho=\rho_l/(2\pi\varepsilon\rho)\)</td>
+                <td>无限长线电荷电场</td>
+                <td>柱面高斯面</td>
+              </tr>
+              <tr>
+                <td>\(E=\rho_s/(2\varepsilon)\)</td>
+                <td>无限大均匀面电荷单侧场强</td>
+                <td>平面对称问题</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3 id="chap3-media">导体、介质、电容与能量</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>含义</th>
+                <th>使用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\vec D=\varepsilon_0\vec E+\vec P\)</td>
+                <td>电位移定义</td>
+                <td>介质极化题</td>
+              </tr>
+              <tr>
+                <td>\(\vec P=\varepsilon_0\chi_e\vec E,\quad \vec D=\varepsilon\vec E\)</td>
+                <td>线性各向同性介质</td>
+                <td>介质中电场、电位移换算</td>
+              </tr>
+              <tr>
+                <td>\(\rho_p=-\nabla\cdot\vec P,\quad \rho_{ps}=\vec P\cdot\vec e_n\)</td>
+                <td>体/面极化电荷密度</td>
+                <td>介质极化概念题</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec D=\rho_f\)</td>
+                <td>电位移高斯定律</td>
+                <td>只计自由电荷</td>
+              </tr>
+              <tr>
+                <td>\(\vec e_n\times(\vec E_1-\vec E_2)=0\)</td>
+                <td>切向电场连续</td>
+                <td>静电介质边界</td>
+              </tr>
+              <tr>
+                <td>\(\vec e_n\cdot(\vec D_1-\vec D_2)=\rho_s\)</td>
+                <td>法向电位移跳变</td>
+                <td>有自由面电荷时</td>
+              </tr>
+              <tr>
+                <td>\(C=q/U\)</td>
+                <td>电容定义</td>
+                <td>所有电容题起点</td>
+              </tr>
+              <tr>
+                <td>\(C=\varepsilon S/d\)</td>
+                <td>平行板电容</td>
+                <td>忽略边缘效应</td>
+              </tr>
+              <tr>
+                <td>\(C'=\dfrac{2\pi\varepsilon}{\ln(b/a)}\)</td>
+                <td>同轴线单位长度电容</td>
+                <td>内半径 \(a\)，外半径 \(b\)</td>
+              </tr>
+              <tr>
+                <td>\(C=4\pi\varepsilon a\)</td>
+                <td>孤立导体球电容</td>
+                <td>2023 Q1 类型小计算</td>
+              </tr>
+              <tr>
+                <td>\(w_e=\dfrac12\vec E\cdot\vec D=\dfrac12\varepsilon E^2\)</td>
+                <td>静电能量密度</td>
+                <td>场能法</td>
+              </tr>
+              <tr>
+                <td>\(W_e=\dfrac12CU^2=\dfrac12qU=\dfrac{q^2}{2C}\)</td>
+                <td>电容储能</td>
+                <td>电容能量计算</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="chap4">Chapter 4 静电边值问题</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>含义</th>
+                <th>使用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(\nabla^2\varphi=-\rho_v/\varepsilon\)</td>
+                <td>泊松方程</td>
+                <td>有源区电势方程</td>
+              </tr>
+              <tr>
+                <td>\(\nabla^2\varphi=0\)</td>
+                <td>拉普拉斯方程</td>
+                <td>无源区电势方程</td>
+              </tr>
+              <tr>
+                <td>\(\varphi|_S=f\)</td>
+                <td>第一类边界条件</td>
+                <td>给定边界电势</td>
+              </tr>
+              <tr>
+                <td>\(\partial\varphi/\partial n|_S=g\)</td>
+                <td>第二类边界条件</td>
+                <td>给定法向电场或面电荷</td>
+              </tr>
+              <tr>
+                <td>\(\varphi\to0\quad(r\to\infty)\)</td>
+                <td>自然边界条件</td>
+                <td>无穷远参考点</td>
+              </tr>
+              <tr>
+                <td>同一方程 + 同一边界条件 \(\Rightarrow\) 解唯一</td>
+                <td>唯一性定理</td>
+                <td>镜像法正确性的依据</td>
+              </tr>
+              <tr>
+                <td>点电荷 \(q\) 对无限接地导体平面：镜像电荷 \(-q\)</td>
+                <td>镜像法基本模型</td>
+                <td>导体平面附近点电荷</td>
+              </tr>
+              <tr>
+                <td>\(\varphi=\dfrac{1}{4\pi\varepsilon}\left(\dfrac{q}{R_+}-\dfrac{q}{R_-}\right)\)</td>
+                <td>接地平面镜像电势</td>
+                <td>只在实际求解区域使用</td>
+              </tr>
+              <tr>
+                <td>不整理分离变量通解</td>
+                <td>本次期末范围排除分离变量法</td>
+                <td>只保留方程、边界与唯一性概念</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="chap5">Chapter 5 稳恒电流</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>公式</th>
+                <th>含义</th>
+                <th>使用场景</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(I=\int_S\vec J\cdot d\vec S\)</td>
+                <td>电流强度</td>
+                <td>由电流密度求总电流</td>
+              </tr>
+              <tr>
+                <td>\(\vec J=\sigma\vec E\)</td>
+                <td>微分形式欧姆定律</td>
+                <td>线性各向同性导电媒质</td>
+              </tr>
+              <tr>
+                <td>\(\vec J=\rho_v\vec v\)</td>
+                <td>运流电流密度</td>
+                <td>运动电荷形成电流</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec J=-\partial\rho_v/\partial t\)</td>
+                <td>电流连续性方程</td>
+                <td>电荷守恒</td>
+              </tr>
+              <tr>
+                <td>\(\nabla\cdot\vec J=0\)</td>
+                <td>稳恒电流连续性</td>
+                <td>KCL 的场论形式</td>
+              </tr>
+              <tr>
+                <td>\(\oint_C\vec E\cdot d\vec l=0\)</td>
+                <td>电源外稳恒电流场近似无旋</td>
+                <td>电位函数法</td>
+              </tr>
+              <tr>
+                <td>\(\vec E=-\nabla\varphi,\quad \nabla\cdot(\sigma\nabla\varphi)=0\)</td>
+                <td>稳恒电流电势方程</td>
+                <td>非均匀导电媒质</td>
+              </tr>
+              <tr>
+                <td>\(\nabla^2\varphi=0\)</td>
+                <td>均匀导电媒质中电势满足拉普拉斯方程</td>
+                <td>电阻计算</td>
+              </tr>
+              <tr>
+                <td>\(\vec e_n\cdot(\vec J_1-\vec J_2)=0\)</td>
+                <td>法向电流密度连续</td>
+                <td>稳恒电流边界</td>
+              </tr>
+              <tr>
+                <td>\(\vec e_n\times(\vec E_1-\vec E_2)=0\)</td>
+                <td>切向电场连续</td>
+                <td>导电媒质界面</td>
+              </tr>
+              <tr>
+                <td>\(p=\vec J\cdot\vec E=\sigma E^2=J^2/\sigma\)</td>
+                <td>焦耳损耗功率密度</td>
+                <td>损耗计算</td>
+              </tr>
+              <tr>
+                <td>\(R=U/I,\quad G=I/U,\quad R=\dfrac{l}{\sigma S}\)</td>
+                <td>电阻、电导与均匀导体电阻</td>
+                <td>简单导体电阻计算</td>
+              </tr>
+              <tr>
+                <td>\(R=\dfrac{\ln(b/a)}{2\pi\sigma l}\)</td>
+                <td>同轴圆柱径向导电电阻</td>
+                <td>内半径 \(a\)、外半径 \(b\)、长度 \(l\)</td>
+              </tr>
+              <tr>
+                <td>\(R=\dfrac{\phi_0}{\sigma h\ln(r_2/r_1)}\)</td>
+                <td>扇形环状导体沿 \(\phi\) 方向电阻</td>
+                <td>第 5 章环形导电媒质类型</td>
               </tr>
             </tbody>
           </table>
@@ -652,6 +1075,21 @@
                 <td>对称性是否足够强</td>
               </tr>
               <tr>
+                <td>电荷密度、电势、电容</td>
+                <td>\(q=\int\rho dV,\ \vec E=-\nabla\varphi,\ C=q/U\)</td>
+                <td>先判断体/面/线电荷和几何对称性</td>
+              </tr>
+              <tr>
+                <td>静电边界、介质界面</td>
+                <td>\(E_t\) 连续，\(D_n\) 按自由面电荷跳变</td>
+                <td>法向方向必须先定清楚</td>
+              </tr>
+              <tr>
+                <td>稳恒电流、电阻</td>
+                <td>\(\vec J=\sigma\vec E,\ I=\int\vec J\cdot d\vec S,\ R=U/I\)</td>
+                <td>均匀导体才可直接用 \(R=l/(\sigma S)\)</td>
+              </tr>
+              <tr>
                 <td>圆环轴线、有限导线、电流元</td>
                 <td>毕奥-萨伐尔定律</td>
                 <td>\(d\vec l\times\vec R\) 方向</td>
@@ -686,7 +1124,7 @@
         </article>
 
         <footer class="footer">
-          <p><a href="chap6.html">Chapter 6 静磁场</a> / <a href="examples.html">例题全集</a></p>
+          <p><a href="final-review.html">期末复习</a> / <a href="chap6.html">Chapter 6 静磁场</a> / <a href="examples.html">例题全集</a></p>
         </footer>
       </main>
 
@@ -694,6 +1132,15 @@
         <p class="toc-title">目录</p>
         <ul class="toc-list">
           <li><a href="#常数">常数</a></li>
+          <li><a href="#chap1">Chapter 1</a></li>
+          <li><a href="#chap2">Chapter 2</a></li>
+          <li><a href="#chap2-coordinate">坐标微元</a></li>
+          <li><a href="#chap2-operator">矢量算子</a></li>
+          <li><a href="#chap3">Chapter 3</a></li>
+          <li><a href="#chap3-charge">静电场</a></li>
+          <li><a href="#chap3-media">电容与能量</a></li>
+          <li><a href="#chap4">Chapter 4</a></li>
+          <li><a href="#chap5">Chapter 5</a></li>
           <li><a href="#chap6">Chapter 6</a></li>
           <li><a href="#chap6-basic">基本方程</a></li>
           <li><a href="#chap6-field">求磁场</a></li>
