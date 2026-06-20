@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lecture 1-3：建模、传递函数与框图</title>
+    <meta name="description" content="动力学与控制 Lecture 1-3 笔记：动态系统建模、拉普拉斯变换、传递函数、开闭环与框图化简。"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">动力学与控制</span>
+          <span class="brand-subtitle">Lecture、Tutorial 与真题复习站</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索页面" aria-label="搜索页面" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a data-search-item href="final-review.html">期末总复习</a></li>
+            <li><a class="active" data-search-item href="lectures-1-3.html">Lecture 1-3</a></li>
+            <li><a data-search-item href="lectures-4-6.html">Lecture 4-6</a></li>
+            <li><a data-search-item href="lectures-7-10.html">Lecture 7-10</a></li>
+            <li><a data-search-item href="lectures-11-13.html">Lecture 11-13</a></li>
+            <li><a data-search-item href="worked-examples.html">Tutorial 与例题</a></li>
+            <li><a data-search-item href="exam-analysis.html">真题题型统计</a></li>
+            <li><a data-search-item href="formulas.html">公式总结</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb">动力学与控制 / Lecture 1-3</div>
+          <h1>Lecture 1-3：建模、传递函数与框图</h1>
+          <p class="meta">对应 1.pptx、2.pptx、3.pptx：动态系统入门、系统表示、框图化简与扰动分析。</p>
+        </header>
+
+        <article>
+          <h2 id="lecture1">Lecture 1：动态系统、建模与拉普拉斯</h2>
+          <p>
+            这一讲的真正任务只有一个：把“真实系统”翻译成“数学对象”。课程里常见的对象是机械系统和电气系统，最后都要变成微分方程，
+            然后再拉普拉斯变换成传递函数。
+          </p>
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>机械系统</strong>
+              <p class="formula">\[
+              F=m\ddot x,\qquad
+              F=b\dot x,\qquad
+              F=kx
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>电气系统</strong>
+              <p class="formula">\[
+              V=Ri,\qquad
+              i=C\frac{dv}{dt},\qquad
+              V=L\frac{di}{dt}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>传递函数定义</strong>
+              <p class="formula">\[
+              G(s)=\frac{C(s)}{R(s)}
+              \]</p>
+              <p class="mini-note">默认零初始条件，这个条件考试很爱默认不说。</p>
+            </div>
+          </div>
+
+          <div class="problem">
+            <p class="problem-title">Lecture 1 例题类型</p>
+            <p>Mechanical System Modelling；Transfer Function for a mechanical system；Obtain transfer functions for the below systems。</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">通用解法</p>
+            <ol>
+              <li>先画受力图或电路图，不急着写公式。</li>
+              <li>按照牛顿定律 / KVL / KCL 写微分方程。</li>
+              <li>做拉普拉斯变换，整理成输出 / 输入。</li>
+              <li>最后再读极点、零点和系统阶次。</li>
+            </ol>
+          </div>
+
+          <h3 id="standard-inputs">标准输入与低阶系统</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>对象</th>
+                <th>标准形式</th>
+                <th>考法</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>一阶系统</td>
+                <td>\(G(s)=\dfrac{K}{\tau s+1}\)</td>
+                <td>看 \(\tau\) 决定快慢，算 step final value 与误差</td>
+              </tr>
+              <tr>
+                <td>二阶系统</td>
+                <td>\(G(s)=\dfrac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}\)</td>
+                <td>由 \(\zeta,\omega_n\) 读超调、振荡和 settling time</td>
+              </tr>
+              <tr>
+                <td>输入类型</td>
+                <td>\(1/s,1/s^2,\omega/(s^2+\omega^2)\)</td>
+                <td>决定稳态误差是看 \(K_p,K_v,K_a\) 还是直接终值定理</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="lecture2">Lecture 2：开环、闭环与 block diagram</h2>
+          <p>
+            Lecture 2 其实是在建立控制系统的语法。你要能把“传感器、执行器、控制器、被控对象、反馈”画成 block diagram，
+            然后知道每个箭头上是什么信号。
+          </p>
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>负反馈闭环</strong>
+              <p class="formula">\[
+              T(s)=\frac{G(s)}{1+G(s)H(s)}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>误差传递函数</strong>
+              <p class="formula">\[
+              \frac{E(s)}{R(s)}=\frac{1}{1+G(s)H(s)}
+              \]</p>
+            </div>
+          </div>
+
+          <div class="problem">
+            <p class="problem-title">Lecture 2 高频题</p>
+            <p>Example: Control of the speed of rotation of a motor shaft；Example: Block Diagram Representation of Control Systems。</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">作答重点</p>
+            <ul class="tight-list">
+              <li>说明 reference、error、controller、plant、sensor 各自扮演的角色。</li>
+              <li>写闭环优点时，不只写“更好”，而要写“能抑制扰动和参数变化”。</li>
+              <li>画 block diagram 时，反馈线上的量必须和比较节点上的量物理一致。</li>
+            </ul>
+          </div>
+
+          <h2 id="lecture3">Lecture 3：框图化简与扰动</h2>
+          <p>
+            Lecture 3 是 exam paper Q1 的常驻内容。你不是在“做算术”，而是在把复杂系统一点点折叠成一个可分析的闭环。
+            这一讲里最实用的不是规则本身，而是<strong>保留中间步骤</strong>。
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>规则</th>
+                <th>等效式</th>
+                <th>提醒</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>串联</td>
+                <td>\(G_{eq}=G_1G_2\)</td>
+                <td>注意信号方向，别把反馈块串进去</td>
+              </tr>
+              <tr>
+                <td>并联</td>
+                <td>\(G_{eq}=G_1\pm G_2\)</td>
+                <td>正负号由求和点决定</td>
+              </tr>
+              <tr>
+                <td>反馈</td>
+                <td>\(G_{eq}=\dfrac{G}{1\pm GH}\)</td>
+                <td>负反馈是 \(1+GH\)，这个符号错一次整题都歪</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <strong>扰动题常用套路</strong>
+            <ol>
+              <li>每次只保留一个输入，其他输入置零。</li>
+              <li>分别求 \(C(s)/R(s)\)、\(C(s)/D(s)\)。</li>
+              <li>只要系统还是闭环，分母里通常都会出现同一个特征项 \(1+GH\)。</li>
+            </ol>
+          </div>
+
+          <h2 id="必会">这一组 Lecture 必会</h2>
+          <ul class="tight-list">
+            <li>会从机械/电气系统写出微分方程，再变成传递函数。</li>
+            <li>知道传递函数默认零初始条件。</li>
+            <li>会区分 open-loop 和 closed-loop，能解释反馈的意义。</li>
+            <li>会画 block diagram，并逐步化简为单一传递函数。</li>
+            <li>会处理 disturbance 从中间注入的情况。</li>
+          </ul>
+        </article>
+
+        <footer class="footer">
+          <p>Lecture 1-3 correspond to system modelling, transfer functions, and block-diagram fundamentals.</p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#lecture1">Lecture 1</a></li>
+          <li><a href="#standard-inputs">标准输入与低阶系统</a></li>
+          <li><a href="#lecture2">Lecture 2</a></li>
+          <li><a href="#lecture3">Lecture 3</a></li>
+          <li><a href="#必会">这一组 Lecture 必会</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>

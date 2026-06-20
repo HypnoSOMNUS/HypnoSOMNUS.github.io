@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lecture 4-6：极点零点、稳定性与控制作用</title>
+    <meta name="description" content="动力学与控制 Lecture 4-6：极点零点、特征方程、Routh 稳定判据与 P/I/D/PID 控制作用。"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">动力学与控制</span>
+          <span class="brand-subtitle">Lecture、Tutorial 与真题复习站</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索页面" aria-label="搜索页面" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a data-search-item href="final-review.html">期末总复习</a></li>
+            <li><a data-search-item href="lectures-1-3.html">Lecture 1-3</a></li>
+            <li><a class="active" data-search-item href="lectures-4-6.html">Lecture 4-6</a></li>
+            <li><a data-search-item href="lectures-7-10.html">Lecture 7-10</a></li>
+            <li><a data-search-item href="lectures-11-13.html">Lecture 11-13</a></li>
+            <li><a data-search-item href="worked-examples.html">Tutorial 与例题</a></li>
+            <li><a data-search-item href="exam-analysis.html">真题题型统计</a></li>
+            <li><a data-search-item href="formulas.html">公式总结</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb">动力学与控制 / Lecture 4-6</div>
+          <h1>Lecture 4-6：极点零点、稳定性与控制作用</h1>
+          <p class="meta">对应 4.pdf、5.pdf、6.pdf：从 poles and zeros 走到 Routh，再走到 P / I / D / PID 的响应影响。</p>
+        </header>
+
+        <article>
+          <h2 id="lecture4">Lecture 4：极点零点、特征方程与 Routh</h2>
+          <p>
+            这一讲几乎就是“稳定性语言课”。极点决定自然响应；闭环分母决定稳定性；Routh 让你不必真的把根解出来。
+          </p>
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>极点 / 零点</strong>
+              <p>极点是分母为零的根，零点是分子为零的根。</p>
+            </div>
+            <div class="callout">
+              <strong>特征方程</strong>
+              <p class="formula">\[
+              a_ns^n+a_{n-1}s^{n-1}+\cdots+a_0=0
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>Routh 条件</strong>
+              <p>Routh 表第一列全同号，系统稳定；符号变化数 = 右半平面极点数。</p>
+            </div>
+          </div>
+
+          <div class="problem">
+            <p class="problem-title">高频题</p>
+            <p>Exercise: Poles, Zeros, Characteristic Equation；Exercise: Routh's Stability Criterion。</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">Routh 题低错率写法</p>
+            <ol>
+              <li>先明确这是<strong>闭环特征方程</strong>。</li>
+              <li>按降幂列系数，Routh 表别漏零项。</li>
+              <li>最终答案用“因此系统稳定当 ...”整句收尾。</li>
+            </ol>
+          </div>
+
+          <h2 id="lecture5">Lecture 5：P / D / I / PD / PI / PID</h2>
+          <p>
+            这一讲的重点不是把六种控制器背成六段定义，而是知道它们分别在“稳态误差、速度、超调、阻尼、噪声敏感性”上做了什么交易。
+          </p>
+          <table>
+            <thead>
+              <tr>
+                <th>控制器</th>
+                <th>主要作用</th>
+                <th>典型代价</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>P</td>
+                <td>提高响应力度、减小误差</td>
+                <td>太大时会振荡甚至失稳</td>
+              </tr>
+              <tr>
+                <td>I</td>
+                <td>消除常值稳态误差，提高系统型别</td>
+                <td>相位滞后、响应可能变慢</td>
+              </tr>
+              <tr>
+                <td>D</td>
+                <td>增加阻尼、减小超调、改善暂态</td>
+                <td>容易放大高频噪声</td>
+              </tr>
+              <tr>
+                <td>PID</td>
+                <td>综合改善暂态与稳态</td>
+                <td>调参复杂</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>P / I / D</strong>
+              <p class="formula">\[
+              u=K_pe,\qquad
+              u=K_i\int e\,dt,\qquad
+              u=K_d\frac{de}{dt}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>PID</strong>
+              <p class="formula">\[
+              u=K_pe+K_i\int e\,dt+K_d\frac{de}{dt}
+              \]</p>
+            </div>
+          </div>
+
+          <h3 id="why-pd">为什么 D 通常要和 P 一起用</h3>
+          <p>
+            exam paper 很爱问这一点。只用 D 控制几乎不能对常值误差给出有效驱动力，而且对噪声很敏感；加上 P 后，P 负责“给力度”，D 负责
+            “看趋势提前刹车”，两者互补，所以 PD 常被用来提高阻尼和稳定性。
+          </p>
+
+          <h2 id="lecture6">Lecture 6：控制器对一阶 / 二阶系统的影响</h2>
+          <p>
+            Lecture 6 把控制作用和具体响应挂钩：你不再只说“PD 增阻尼”，而要能说出闭环分母怎么变、\(\zeta\) 和 \(\omega_n\) 怎么变。
+          </p>
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>标准二阶形式</strong>
+              <p class="formula">\[
+              \frac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>常用指标</strong>
+              <p class="formula">\[
+              T_s\approx\frac{4}{\zeta\omega_n},\quad
+              M_p=e^{-\zeta\pi/\sqrt{1-\zeta^2}}\times100\%
+              \]</p>
+            </div>
+          </div>
+
+          <div class="problem">
+            <p class="problem-title">Lecture 6 高频例题</p>
+            <p>Exercise 1；PI / PID 对一阶与二阶系统响应的影响；从闭环分母读 damping ratio。</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">最实用的习惯</p>
+            <ul class="tight-list">
+              <li>把闭环分母配成标准二阶形式，再读 \(\zeta\)、\(\omega_n\)。</li>
+              <li>看到积分器就想系统型别会不会增加。</li>
+              <li>题目说 non-oscillatory response，通常意味着 \(\zeta\ge 1\) 或极点为实数。</li>
+            </ul>
+          </div>
+
+          <h2 id="必会">这一组 Lecture 必会</h2>
+          <ul class="tight-list">
+            <li>能从传递函数读 poles、zeros、order 和 characteristic equation。</li>
+            <li>会建立 Routh 表并求稳定参数范围。</li>
+            <li>能解释 P / I / D / PI / PD / PID 的作用与代价。</li>
+            <li>会用终值定理和误差常数求 steady-state error。</li>
+            <li>会把闭环分母凑成标准二阶形式，从中读 damping ratio 和 settling time。</li>
+          </ul>
+        </article>
+
+        <footer class="footer">
+          <p>Lecture 4-6 bridge the conceptual gap between transfer functions and actual closed-loop performance.</p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#lecture4">Lecture 4</a></li>
+          <li><a href="#lecture5">Lecture 5</a></li>
+          <li><a href="#why-pd">为什么 D 常和 P 一起用</a></li>
+          <li><a href="#lecture6">Lecture 6</a></li>
+          <li><a href="#必会">这一组 Lecture 必会</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>

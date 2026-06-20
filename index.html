@@ -3,17 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>电磁场与波学习笔记</title>
-    <meta
-      name="description"
-      content="电磁场与波学习资料整理：期末复习、静磁场、时变场、麦克斯韦方程与平面电磁波。"
-    />
+    <title>HypnoSOMNUS 学习笔记</title>
+    <meta name="description" content="HypnoSOMNUS 双课程学习资料站：电磁场与波与动力学与控制。" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="assets/styles.css" />
     <script>
       window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
@@ -25,37 +19,31 @@
     <div class="site-shell">
       <aside class="sidebar">
         <a class="brand" href="./">
-          <span class="brand-title">电磁场与波</span>
-          <span class="brand-subtitle">知识点与例题笔记</span>
+          <span class="brand-title">HypnoSOMNUS</span>
+          <span class="brand-subtitle">双课程学习笔记站</span>
         </a>
         <div class="controls">
-          <input class="search" data-search type="search" placeholder="搜索章节" aria-label="搜索章节" />
-          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">
-            ◐
-          </button>
+          <input class="search" data-search type="search" placeholder="搜索页面" aria-label="搜索页面" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
         </div>
         <nav class="nav-section" aria-label="探索">
           <p class="nav-title">探索</p>
           <ul class="nav-list">
             <li><a class="active" data-search-item href="./">首页</a></li>
-            <li><a data-search-item href="final-review.html">期末复习</a></li>
-            <li><a data-search-item href="exam-analysis.html">真题题型统计</a></li>
-            <li><a data-search-item href="chap6.html">Chapter 6 静磁场</a></li>
-            <li><a data-search-item href="chap7.html">Chapter 7 时变场与麦克斯韦方程</a></li>
-            <li><a data-search-item href="chap8.html">Chapter 8 平面电磁波</a></li>
-            <li><a data-search-item href="examples.html">例题全集</a></li>
-            <li><a data-search-item href="formulas.html">公式总结</a></li>
+            <li><a data-search-item href="final-review.html">电磁场与波 / 期末复习</a></li>
+            <li><a data-search-item href="exam-analysis.html">电磁场与波 / 真题题型统计</a></li>
+            <li><a data-search-item href="chap6.html">电磁场与波 / Chapter 6-8</a></li>
+            <li><a data-search-item href="dynamics-control/">动力学与控制 / 首页</a></li>
+            <li><a data-search-item href="dynamics-control/final-review.html">动力学与控制 / 期末总复习</a></li>
+            <li><a data-search-item href="dynamics-control/exam-analysis.html">动力学与控制 / 真题题型统计</a></li>
           </ul>
         </nav>
         <nav class="nav-section" aria-label="参考">
           <p class="nav-title">参考</p>
           <ul class="nav-list">
-            <li>
-              <a href="https://cateds.github.io/EngProjManagement-Finance.md/" rel="noreferrer">参考排版站点</a>
-            </li>
-            <li>
-              <a href="https://github.com/HypnoSOMNUS/HypnoSOMNUS.github.io" rel="noreferrer">GitHub 仓库</a>
-            </li>
+            <li><a href="https://cateds.github.io/EngProjManagement-Finance.md/" rel="noreferrer">参考排版站点 1</a></li>
+            <li><a href="https://cateds.github.io/PowerElectronics.md/" rel="noreferrer">参考排版站点 2</a></li>
+            <li><a href="https://github.com/HypnoSOMNUS/HypnoSOMNUS.github.io" rel="noreferrer">GitHub 仓库</a></li>
           </ul>
         </nav>
       </aside>
@@ -63,56 +51,37 @@
       <main class="page">
         <header class="page-header">
           <div class="breadcrumb">首页</div>
-          <h1>电磁场与波学习笔记</h1>
-          <p class="meta">按考试范围整理：期末复习总览、第 6 章知识点、第 7、8 章例题与公式速查。</p>
+          <h1>双课程学习笔记站</h1>
+          <p class="meta">电磁场与波和动力学与控制都放在同一个仓库里，按子目录分别维护。</p>
         </header>
 
         <article>
           <blockquote>
-            <p>
-              这份笔记参考 Quartz 风格课程站的阅读结构：左侧目录，中间正文，右侧章节内目录。期末复习页按 Q1-Q4 题型组织，
-              章节页和公式页用于补充细节。
-            </p>
+            <p>这份站点参考 Quartz 风格课程站的阅读结构：左侧目录，中间正文，右侧章节内目录。现在根目录保留电磁场与波，`dynamics-control/` 子目录新增动力学与控制。</p>
           </blockquote>
 
           <h2 id="目录">目录</h2>
           <div class="cards">
             <a class="card" href="final-review.html">
-              <h2>期末复习</h2>
-              <p>按 Q1-Q4 考试结构整理概念题、小计算和大计算模板，覆盖全书范围并排除分离变量法。</p>
+              <h2>电磁场与波</h2>
+              <p>期末复习、真题题型统计、Chapter 6-8、例题全集和公式总结。</p>
             </a>
-            <a class="card" href="exam-analysis.html">
-              <h2>真题题型统计</h2>
-              <p>基于 2022-2025 往年题和 2026 模拟题，统计高频题型、知识点和复习优先级。</p>
+            <a class="card" href="dynamics-control/">
+              <h2>动力学与控制</h2>
+              <p>首页、期末总复习、Lecture 1-13、tutorial 例题、真题统计和公式总结。</p>
             </a>
             <a class="card" href="chap6.html">
-              <h2>Chapter 6</h2>
-              <p>按知识点整理静磁场：基本方程、磁矢位、毕奥-萨伐尔定律、磁化、边界条件、电感与磁能。</p>
-            </a>
-            <a class="card" href="chap7.html">
-              <h2>Chapter 7</h2>
-              <p>从法拉第电磁感应出发，理解位移电流、麦克斯韦方程、边界条件、波动方程与时谐复矢量。</p>
-            </a>
-            <a class="card" href="chap8.html">
-              <h2>Chapter 8</h2>
-              <p>围绕平面电磁波，整理无耗介质、有耗介质、极化、坡印廷矢量、正入射反射与透射。</p>
-            </a>
-            <a class="card" href="examples.html">
-              <h2>例题全集</h2>
-              <p>按课件顺序列出第 7、8 章全部例题原题，并给出完整计算过程和答案。</p>
-            </a>
-            <a class="card" href="formulas.html">
-              <h2>公式总结</h2>
-              <p>按第 1-8 章整理核心公式、适用条件和常见题型入口，方便考前速查。</p>
+              <h2>电磁场与波 / Chapter 6-8</h2>
+              <p>Chapter 6 按知识点，Chapter 7-8 按例题，公式总结覆盖第 1-8 章。</p>
             </a>
           </div>
 
           <h2 id="学习路线">学习路线</h2>
           <ol>
-            <li>先看期末复习页，明确 Q1-Q4 各自考什么、怎么答。</li>
-            <li>Q1 用公式总结补全全书概念和小计算，跳过第 4 章分离变量法。</li>
-            <li>Q2 回到第 6 章，重点练 \(B,H,M,J_M\)、自感、互感和磁能。</li>
-            <li>Q3-Q4 用第 7、8 章例题训练传播、衰减、能流、反射和透射。</li>
+            <li>电磁场与波先看期末复习页，明确 Q1-Q4 各自考什么、怎么答。</li>
+            <li>动力学与控制先看首页和期末总复习，再按 Lecture 1-13 逐段推进。</li>
+            <li>两门课都先看公式总结，再回到例题页和真题分析补强弱项。</li>
+            <li>考试前按真题题型统计页收束，把时间花在高频题型上。</li>
           </ol>
 
           <h2 id="速查">速查</h2>
@@ -126,34 +95,24 @@
             </thead>
             <tbody>
               <tr>
-                <td>静磁场基本方程</td>
+                <td>电磁场与波</td>
                 <td>\(\nabla\times\vec H=\vec J,\ \nabla\cdot\vec B=0\)</td>
-                <td>安培环路定律与磁通连续性</td>
+                <td>安培环路、平面波、反射透射</td>
               </tr>
               <tr>
-                <td>感应电动势</td>
-                <td>\(\varepsilon=-d\Phi/dt\)，或 \(\oint(\vec v\times\vec B)\cdot d\vec l\)</td>
-                <td>矩形回路与滑动导体棒</td>
+                <td>动力学与控制</td>
+                <td>\(T(s)=\frac{G(s)}{1+G(s)H(s)}\)</td>
+                <td>框图化简与闭环分析</td>
               </tr>
               <tr>
-                <td>时谐场</td>
-                <td>\(\vec F(t)=\operatorname{Re}[\vec F_m e^{j\omega t}]\)</td>
-                <td>复矢量与瞬时值互化</td>
+                <td>动力学与控制</td>
+                <td>\(\mathrm{PM}=180^\circ+\angle L(j\omega_{gc})\)</td>
+                <td>Bode / Nyquist / 裕度</td>
               </tr>
               <tr>
-                <td>无耗平面波</td>
-                <td>\(\eta=\sqrt{\mu/\varepsilon}\)，\(\vec H=\hat k\times\vec E/\eta\)</td>
-                <td>由 \(H_m\) 求 \(E_m\)，由 \(\beta\) 求 \(\lambda\)</td>
-              </tr>
-              <tr>
-                <td>有耗介质</td>
-                <td>\(\alpha,\beta,\eta_c,\delta\)</td>
-                <td>海水传播例题</td>
-              </tr>
-              <tr>
-                <td>正入射</td>
+                <td>电磁场与波</td>
                 <td>\(\Gamma=(\eta_2-\eta_1)/(\eta_2+\eta_1)\)</td>
-                <td>理想导体边界与介质边界</td>
+                <td>正入射、阻抗匹配、驻波</td>
               </tr>
             </tbody>
           </table>

@@ -1,14 +1,13 @@
-# 电磁场与波学习笔记
+# HypnoSOMNUS 学习笔记站
 
-> 围绕 chap6.pptx、chap7.pptx 与 chap8.pptx 的课程整理：第 6 章按知识点讲静磁场，第 7、8 章按例题讲时变场与平面电磁波。
+> 双课程课程站：电磁场与波保留在根目录，动力学与控制放在 `dynamics-control/` 子目录。
 
 - [首页](./index.html)
-- [期末复习](./final-review.html)
-- [真题题型统计](./exam-analysis.html)
-- [Chapter 6 静磁场](./chap6.html)
-- [Chapter 7 时变场与麦克斯韦方程](./chap7.html)
-- [Chapter 8 平面电磁波](./chap8.html)
-- [例题全集](./examples.html)
-- [公式总结](./formulas.html)
+- [电磁场与波期末复习](./final-review.html)
+- [电磁场与波真题题型统计](./exam-analysis.html)
+- [电磁场与波 Chapter 6-8](./chap6.html)
+- [动力学与控制首页](./dynamics-control/)
+- [动力学与控制期末总复习](./dynamics-control/final-review.html)
+- [动力学与控制真题题型统计](./dynamics-control/exam-analysis.html)
 
-主要主题：期末 Q1-Q4 复习路线、往年题与模拟题题型统计、全书概念题和小计算、矢量分析、静电场、边值问题、稳恒电流、静磁场基本方程、磁矢位、毕奥-萨伐尔定律、磁化、静磁场边界条件、电感、磁能、法拉第定律、位移电流、麦克斯韦方程、复矢量、无耗介质平面波、有耗介质、极化、坡印廷矢量、正入射边界。例题全集页按 PPT 顺序列出第 7、8 章原题与完整作答；公式总结页按第 1-8 章汇总核心公式、适用条件和题型抓手。
+主要主题：电磁场与波的 Q1-Q4 复习路线、往年题与模拟题题型统计、全书概念题和小计算、矢量分析、静电场、边值问题、稳恒电流、静磁场基本方程、磁矢位、毕奥-萨伐尔定律、磁化、静磁场边界条件、电感、磁能、法拉第定律、位移电流、麦克斯韦方程、复矢量、无耗介质平面波、有耗介质、极化、坡印廷矢量、正入射边界；以及动力学与控制的 Lecture 1-13、tutorial 与 exam paper 题型分析、Root Locus、Nyquist、Bode、裕度和补偿设计。

@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>动力学与控制公式总结</title>
+    <meta name="description" content="动力学与控制公式总结：建模、闭环、稳态误差、根轨迹、Nyquist、Bode、稳定裕度与补偿器。"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">动力学与控制</span>
+          <span class="brand-subtitle">Lecture、Tutorial 与真题复习站</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索页面" aria-label="搜索页面" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a data-search-item href="final-review.html">期末总复习</a></li>
+            <li><a data-search-item href="lectures-1-3.html">Lecture 1-3</a></li>
+            <li><a data-search-item href="lectures-4-6.html">Lecture 4-6</a></li>
+            <li><a data-search-item href="lectures-7-10.html">Lecture 7-10</a></li>
+            <li><a data-search-item href="lectures-11-13.html">Lecture 11-13</a></li>
+            <li><a data-search-item href="worked-examples.html">Tutorial 与例题</a></li>
+            <li><a data-search-item href="exam-analysis.html">真题题型统计</a></li>
+            <li><a class="active" data-search-item href="formulas.html">公式总结</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb">动力学与控制 / 公式总结</div>
+          <h1>公式总结</h1>
+          <p class="meta">压成考前速查版：看到题目时，先知道该用哪一串公式，而不是把整本课件在脑中翻一遍。</p>
+        </header>
+
+        <article>
+          <h2 id="modeling">1. 建模与传递函数</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>主题</th>
+                <th>公式</th>
+                <th>用途</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>机械平移系统</td>
+                <td>\(F=m\ddot x,\ F=b\dot x,\ F=kx\)</td>
+                <td>写微分方程</td>
+              </tr>
+              <tr>
+                <td>电气系统</td>
+                <td>\(V=Ri,\ i=C\dfrac{dv}{dt},\ V=L\dfrac{di}{dt}\)</td>
+                <td>KVL / KCL 建模</td>
+              </tr>
+              <tr>
+                <td>传递函数</td>
+                <td>\(G(s)=\dfrac{C(s)}{R(s)}\)</td>
+                <td>默认零初始条件</td>
+              </tr>
+              <tr>
+                <td>标准输入</td>
+                <td>step: \(1/s\)，ramp: \(1/s^2\)，sin: \(\omega/(s^2+\omega^2)\)</td>
+                <td>进入稳态误差与频率响应题</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="basic-systems">2. 一阶与二阶系统</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>对象</th>
+                <th>公式</th>
+                <th>备注</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>一阶系统</td>
+                <td>\(G(s)=\dfrac{K}{\tau s+1}\)</td>
+                <td>\(t=\tau\) 时到达约 63.2%</td>
+              </tr>
+              <tr>
+                <td>一阶 step response</td>
+                <td>\(c(t)=K(1-e^{-t/\tau})\)</td>
+                <td>\(\tau\) 越小越快</td>
+              </tr>
+              <tr>
+                <td>二阶系统</td>
+                <td>\(G(s)=\dfrac{\omega_n^2}{s^2+2\zeta\omega_n s+\omega_n^2}\)</td>
+                <td>看 \(\zeta,\omega_n\)</td>
+              </tr>
+              <tr>
+                <td>峰值时间</td>
+                <td>\(T_p=\dfrac{\pi}{\omega_n\sqrt{1-\zeta^2}}\)</td>
+                <td>\(0&lt;\zeta&lt;1\)</td>
+              </tr>
+              <tr>
+                <td>超调</td>
+                <td>\(M_p=e^{-\zeta\pi/\sqrt{1-\zeta^2}}\times100\%\)</td>
+                <td>阻尼小则超调大</td>
+              </tr>
+              <tr>
+                <td>Settling time</td>
+                <td>\(T_s\approx\dfrac{4}{\zeta\omega_n}\)</td>
+                <td>2% 准则</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="feedback">3. 闭环与误差</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>主题</th>
+                <th>公式</th>
+                <th>用途</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>负反馈闭环</td>
+                <td>\(T(s)=\dfrac{G(s)}{1+G(s)H(s)}\)</td>
+                <td>最常用公式</td>
+              </tr>
+              <tr>
+                <td>误差传递函数</td>
+                <td>\(\dfrac{E(s)}{R(s)}=\dfrac{1}{1+G(s)H(s)}\)</td>
+                <td>steady-state error</td>
+              </tr>
+              <tr>
+                <td>终值定理</td>
+                <td>\(e_{ss}=\lim_{s\to0}sE(s)\)</td>
+                <td>使用前需确认闭环稳定</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="error-constants">4. 误差常数与系统型别</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>量</th>
+                <th>公式</th>
+                <th>对应输入</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>\(K_p\)</td>
+                <td>\(\lim_{s\to0}G(s)\)</td>
+                <td>step</td>
+              </tr>
+              <tr>
+                <td>\(K_v\)</td>
+                <td>\(\lim_{s\to0}sG(s)\)</td>
+                <td>ramp</td>
+              </tr>
+              <tr>
+                <td>\(K_a\)</td>
+                <td>\(\lim_{s\to0}s^2G(s)\)</td>
+                <td>parabolic</td>
+              </tr>
+              <tr>
+                <td>step error</td>
+                <td>\(e_{ss}=\dfrac{1}{1+K_p}\)</td>
+                <td>Type 1 及以上为 0</td>
+              </tr>
+              <tr>
+                <td>ramp error</td>
+                <td>\(e_{ss}=\dfrac{1}{K_v}\)</td>
+                <td>Type 2 及以上为 0</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="pid">5. P / I / D / PID</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>控制器</th>
+                <th>公式</th>
+                <th>直觉</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>P</td>
+                <td>\(u=K_pe\)</td>
+                <td>加快响应、减小误差</td>
+              </tr>
+              <tr>
+                <td>I</td>
+                <td>\(u=K_i\int e\,dt\)</td>
+                <td>消除常值稳态误差</td>
+              </tr>
+              <tr>
+                <td>D</td>
+                <td>\(u=K_d\dfrac{de}{dt}\)</td>
+                <td>增阻尼、减超调</td>
+              </tr>
+              <tr>
+                <td>PID</td>
+                <td>\(u=K_pe+K_i\int e\,dt+K_d\dfrac{de}{dt}\)</td>
+                <td>综合改善</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="routh">6. 稳定性与 Routh</h2>
+          <div class="callout">
+            <strong>核心原则</strong>
+            <p>闭环极点全在左半平面稳定。Routh 表第一列全同号，则闭环稳定；符号变化数等于右半平面极点数。</p>
+          </div>
+
+          <h2 id="root-locus">7. Root Locus</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>主题</th>
+                <th>公式</th>
+                <th>用途</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>角度条件</td>
+                <td>\(\angle G(s)H(s)=(2q+1)180^\circ\)</td>
+                <td>判断点是否在 locus 上</td>
+              </tr>
+              <tr>
+                <td>幅值条件</td>
+                <td>\(K=1/|G(s)H(s)|\)</td>
+                <td>求增益</td>
+              </tr>
+              <tr>
+                <td>渐近线角度</td>
+                <td>\(\theta_q=\dfrac{(2q+1)180^\circ}{n-m}\)</td>
+                <td>画无穷远分支</td>
+              </tr>
+              <tr>
+                <td>centroid</td>
+                <td>\(\sigma_a=\dfrac{\sum p-\sum z}{n-m}\)</td>
+                <td>渐近线交点</td>
+              </tr>
+              <tr>
+                <td>breakaway</td>
+                <td>\(\dfrac{dK}{ds}=0\)</td>
+                <td>找实轴离开点</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="nyquist">8. Nyquist</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>主题</th>
+                <th>公式</th>
+                <th>用途</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>频率响应</td>
+                <td>\(G(j\omega)\)</td>
+                <td>画 Nyquist / Polar 图</td>
+              </tr>
+              <tr>
+                <td>判据</td>
+                <td>\(Z=N+P\)</td>
+                <td>由开环曲线判断闭环稳定</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="bode">9. Bode 图</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>环节</th>
+                <th>幅值 / 相位特征</th>
+                <th>备注</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>常数 \(K\)</td>
+                <td>\(20\log_{10}K\)，相位 \(0^\circ\)</td>
+                <td>负增益额外带 \(\pm180^\circ\)</td>
+              </tr>
+              <tr>
+                <td>\(1/s\)</td>
+                <td>\(-20\text{ dB/dec},-90^\circ\)</td>
+                <td>积分器</td>
+              </tr>
+              <tr>
+                <td>\(s\)</td>
+                <td>\(+20\text{ dB/dec},+90^\circ\)</td>
+                <td>微分器</td>
+              </tr>
+              <tr>
+                <td>\(1+sT\)</td>
+                <td>拐点 \(1/T\)，后续斜率 +20</td>
+                <td>零点</td>
+              </tr>
+              <tr>
+                <td>\(1/(1+sT)\)</td>
+                <td>拐点 \(1/T\)，后续斜率 -20</td>
+                <td>极点</td>
+              </tr>
+              <tr>
+                <td>\(e^{-sT}\)</td>
+                <td>幅值不变，相位 \(-\omega T\)</td>
+                <td>延迟</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="margins">10. 稳定裕度</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>量</th>
+                <th>公式</th>
+                <th>读取位置</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Gain crossover</td>
+                <td>\(|L(j\omega_{gc})|=1\)</td>
+                <td>0 dB 交点</td>
+              </tr>
+              <tr>
+                <td>Phase margin</td>
+                <td>\(\mathrm{PM}=180^\circ+\angle L(j\omega_{gc})\)</td>
+                <td>\(\omega_{gc}\)</td>
+              </tr>
+              <tr>
+                <td>Phase crossover</td>
+                <td>\(\angle L(j\omega_{pc})=-180^\circ\)</td>
+                <td>相位图</td>
+              </tr>
+              <tr>
+                <td>Gain margin</td>
+                <td>\(\mathrm{GM}=1/|L(j\omega_{pc})|\)</td>
+                <td>\(\omega_{pc}\)</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="compensators">11. 补偿器</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>补偿器</th>
+                <th>公式</th>
+                <th>用途</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lead</td>
+                <td>\(G_c(s)=K_c\dfrac{Ts+1}{\alpha Ts+1},\ 0&lt;\alpha&lt;1\)</td>
+                <td>增相位裕度、提带宽</td>
+              </tr>
+              <tr>
+                <td>Lag</td>
+                <td>\(G_c(s)=K_c\dfrac{Ts+1}{\beta Ts+1},\ \beta&gt;1\)</td>
+                <td>增低频增益、降稳态误差</td>
+              </tr>
+              <tr>
+                <td>Lead 最大相位</td>
+                <td>\(\phi_{\max}=\sin^{-1}\left(\dfrac{1-\alpha}{1+\alpha}\right)\)</td>
+                <td>设计时反推 \(\alpha\)</td>
+              </tr>
+              <tr>
+                <td>对应频率</td>
+                <td>\(\omega_m=1/(T\sqrt{\alpha})\)</td>
+                <td>摆放相位峰值</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <footer class="footer">
+          <p>A compact formula sheet assembled from the condensed study notes and lecture manifest.</p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#modeling">建模</a></li>
+          <li><a href="#basic-systems">低阶系统</a></li>
+          <li><a href="#feedback">闭环与误差</a></li>
+          <li><a href="#error-constants">误差常数</a></li>
+          <li><a href="#pid">PID</a></li>
+          <li><a href="#routh">Routh</a></li>
+          <li><a href="#root-locus">Root Locus</a></li>
+          <li><a href="#nyquist">Nyquist</a></li>
+          <li><a href="#bode">Bode</a></li>
+          <li><a href="#margins">稳定裕度</a></li>
+          <li><a href="#compensators">补偿器</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>

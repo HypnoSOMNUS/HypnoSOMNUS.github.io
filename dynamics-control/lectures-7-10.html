@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Lecture 7-10：Root Locus、Nyquist 与 Bode</title>
+    <meta name="description" content="动力学与控制 Lecture 7-10：根轨迹、频率响应、Nyquist 图、Bode 图与时间常数形式。"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">动力学与控制</span>
+          <span class="brand-subtitle">Lecture、Tutorial 与真题复习站</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索页面" aria-label="搜索页面" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a data-search-item href="final-review.html">期末总复习</a></li>
+            <li><a data-search-item href="lectures-1-3.html">Lecture 1-3</a></li>
+            <li><a data-search-item href="lectures-4-6.html">Lecture 4-6</a></li>
+            <li><a class="active" data-search-item href="lectures-7-10.html">Lecture 7-10</a></li>
+            <li><a data-search-item href="lectures-11-13.html">Lecture 11-13</a></li>
+            <li><a data-search-item href="worked-examples.html">Tutorial 与例题</a></li>
+            <li><a data-search-item href="exam-analysis.html">真题题型统计</a></li>
+            <li><a data-search-item href="formulas.html">公式总结</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb">动力学与控制 / Lecture 7-10</div>
+          <h1>Lecture 7-10：Root Locus、Nyquist 与 Bode</h1>
+          <p class="meta">对应 7.pdf、8.pdf、9.pdf、10.pdf：从闭环极点轨迹一直走到频率响应的大题套路。</p>
+        </header>
+
+        <article>
+          <h2 id="root-locus">Lecture 7：Root Locus</h2>
+          <p>
+            Root locus 本质上是在看：当增益 \(K\) 从 0 变到无穷时，闭环极点怎么在复平面上移动。考试不会只让你“画大概”，通常还要你算
+            asymptotes、centroid、breakaway、imaginary-axis crossing 和稳定范围。
+          </p>
+
+          <figure class="figure-card">
+            <img src="assets/figures/root-locus.png" alt="Root locus construction slide" />
+            <figcaption>Lecture 7 的基本逻辑：先写闭环特征方程，再把 open-loop poles 和 zeros 转成 root locus 的几何信息。</figcaption>
+          </figure>
+
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>角度条件</strong>
+              <p class="formula">\[
+              \angle G(s)H(s)=(2q+1)180^\circ
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>幅值条件</strong>
+              <p class="formula">\[
+              K=\frac{1}{|G(s)H(s)|}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>渐近线角度</strong>
+              <p class="formula">\[
+              \theta_q=\frac{(2q+1)180^\circ}{n-m}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>渐近线交点</strong>
+              <p class="formula">\[
+              \sigma_a=\frac{\sum \text{poles}-\sum \text{zeros}}{n-m}
+              \]</p>
+            </div>
+          </div>
+
+          <div class="answer">
+            <p class="answer-title">Root Locus 六步法</p>
+            <ol>
+              <li>写 \(L(s)=KG(s)H(s)\)，标 poles / zeros。</li>
+              <li>找实轴区间：右边 poles + zeros 个数为奇数才在 locus 上。</li>
+              <li>算 asymptotes 的数量、角度、centroid。</li>
+              <li>令 \(K(s)=-1/G(s)H(s)\)，解 \(\frac{dK}{ds}=0\) 找 breakaway。</li>
+              <li>用 Routh 或 \(s=j\omega\) 找 imaginary-axis crossing。</li>
+              <li>最后再连成图，并写稳定区间。</li>
+            </ol>
+          </div>
+
+          <h2 id="nyquist">Lecture 8-9：Frequency Response 与 Nyquist</h2>
+          <p>
+            Nyquist 题的灵魂不是“背一个图形”，而是知道为什么要看 \(-1+j0\) 这个点。开环频率响应离这个点越近，闭环越危险。
+          </p>
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>频率响应</strong>
+              <p class="formula">\[
+              G(j\omega)=G(s)\big|_{s=j\omega}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>Nyquist 判据</strong>
+              <p class="formula">\[
+              Z=N+P
+              \]</p>
+              <p class="mini-note">\(P\)：开环右半平面极点数；\(Z\)：闭环右半平面极点数。</p>
+            </div>
+          </div>
+
+          <table>
+            <thead>
+              <tr>
+                <th>你要做的事</th>
+                <th>数学动作</th>
+                <th>结果用途</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>写 Nyquist 图</td>
+                <td>求 \(G(j\omega)\) 的实部、虚部、低频极限和高频极限</td>
+                <td>确定轨迹从哪来，到哪去</td>
+              </tr>
+              <tr>
+                <td>找临界稳定点</td>
+                <td>令 \(\operatorname{Im}G(j\omega)=0\)，找切负实轴的频率</td>
+                <td>进一步求极限增益 \(K\)</td>
+              </tr>
+              <tr>
+                <td>判断稳定</td>
+                <td>数对 \(-1\) 的环绕数或比较 \(|KG(j\omega_c)|\)</td>
+                <td>给出稳定的 K 区间</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="bode">Lecture 9-10：Bode 图与时间常数形式</h2>
+          <p>
+            Bode 图是 Q4 的主战场。真正节省时间的做法，是在一开始就把传递函数改写成时间常数形式，这样 corner frequencies、
+            斜率变化和相位变化都会自动变清楚。
+          </p>
+
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>dB 换算</strong>
+              <p class="formula">\[
+              |G|_{dB}=20\log_{10}|G|
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>积分器</strong>
+              <p class="formula">\[
+              \frac{1}{s}\Rightarrow -20\text{ dB/dec},\ -90^\circ
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>一阶极点</strong>
+              <p class="formula">\[
+              \frac{1}{1+sT}\Rightarrow \omega_b=\frac{1}{T}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>时间延迟</strong>
+              <p class="formula">\[
+              e^{-sT}\Rightarrow |G| \text{ 不变},\ \angle G=-\omega T
+              \]</p>
+            </div>
+          </div>
+
+          <div class="callout">
+            <strong>手画 Bode 的顺序</strong>
+            <ol>
+              <li>化时间常数形式。</li>
+              <li>找每个 corner frequency。</li>
+              <li>先画低频增益与基础斜率。</li>
+              <li>过每个零点加 \(+20\text{ dB/dec}\)，过每个极点加 \(-20\text{ dB/dec}\)。</li>
+              <li>相位逐个环节叠加，再读 \(\omega_{gc}\)、\(\omega_{pc}\)。</li>
+            </ol>
+          </div>
+
+          <h2 id="必会">这一组 Lecture 必会</h2>
+          <ul class="tight-list">
+            <li>会完整画出 root locus 需要的几何元素，而不是只会报 poles / zeros。</li>
+            <li>会用 Routh 和 Nyquist 两条路都判断稳定区间。</li>
+            <li>会把传递函数改写成时间常数形式。</li>
+            <li>会从 Bode 图读 gain crossover、phase crossover、相位裕度和增益裕度。</li>
+            <li>知道 delay 只改相位不改幅值，这是 2023 题的关键点。</li>
+          </ul>
+        </article>
+
+        <footer class="footer">
+          <p>Lecture 7-10 are the heart of the large calculations: poles moving in the s-plane and loops moving around -1.</p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#root-locus">Lecture 7</a></li>
+          <li><a href="#nyquist">Lecture 8-9</a></li>
+          <li><a href="#bode">Lecture 9-10</a></li>
+          <li><a href="#必会">这一组 Lecture 必会</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>

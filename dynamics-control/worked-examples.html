@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tutorial 与例题</title>
+    <meta name="description" content="动力学与控制 worked examples：整理 tutorial、lecture examples 与 exam-style calculations。"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">动力学与控制</span>
+          <span class="brand-subtitle">Lecture、Tutorial 与真题复习站</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索页面" aria-label="搜索页面" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a data-search-item href="final-review.html">期末总复习</a></li>
+            <li><a data-search-item href="lectures-1-3.html">Lecture 1-3</a></li>
+            <li><a data-search-item href="lectures-4-6.html">Lecture 4-6</a></li>
+            <li><a data-search-item href="lectures-7-10.html">Lecture 7-10</a></li>
+            <li><a data-search-item href="lectures-11-13.html">Lecture 11-13</a></li>
+            <li><a class="active" data-search-item href="worked-examples.html">Tutorial 与例题</a></li>
+            <li><a data-search-item href="exam-analysis.html">真题题型统计</a></li>
+            <li><a data-search-item href="formulas.html">公式总结</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb">动力学与控制 / Tutorial 与例题</div>
+          <h1>Tutorial 与例题</h1>
+          <p class="meta">优先整理 tutorial、lecture test exercise 和能直接从 exam paper 读出完整数据的高频题。</p>
+        </header>
+
+        <article>
+          <blockquote>
+            <p>
+              这一页的目标不是把所有图重新抄一遍，而是把“题目在考什么、计算从哪一步起手、最终应该落到哪几个量”讲清楚。
+            </p>
+          </blockquote>
+
+          <h2 id="tutorial-index">Tutorial 索引</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>来源</th>
+                <th>题目主题</th>
+                <th>适合配套复习</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Tutorial 1</td>
+                <td>天线方位控制系统 block diagram；复杂框图化简；优化控制系统的框图思路</td>
+                <td>Lecture 1-3、Q1</td>
+              </tr>
+              <tr>
+                <td>Tutorial 2</td>
+                <td>step steady-state error、integral action、PID 参数、扰动抑制</td>
+                <td>Lecture 4-6、Q2</td>
+              </tr>
+              <tr>
+                <td>Lecture 8 Tutorials</td>
+                <td>Nyquist、Bode、gain margin</td>
+                <td>Lecture 8-12、Q3-Q4</td>
+              </tr>
+              <tr>
+                <td>Lecture 9 Test Exercise</td>
+                <td>同一系统同时做 root locus、Bode、Nyquist 稳定范围</td>
+                <td>Lecture 7-12、综合题</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="ex1">例题 1：一阶比例反馈的 final response 与 steady-state error</h2>
+          <div class="problem">
+            <p class="problem-title">题目来源</p>
+            <p>2024 exam paper Q2(a)：一阶系统、比例反馈、\(K_p=2\)、单位阶跃输入，求 final response 与 steady-state error。</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">解题</p>
+            <p>按题干框图可读作 plant 为 \(1/(s+1)\)，控制器为比例增益 \(K_p\)，单位反馈。</p>
+            <p class="formula">\[
+            G(s)=\frac{K_p}{s+1}
+            \]</p>
+            <p>因此闭环传递函数为</p>
+            <p class="formula">\[
+            T(s)=\frac{G(s)}{1+G(s)}=\frac{K_p}{s+1+K_p}
+            \]</p>
+            <p>代入 \(K_p=2\)，得</p>
+            <p class="formula">\[
+            T(s)=\frac{2}{s+3}
+            \]</p>
+            <p>单位阶跃 \(R(s)=1/s\)，故输出为</p>
+            <p class="formula">\[
+            C(s)=T(s)R(s)=\frac{2}{s(s+3)}
+            \]</p>
+            <p>终值为</p>
+            <p class="formula">\[
+            c(\infty)=\lim_{s\to0}sC(s)=\frac{2}{3}
+            \]</p>
+            <p>误差传递函数为</p>
+            <p class="formula">\[
+            \frac{E(s)}{R(s)}=\frac{1}{1+G(s)}=\frac{s+1}{s+1+K_p}
+            \]</p>
+            <p>所以稳态误差</p>
+            <p class="formula">\[
+            e_{ss}=\lim_{s\to0}sE(s)=\lim_{s\to0}s\cdot\frac{1}{s}\cdot\frac{s+1}{s+3}=\frac{1}{3}
+            \]</p>
+            <p><strong>答案：</strong>final response 为 \(2/3\)，steady-state error 为 \(1/3\)。</p>
+          </div>
+
+          <h2 id="ex2">例题 2：Root Locus of \(G(s)=K/[s(s+2)(s+4)]\)</h2>
+          <div class="problem">
+            <p class="problem-title">题目来源</p>
+            <p>2023 exam paper Q4：画 unity feedback 系统的 root locus，找 breakaway point、稳定 K 范围、连续振荡时的 K 和频率。</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">解题</p>
+            <p>开环传递函数</p>
+            <p class="formula">\[
+            L(s)=\frac{K}{s(s+2)(s+4)}
+            \]</p>
+            <p>开环极点为 \(0,-2,-4\)，没有零点，因此有 3 条 root locus 分支。</p>
+            <p>渐近线交点</p>
+            <p class="formula">\[
+            \sigma_a=\frac{(0)+(-2)+(-4)-0}{3}=-2
+            \]</p>
+            <p>渐近线角度</p>
+            <p class="formula">\[
+            60^\circ,\ 180^\circ,\ 300^\circ
+            \]</p>
+            <p>实轴区间满足右侧 poles/zeros 个数为奇数，因此 locus 位于 \((-\infty,-4)\) 与 \((-2,0)\)。</p>
+            <p>由</p>
+            <p class="formula">\[
+            K=-s(s+2)(s+4)=-(s^3+6s^2+8s)
+            \]</p>
+            <p>求分离点，令 \(\frac{dK}{ds}=0\)：</p>
+            <p class="formula">\[
+            3s^2+12s+8=0
+            \]</p>
+            <p>得</p>
+            <p class="formula">\[
+            s=-2\pm\frac{2\sqrt3}{3}
+            \]</p>
+            <p>其中只有 \(s\approx -0.845\) 落在 \((-2,0)\) 上，所以它是有效 breakaway point。</p>
+            <p>闭环特征方程为</p>
+            <p class="formula">\[
+            s^3+6s^2+8s+K=0
+            \]</p>
+            <p>Routh 表首列条件给出</p>
+            <p class="formula">\[
+            K&gt;0,\qquad 48-K&gt;0
+            \]</p>
+            <p>因此稳定范围为</p>
+            <p class="formula">\[
+            0&lt;K&lt;48
+            \]</p>
+            <p>当 \(K=48\) 时临界稳定。辅助方程来自 \(s^2\) 行：</p>
+            <p class="formula">\[
+            6s^2+48=0
+            \]</p>
+            <p>所以连续振荡频率满足</p>
+            <p class="formula">\[
+            s=\pm j2\sqrt2,\qquad \omega=2\sqrt2\ \text{rad/s}
+            \]</p>
+          </div>
+
+          <h2 id="ex3">例题 3：Lecture 9 综合题 \(G(s)=K/[s(s+5)(s+10)]\)</h2>
+          <div class="problem">
+            <p class="problem-title">题目来源</p>
+            <p>Lecture 9 - Test Exercise：同一开环系统同时要求 root locus、Bode plot 和 Nyquist 稳定范围。</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">核心结果</p>
+            <p>开环极点为 \(0,-5,-10\)，无零点。</p>
+            <p>Root locus 渐近线交点为</p>
+            <p class="formula">\[
+            \sigma_a=\frac{0-5-10}{3}=-5
+            \]</p>
+            <p>渐近线角度仍为 \(60^\circ,180^\circ,300^\circ\)。</p>
+            <p>分离点由</p>
+            <p class="formula">\[
+            K=-s(s+5)(s+10),\qquad \frac{dK}{ds}=0
+            \]</p>
+            <p>得到两个候选点，其中有效点是 \(s\approx -2.113\)。</p>
+            <p>闭环特征方程</p>
+            <p class="formula">\[
+            s^3+15s^2+50s+K=0
+            \]</p>
+            <p>Routh 给出稳定范围</p>
+            <p class="formula">\[
+            0&lt;K&lt;750
+            \]</p>
+            <p>临界时</p>
+            <p class="formula">\[
+            s=\pm j\sqrt{50}
+            \]</p>
+            <p>这和 Nyquist 法得到的临界频率一致：相位为 \(-180^\circ\) 时，\(\omega_c=\sqrt{50}\)，再比较幅值即可得极限增益 \(K=750\)。</p>
+            <p>这道题最值得学的不是某个数，而是：<strong>同一系统可以用 root locus、Routh 和 Nyquist 三条路交叉验证</strong>。</p>
+          </div>
+
+          <h2 id="ex4">例题 4：Bode 与裕度 \(G(s)=5/[s(10+0.2s)(2+s)]\)</h2>
+          <div class="problem">
+            <p class="problem-title">题目来源</p>
+            <p>2025 exam paper Q4：写角频率、画 Bode、已知 \(\omega_{pc}=10\) 与 \(\omega_{gc}=0.248\)，求 GM 和 PM。</p>
+          </div>
+          <div class="answer">
+            <p class="answer-title">解题</p>
+            <p>先写成时间常数形式：</p>
+            <p class="formula">\[
+            G(s)=\frac{5}{s(10+0.2s)(2+s)}
+            =\frac{0.25}{s(1+0.02s)(1+0.5s)}
+            \]</p>
+            <p>所以 corner frequencies 为</p>
+            <p class="formula">\[
+            \omega_1=\frac{1}{0.5}=2\ \text{rad/s},\qquad
+            \omega_2=\frac{1}{0.02}=50\ \text{rad/s}
+            \]</p>
+            <p>幅值斜率从 \(-20\text{ dB/dec}\) 起步，经过 2 rad/s 后变 \(-40\text{ dB/dec}\)，经过 50 rad/s 后变 \(-60\text{ dB/dec}\)。</p>
+            <p>相位裕度：</p>
+            <p class="formula">\[
+            \angle G(j0.248)\approx -90^\circ-\tan^{-1}(0.5\times0.248)-\tan^{-1}(0.02\times0.248)
+            \approx -97.35^\circ
+            \]</p>
+            <p class="formula">\[
+            \mathrm{PM}=180^\circ-97.35^\circ\approx 82.65^\circ
+            \]</p>
+            <p>增益裕度需要先算相位交叉频率 \(10\text{ rad/s}\) 处的幅值：</p>
+            <p class="formula">\[
+            |G(j10)|=\frac{0.25}{10\sqrt{1+0.2^2}\sqrt{1+5^2}}\approx 0.00481
+            \]</p>
+            <p class="formula">\[
+            \mathrm{GM}=\frac{1}{|G(j10)|}\approx 208,\qquad
+            \mathrm{GM}_{dB}\approx 46.4\text{ dB}
+            \]</p>
+            <p><strong>答案：</strong>\(\mathrm{PM}\approx82.7^\circ\)，\(\mathrm{GM}_{dB}\approx46.4\text{ dB}\)。</p>
+          </div>
+
+          <h2 id="how-to-use">怎么用这页</h2>
+          <ul class="tight-list">
+            <li>如果你卡在 Q1/Q2，先看例题 1，再去刷 Tutorial 1 与 Tutorial 2。</li>
+            <li>如果你卡在 Q3，先把例题 2 和例题 3 吃透，尤其是 Routh 和 Nyquist 的互证。</li>
+            <li>如果你卡在 Q4，先看例题 4，然后回到公式总结页背 Bode 与裕度公式。</li>
+          </ul>
+        </article>
+
+        <footer class="footer">
+          <p>Worked examples chosen for maximum exam overlap rather than completeness of every slide figure.</p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#tutorial-index">Tutorial 索引</a></li>
+          <li><a href="#ex1">例题 1</a></li>
+          <li><a href="#ex2">例题 2</a></li>
+          <li><a href="#ex3">例题 3</a></li>
+          <li><a href="#ex4">例题 4</a></li>
+          <li><a href="#how-to-use">怎么用这页</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>

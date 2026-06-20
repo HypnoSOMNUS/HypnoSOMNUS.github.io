@@ -1,72 +1,51 @@
-# 电磁场与波学习笔记完整文本源
+# HypnoSOMNUS 学习笔记站完整文本源
 
-这份站点整理第 6、7、8 章课件内容。第 6 章围绕知识点讲解；第 7、8 章围绕例题讲解。
+这份站点包含两个课程：
+
+- 根目录：电磁场与波。第 6 章按知识点讲静磁场，第 7、8 章按例题讲时变场与平面电磁波。
+- `dynamics-control/`：动力学与控制。按 Lecture 1-13、tutorial 与 exam paper 组织。
 
 站点包含：
 
-- index.html：首页、目录、学习路线、速查表。
-- final-review.html：期末考试针对性复习，按 Q1-Q4 题型组织。
-- exam-analysis.html：往年题与模拟题分析，统计题型、知识点频率和复习优先级。
-- chap6.html：第 6 章静磁场知识点梳理。
-- chap7.html：第 7 章知识梳理。
-- chap8.html：第 8 章知识梳理。
-- examples.html：第 7、8 章例题全集，逐题列原题并详细作答。
-- formulas.html：第 1-8 章公式总结，按公式、适用条件和题型入口组织。
+- index.html：首页、双课程入口、学习路线、速查表。
+- final-review.html：电磁场与波期末针对性复习，按 Q1-Q4 题型组织。
+- exam-analysis.html：电磁场与波往年题与模拟题分析，统计题型、知识点频率和复习优先级。
+- chap6.html：电磁场与波第 6 章静磁场知识点梳理。
+- chap7.html：电磁场与波第 7 章知识梳理。
+- chap8.html：电磁场与波第 8 章知识梳理。
+- examples.html：电磁场与波第 7、8 章例题全集，逐题列原题并详细作答。
+- formulas.html：电磁场与波第 1-8 章公式总结，按公式、适用条件和题型入口组织。
+- dynamics-control/index.html：动力学与控制首页。
+- dynamics-control/final-review.html：动力学与控制期末总复习，按 Q1-Q4 题型组织。
+- dynamics-control/exam-analysis.html：动力学与控制 2022-2025 exam paper 分析。
+- dynamics-control/lectures-1-3.html：Lecture 1-3 建模、传递函数与框图。
+- dynamics-control/lectures-4-6.html：Lecture 4-6 极点零点、稳定性与控制作用。
+- dynamics-control/lectures-7-10.html：Lecture 7-10 Root Locus、Nyquist 与 Bode。
+- dynamics-control/lectures-11-13.html：Lecture 11-13 裕度、M/N 圆与补偿设计。
+- dynamics-control/worked-examples.html：tutorial 与典型例题。
+- dynamics-control/formulas.html：动力学与控制公式总结。
 
-期末复习覆盖：
+电磁场与波期末复习覆盖：
 
-- Q1：全书内容，除去分离变量法；概念题、小计算题。重点包括场与路、矢量分析、静电场、泊松/拉普拉斯/唯一性/镜像法概念、稳恒电流、静磁场、时变场和平面波。
+- Q1：全书内容，除去分离变量法；概念题、小计算题。
 - Q2：Chapter 6；概念题、大计算题。重点包括 B、H、M、磁化电流、自感、互感和磁能。
 - Q3：Chapter 7-8；概念题、大计算题。重点包括无耗媒质和有耗媒质中的平面波传播。
 - Q4：Chapter 8；概念题、大计算题。重点包括电磁波正入射反射和透射。
 
-真题题型统计覆盖：
+动力学与控制期末总复习覆盖：
 
-- 统计范围：exam paper 文件夹下 2022、2023、2024、2025 往年期末题和 Final Mock Test 2026。
-- 高频 A 类：正入射反射透射、均匀平面波参数、极化判断、静磁场边界/磁化/磁化电流、自感互感磁能。
-- 高频 B 类：麦克斯韦方程、位移电流、时谐场、势函数与规范、静电/稳恒电流边界。
-- 页面按高频总览、按试卷反查、Q1-Q4 题型规律和复习优先级组织。
+- Q1：设计流程、block diagram reduction、disturbance、Routh。
+- Q2：P/I/D/PID、steady-state error、一阶闭环、damping ratio。
+- Q3：Root Locus / Nyquist / 临界稳定 / 虚轴交点。
+- Q4：Bode、corner frequencies、gain/phase margin、lead/lag compensation。
 
-Chapter 6 重点：
+动力学与控制真题题型统计覆盖：
 
-- 静磁场基本方程为 curl H = J，div B = 0；真空中也可写 curl B = mu0 J。
-- 磁通密度无散，因此可引入磁矢位 B = curl A，常用库仑规范 div A = 0。
-- 求磁场时，高对称结构优先用安培环路定律；已知具体电流路径时用毕奥-萨伐尔定律。
-- 磁化强度 M 描述介质磁化，等效磁化电流包括 J_M = curl M 与 J_SM = M cross e_n。
-- 线性各向同性介质中 B = mu H，mu = mu0 mu_r。
-- 静磁场边界条件为 B_n 连续，H_t 的跃变由自由面电流 J_s 决定。
-- 自感 L = Psi / I，互感 M = Psi_21 / I_1，磁能密度 w_m = 1/2 B dot H。
+- 统计范围：exam paper 文件夹下 2022、2023、2024、2025 往年期末题。
+- 高频 A 类：block diagram reduction、steady-state error、Routh、Root Locus、Bode。
+- 高频 B 类：PID 作用、Nyquist、delay、gain/phase margin、补偿器讨论。
 
-Chapter 7 重点：
-
-- 法拉第电磁感应：变化的磁场产生旋涡电场。
-- 感应电动势可来自磁场变化、导体运动，或二者叠加。
-- 位移电流密度为 Jd = partial D / partial t。
-- 麦克斯韦方程组包括法拉第定律、全电流定律、电场高斯定律、磁场高斯定律。
-- 时谐场用复矢量表示，瞬时值取实部。
-
-Chapter 8 重点：
-
-- 均匀平面波满足 E、H、k 两两垂直。
-- 无耗介质中 eta = sqrt(mu / epsilon)，v = 1 / sqrt(mu epsilon)，beta = omega sqrt(mu epsilon)。
-- 极化由两个正交电场分量的幅值和相位差决定。
-- 有耗介质先判断 sigma / (omega epsilon)，再求 alpha、beta、复波阻抗和皮肤深度。
-- 坡印廷矢量 S = E cross H，时谐平均值 Sav = 1/2 Re(E cross H*)。
-- 正入射边界使用反射系数 Gamma = (eta2 - eta1) / (eta2 + eta1) 与透射系数 tau = 2 eta2 / (eta1 + eta2)。
-
-例题全集覆盖：
+电磁场与波例题全集覆盖：
 
 - Chapter 7：矩形回路感应电动势、瞬时场到复矢量、复矢量到瞬时场。
 - Chapter 8：磁场复矢量求波参数、极化判断、海水有耗传播、聚乙烯无耗传播、由传播方向写 E/H、由最大值确定瞬时场、能流/能量/损耗模板、平均功率、铜板屏蔽厚度、理想导体边界、驻波比求介质参数、透射场、两无耗介质正入射。
-
-公式总结覆盖：
-
-- 常数与符号：mu0、epsilon0、c、eta0、相对介电常数与相对磁导率。
-- Chapter 1：场与路、电路理论近似条件、波长与频率、基本电磁场量。
-- Chapter 2：坐标系微元、梯度、散度、旋度、拉普拉斯算子、高斯定理、斯托克斯定理。
-- Chapter 3：电荷密度、电场、电势、高斯定律、静电边界、介质极化、电容和静电能量。
-- Chapter 4：泊松方程、拉普拉斯方程、边界条件、唯一性定理、镜像法；不展开分离变量法。
-- Chapter 5：电流密度、欧姆定律、电流连续性、稳恒电流边界、焦耳损耗、电阻计算。
-- Chapter 6：静磁场基本方程、磁矢位、毕奥-萨伐尔定律、典型磁场结果、磁化电流、边界条件、电感和磁能。
-- Chapter 7：感应电动势、麦克斯韦方程组、本构关系、时变场边界条件、波动方程、势函数、复矢量。
-- Chapter 8：无耗平面波、有耗介质、良导体近似、皮肤深度、极化判据、坡印廷矢量、能量密度、正入射反射透射和驻波比。
