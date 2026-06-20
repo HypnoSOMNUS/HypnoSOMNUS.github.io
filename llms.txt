@@ -11,6 +11,6 @@
 - [动力学与控制真题题型统计](./dynamics-control/exam-analysis.html)
 - [习思互动复习](./xisi/)
 - [习思考试背诵稿](./xisi/memorization.html)
-- [飞书外部笔记](https://my.feishu.cn/wiki/UoG9whfVNi2k7kkIZeRcVkWynRc)
+- [习思飞书笔记](https://my.feishu.cn/wiki/UoG9whfVNi2k7kkIZeRcVkWynRc)
 
 主要主题：电磁场与波的 Q1-Q4 复习路线、往年题与模拟题题型统计、全书概念题和小计算、矢量分析、静电场、边值问题、稳恒电流、静磁场基本方程、磁矢位、毕奥-萨伐尔定律、磁化、静磁场边界条件、电感、磁能、法拉第定律、位移电流、麦克斯韦方程、复矢量、无耗介质平面波、有耗介质、极化、坡印廷矢量、正入射边界；动力学与控制的 Lecture 1-13、tutorial 与 exam paper 题型分析、Root Locus、Nyquist、Bode、裕度和补偿设计；以及习思的章节浏览、闪卡、测验、样卷练习、错题本和考试背诵稿。

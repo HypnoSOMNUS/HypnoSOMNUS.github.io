@@ -27,7 +27,7 @@
 - dynamics-control/formulas.html：动力学与控制公式总结。
 - xisi/index.html：习思互动复习入口，提供章节浏览、闪卡、测验、样卷练习和错题本。
 - xisi/memorization.html：习思考试背诵稿阅读页，按总纲、导论和章节主线组织。
-- 外部飞书笔记：https://my.feishu.cn/wiki/UoG9whfVNi2k7kkIZeRcVkWynRc。
+- 习思飞书笔记：https://my.feishu.cn/wiki/UoG9whfVNi2k7kkIZeRcVkWynRc。
 
 电磁场与波期末复习覆盖：
 
