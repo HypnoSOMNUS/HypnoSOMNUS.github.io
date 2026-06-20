@@ -1,13 +1,14 @@
 # HypnoSOMNUS 学习笔记站完整文本源
 
-这份站点包含两个课程：
+这份站点包含三个课程：
 
 - 根目录：电磁场与波。第 6 章按知识点讲静磁场，第 7、8 章按例题讲时变场与平面电磁波。
 - `dynamics-control/`：动力学与控制。按 Lecture 1-13、tutorial 与 exam paper 组织。
+- `xisi/`：习近平新时代中国特色社会主义思想概论互动复习。移植自当前工作目录下的习思复习小程序网页包。
 
 站点包含：
 
-- index.html：首页、双课程入口、学习路线、速查表。
+- index.html：首页、多课程入口、学习路线、速查表。
 - final-review.html：电磁场与波期末针对性复习，按 Q1-Q4 题型组织。
 - exam-analysis.html：电磁场与波往年题与模拟题分析，统计题型、知识点频率和复习优先级。
 - chap6.html：电磁场与波第 6 章静磁场知识点梳理。
@@ -24,6 +25,8 @@
 - dynamics-control/lectures-11-13.html：Lecture 11-13 裕度、M/N 圆与补偿设计。
 - dynamics-control/worked-examples.html：tutorial 与典型例题。
 - dynamics-control/formulas.html：动力学与控制公式总结。
+- xisi/index.html：习思互动复习入口，提供章节浏览、闪卡、测验、样卷练习和错题本。
+- xisi/memorization.html：习思考试背诵稿阅读页，按总纲、导论和章节主线组织。
 
 电磁场与波期末复习覆盖：
 
@@ -44,6 +47,14 @@
 - 统计范围：exam paper 文件夹下 2022、2023、2024、2025 往年期末题。
 - 高频 A 类：block diagram reduction、steady-state error、Routh、Root Locus、Bode。
 - 高频 B 类：PID 作用、Nyquist、delay、gain/phase margin、补偿器讨论。
+
+习思互动复习覆盖：
+
+- 课程：习近平新时代中国特色社会主义思想概论。
+- 内容：导论至第十二章的章节浏览和问答题库。
+- 模式：章节浏览、闪卡、测验、客观题样卷练习、错题本、本地学习进度。
+- 背诵稿：总纲必背、导论、第一章至第十二章、常见题型答题模板、考前速背清单。
+- 核心背诵抓手：“十个明确”“十四个坚持”“十三个方面成就”“六个必须坚持”、中国式现代化、党的全面领导、以人民为中心、全面深化改革、高质量发展、全过程人民民主、全面依法治国、文化强国、民生建设、生态文明。
 
 电磁场与波例题全集覆盖：
 
