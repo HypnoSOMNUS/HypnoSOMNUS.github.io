@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>动力学与控制期末总复习</title>
+    <meta name="description" content="动力学与控制期末总复习：按 Q1-Q4 组织建模、稳定性、根轨迹、频率响应与补偿设计。"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">动力学与控制</span>
+          <span class="brand-subtitle">Lecture、Tutorial 与真题复习站</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索页面" aria-label="搜索页面" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">◐</button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a data-search-item href="./">首页</a></li>
+            <li><a class="active" data-search-item href="final-review.html">期末总复习</a></li>
+            <li><a data-search-item href="lectures-1-3.html">Lecture 1-3</a></li>
+            <li><a data-search-item href="lectures-4-6.html">Lecture 4-6</a></li>
+            <li><a data-search-item href="lectures-7-10.html">Lecture 7-10</a></li>
+            <li><a data-search-item href="lectures-11-13.html">Lecture 11-13</a></li>
+            <li><a data-search-item href="worked-examples.html">Tutorial 与例题</a></li>
+            <li><a data-search-item href="exam-analysis.html">真题题型统计</a></li>
+            <li><a data-search-item href="formulas.html">公式总结</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb">动力学与控制 / 期末总复习</div>
+          <h1>期末总复习</h1>
+          <p class="meta">按 exam paper 的 Q1-Q4 结构复习：先抓题型，再背公式，再练大题步骤。</p>
+        </header>
+
+        <article>
+          <blockquote>
+            <p>
+              2022-2025 的题型非常有规律：Q1 常是设计流程 + 框图化简 + 稳定性概念；Q2 常是控制作用 + 一阶闭环与稳态误差；
+              Q3 常是 root locus 或 Nyquist；Q4 常是 Bode、稳定裕度与频域讨论。
+            </p>
+          </blockquote>
+
+          <h2 id="总策略">总策略</h2>
+          <ol>
+            <li>Q1-Q2 先拿稳：这些题大多可公式化书写，失分往往是步骤不完整，不是不会。</li>
+            <li>Q3 画 root locus 时一定配合 Routh，看图和参数范围不要分家。</li>
+            <li>Q4 Bode 大题一定先化成时间常数形式，再找 corner frequencies 和斜率。</li>
+            <li>所有稳态误差题都先写 \(E(s)\) 再用终值定理，省得漏反馈环节。</li>
+          </ol>
+
+          <h2 id="q1">Q1：建模、框图与稳定性基础</h2>
+          <div class="callout">
+            <strong>高频内容</strong>
+            <p>设计流程、开环/闭环定义、扰动含义、block diagram reduction、闭环特征方程、Routh 稳定判据。</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>题型</th>
+                <th>你要写什么</th>
+                <th>常见失分点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>设计流程 / disturbance 概念题</td>
+                <td>从需求、建模、控制器、分析、验证往下写，并说明反馈如何抑制扰动</td>
+                <td>只写定义，不写“为什么闭环能修正误差”</td>
+              </tr>
+              <tr>
+                <td>框图化简</td>
+                <td>标注中间步骤：串联、并联、移动求和点、消除反馈环</td>
+                <td>一步写到答案，老师看不到过程分</td>
+              </tr>
+              <tr>
+                <td>Routh 稳定范围</td>
+                <td>先写特征方程，再列 Routh 表，最后令第一列同号</td>
+                <td>把开环分母当闭环特征方程</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>闭环传递函数</strong>
+              <p class="formula">\[
+              T(s)=\frac{G(s)}{1+G(s)H(s)}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>特征方程</strong>
+              <p class="formula">\[
+              1+G(s)H(s)=0
+              \]</p>
+            </div>
+          </div>
+
+          <h3 id="q1-template">Q1 答题模板</h3>
+          <div class="answer">
+            <p class="answer-title">框图化简题怎么写</p>
+            <ol>
+              <li>先给主要信号命名，不要上来就硬套图形规则。</li>
+              <li>每消去一个小结构，都把等效传递函数单独写一行。</li>
+              <li>最后再代入 \(T(s)=C(s)/R(s)\) 或扰动传递函数。</li>
+            </ol>
+          </div>
+
+          <h2 id="q2">Q2：控制作用、一阶系统与稳态误差</h2>
+          <div class="callout">
+            <strong>高频内容</strong>
+            <p>P / I / D / PID 的作用，一阶系统在比例或积分反馈下的闭环响应、steady-state error、damping ratio、poles and zeros。</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>考点</th>
+                <th>速记</th>
+                <th>题目里常见动作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>P / I / D 作用</td>
+                <td>P 提速，I 消除常值误差，D 增阻尼但怕噪声</td>
+                <td>解释为什么 D 很少单独使用、为什么 PID 常见</td>
+              </tr>
+              <tr>
+                <td>一阶闭环</td>
+                <td>单位反馈先写 \(T(s)\)、\(E(s)\)，再带入 step \(1/s\)</td>
+                <td>算 final response 和 steady-state error</td>
+              </tr>
+              <tr>
+                <td>稳态误差</td>
+                <td>\(e_{ss}=\lim_{s\to0}sE(s)\)</td>
+                <td>比较 P 控制和 I 控制的误差差异</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>终值定理</strong>
+              <p class="formula">\[
+              e_{ss}=\lim_{t\to\infty}e(t)=\lim_{s\to0}sE(s)
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>误差常数</strong>
+              <p class="formula">\[
+              K_p=\lim_{s\to0}G(s),\quad
+              K_v=\lim_{s\to0}sG(s),\quad
+              K_a=\lim_{s\to0}s^2G(s)
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>二阶指标</strong>
+              <p class="formula">\[
+              T_s\approx\frac{4}{\zeta\omega_n},\quad
+              T_p=\frac{\pi}{\omega_n\sqrt{1-\zeta^2}}
+              \]</p>
+            </div>
+          </div>
+
+          <div class="answer">
+            <p class="answer-title">Q2 解题顺序建议</p>
+            <ol>
+              <li>先写框图对应的 \(G(s)\)、\(H(s)\)。</li>
+              <li>再写 \(T(s)\) 和 \(E(s)\)，不要跳到 final value。</li>
+              <li>如果题目问 damping ratio，就把闭环分母凑成 \(s^2+2\zeta\omega_n s+\omega_n^2\)。</li>
+            </ol>
+          </div>
+
+          <h2 id="q3">Q3：Root Locus 与 Nyquist</h2>
+          <div class="callout">
+            <strong>高频内容</strong>
+            <p>开环 poles / zeros、real-axis segments、asymptotes、centroid、breakaway、imaginary-axis crossing、Routh 稳定范围；有时会换成 Nyquist + delay。</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>步骤</th>
+                <th>Root Locus 必做</th>
+                <th>Nyquist 变体时看什么</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>写 \(L(s)=KG(s)H(s)\)，找开环极点和零点</td>
+                <td>写 \(L(j\omega)\)，拆实部虚部</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>画实轴区间、渐近线角度与交点</td>
+                <td>找 Nyquist 何时切负实轴或靠近 \(-1\)</td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td>用 \(\frac{dK}{ds}=0\) 找 breakaway</td>
+                <td>用 \(\operatorname{Im}L(j\omega)=0\) 找临界频率</td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td>用 Routh 找虚轴交点与 K 稳定范围</td>
+                <td>用 \(Z=N+P\) 或 \(|L(j\omega_c)|&lt;1\) 判稳定区</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>角度条件</strong>
+              <p class="formula">\[
+              \angle G(s)H(s)=(2q+1)180^\circ
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>幅值条件</strong>
+              <p class="formula">\[
+              K=\frac{1}{|G(s)H(s)|}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>渐近线交点</strong>
+              <p class="formula">\[
+              \sigma_a=\frac{\sum\text{poles}-\sum\text{zeros}}{n-m}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>Nyquist 关系</strong>
+              <p class="formula">\[
+              Z=N+P
+              \]</p>
+            </div>
+          </div>
+
+          <h2 id="q4">Q4：Bode、裕度与补偿</h2>
+          <div class="callout">
+            <strong>高频内容</strong>
+            <p>time constant form、corner frequencies、Bode magnitude / phase、gain crossover、phase crossover、PM、GM、lead / lag 对图像和稳定性的影响。</p>
+          </div>
+          <table>
+            <thead>
+              <tr>
+                <th>题型</th>
+                <th>要点</th>
+                <th>容易漏的地方</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>画 Bode 图</td>
+                <td>先拆成增益、积分器、一阶极点、一阶零点、二阶环节、延迟</td>
+                <td>没有先化时间常数形式</td>
+              </tr>
+              <tr>
+                <td>求 PM / GM</td>
+                <td>分别在 \(\omega_{gc}\) 和 \(\omega_{pc}\) 读数</td>
+                <td>把两个交叉频率读反</td>
+              </tr>
+              <tr>
+                <td>讨论补偿器</td>
+                <td>Lead 抬相位、Lag 增低频增益、Lead-Lag 两者兼顾</td>
+                <td>只背定义，不会说明“为什么”</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>Bode dB 换算</strong>
+              <p class="formula">\[
+              |G|_{dB}=20\log_{10}|G|
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>相位裕度</strong>
+              <p class="formula">\[
+              \mathrm{PM}=180^\circ+\angle L(j\omega_{gc})
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>增益裕度</strong>
+              <p class="formula">\[
+              \mathrm{GM}=\frac{1}{|L(j\omega_{pc})|},\qquad
+              \mathrm{GM}_{dB}=-20\log_{10}|L(j\omega_{pc})|
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>Lead 补偿</strong>
+              <p class="formula">\[
+              G_c(s)=K_c\frac{Ts+1}{\alpha Ts+1},\quad 0&lt;\alpha&lt;1
+              \]</p>
+            </div>
+          </div>
+
+          <h2 id="最后一页">最后一页要背什么</h2>
+          <ul class="tight-list">
+            <li>闭环：\(T=\frac{G}{1+GH}\)，稳定性看 \(1+GH=0\)。</li>
+            <li>Routh：第一列同号稳定，符号变化数等于右半平面根数。</li>
+            <li>稳态误差：先写 \(E(s)\)，再用终值定理。</li>
+            <li>Root locus：极点零点、实轴区间、渐近线、breakaway、虚轴交点。</li>
+            <li>Bode：时间常数形式、corner frequencies、斜率叠加、相位叠加。</li>
+            <li>PM 在 \(\omega_{gc}\) 读，GM 在 \(\omega_{pc}\) 读。</li>
+            <li>Lead 改暂态和裕度，Lag 改低频增益和稳态误差。</li>
+          </ul>
+        </article>
+
+        <footer class="footer">
+          <p>Exam-oriented summary distilled from the lecture notes and the 2022-2025 papers.</p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#总策略">总策略</a></li>
+          <li><a href="#q1">Q1</a></li>
+          <li><a href="#q2">Q2</a></li>
+          <li><a href="#q3">Q3</a></li>
+          <li><a href="#q4">Q4</a></li>
+          <li><a href="#最后一页">最后一页要背什么</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>

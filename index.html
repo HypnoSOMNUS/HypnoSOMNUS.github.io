@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>动力学与控制学习笔记</title>
+    <meta
+      name="description"
+      content="动力学与控制课程笔记：按 Lecture 结构整理建模、稳定性、根轨迹、频率响应、Bode 与补偿设计，并结合 tutorial 与 exam paper 做考前复习。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Serif+SC:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+      window.MathJax = { tex: { inlineMath: [["\\(", "\\)"], ["$", "$"]] } }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script defer src="assets/site.js"></script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <aside class="sidebar">
+        <a class="brand" href="./">
+          <span class="brand-title">动力学与控制</span>
+          <span class="brand-subtitle">Lecture、Tutorial 与真题复习站</span>
+        </a>
+        <div class="controls">
+          <input class="search" data-search type="search" placeholder="搜索页面" aria-label="搜索页面" />
+          <button class="icon-button" data-theme-toggle type="button" aria-label="切换明暗主题" title="切换明暗主题">
+            ◐
+          </button>
+        </div>
+        <nav class="nav-section" aria-label="探索">
+          <p class="nav-title">探索</p>
+          <ul class="nav-list">
+            <li><a class="active" data-search-item href="./">首页</a></li>
+            <li><a data-search-item href="final-review.html">期末总复习</a></li>
+            <li><a data-search-item href="lectures-1-3.html">Lecture 1-3</a></li>
+            <li><a data-search-item href="lectures-4-6.html">Lecture 4-6</a></li>
+            <li><a data-search-item href="lectures-7-10.html">Lecture 7-10</a></li>
+            <li><a data-search-item href="lectures-11-13.html">Lecture 11-13</a></li>
+            <li><a data-search-item href="worked-examples.html">Tutorial 与例题</a></li>
+            <li><a data-search-item href="exam-analysis.html">真题题型统计</a></li>
+            <li><a data-search-item href="formulas.html">公式总结</a></li>
+          </ul>
+        </nav>
+        <nav class="nav-section" aria-label="参考">
+          <p class="nav-title">参考</p>
+          <ul class="nav-list">
+            <li><a href="https://cateds.github.io/PowerElectronics.md/" rel="noreferrer">参考排版站点</a></li>
+            <li><a href="https://github.com/HypnoSOMNUS/HypnoSOMNUS.github.io" rel="noreferrer">GitHub 仓库</a></li>
+            <li><a href="https://hypnosomnus.github.io/">返回电磁场与波</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="page">
+        <header class="page-header">
+          <div class="breadcrumb">动力学与控制 / 首页</div>
+          <h1>动力学与控制学习笔记</h1>
+          <p class="meta">围绕 Lecture 1-13、tutorial 与 2022-2025 exam paper，整理建模、稳定性、根轨迹、Nyquist、Bode 与补偿设计。</p>
+        </header>
+
+        <article>
+          <blockquote>
+            <p>
+              这套分站参考 `PowerElectronics.md` 的课程站组织方式：先给总复习与题型地图，再按 Lecture 主题分组整理知识点，
+              最后用 tutorial 与往年题把解题套路压实。
+            </p>
+          </blockquote>
+
+          <div class="feature-grid">
+            <section class="surface-card">
+              <h2 id="总览">总览</h2>
+              <p>
+                这门课最核心的链条很稳定：<strong>建模</strong> -> <strong>传递函数</strong> -> <strong>闭环分析</strong> ->
+                <strong>稳定性与稳态误差</strong> -> <strong>根轨迹 / Bode / Nyquist</strong> -> <strong>补偿设计</strong>。
+              </p>
+              <p>
+                如果按考试来学，Q1 常落在系统建模、框图化简、设计流程与 Routh；Q2 是控制作用和一阶闭环；Q3 常考根轨迹或 Nyquist；
+                Q4 几乎总要你画 Bode、算裕度、讨论稳定性。
+              </p>
+              <ul class="tag-list">
+                <li>建模</li>
+                <li>拉普拉斯</li>
+                <li>框图</li>
+                <li>Routh</li>
+                <li>Root Locus</li>
+                <li>Nyquist</li>
+                <li>Bode</li>
+                <li>Lead / Lag</li>
+              </ul>
+            </section>
+
+            <figure class="figure-card">
+              <img class="hero-image" src="assets/figures/mechanical-modeling.png" alt="Mechanical System Modelling slide" />
+              <figcaption>Lecture 1 从机械系统建模起步：把真实系统翻译成微分方程与传递函数，是后面所有题的起点。</figcaption>
+            </figure>
+          </div>
+
+          <h2 id="目录">目录</h2>
+          <div class="cards">
+            <a class="card" href="final-review.html">
+              <h2>期末总复习</h2>
+              <p>按 Q1-Q4 题型整理必背概念、常用公式、计算模板和复习顺序，适合考前最后一轮。</p>
+            </a>
+            <a class="card" href="lectures-1-3.html">
+              <h2>Lecture 1-3</h2>
+              <p>动态系统概览、机械/电气建模、拉普拉斯、传递函数、开闭环与框图化简。</p>
+            </a>
+            <a class="card" href="lectures-4-6.html">
+              <h2>Lecture 4-6</h2>
+              <p>极点零点、特征方程、Routh 稳定判据，以及 P / I / D / PI / PD / PID 的作用。</p>
+            </a>
+            <a class="card" href="lectures-7-10.html">
+              <h2>Lecture 7-10</h2>
+              <p>根轨迹、频率响应、Nyquist、Bode 图和时间常数形式，是 Q3-Q4 的硬骨头。</p>
+            </a>
+            <a class="card" href="lectures-11-13.html">
+              <h2>Lecture 11-13</h2>
+              <p>相位裕度、增益裕度、M/N 圆以及 lead、lag、lead-lag 补偿设计的直觉和流程。</p>
+            </a>
+            <a class="card" href="worked-examples.html">
+              <h2>Tutorial 与例题</h2>
+              <p>收拢 tutorial、lecture worked examples 与典型 exam-style questions，给出题目与解题路线。</p>
+            </a>
+            <a class="card" href="exam-analysis.html">
+              <h2>真题题型统计</h2>
+              <p>基于 2022-2025 四套卷子，统计每道大题在考什么、怎么复习效率最高。</p>
+            </a>
+            <a class="card" href="formulas.html">
+              <h2>公式总结</h2>
+              <p>把建模、稳态误差、根轨迹、Bode、Nyquist、裕度和补偿器公式压成一页速查。</p>
+            </a>
+          </div>
+
+          <h2 id="复习路线">复习路线</h2>
+          <ol>
+            <li>先看“期末总复习”，把 Q1-Q4 的题型与高频公式背熟。</li>
+            <li>再按 Lecture 1-6 打地基：传递函数、框图、稳定性、PID 作用。</li>
+            <li>接着做 Lecture 7-10：根轨迹、Nyquist、Bode，这一段决定大题能不能拿分。</li>
+            <li>最后刷 tutorial 与 exam paper，把“会看”变成“会写”。</li>
+          </ol>
+
+          <div class="kpi-grid">
+            <div class="stat-card">
+              <strong>13 讲</strong>
+              <div class="mini-note">从建模一路推进到频域补偿设计，后半程明显更偏大题。</div>
+            </div>
+            <div class="stat-card">
+              <strong>4 套往年卷</strong>
+              <div class="mini-note">2022、2023、2024、2025 题干可提取，足够看出题型稳定性。</div>
+            </div>
+            <div class="stat-card">
+              <strong>2 份 tutorial</strong>
+              <div class="mini-note">Tutorial 1 偏框图；Tutorial 2 偏稳态误差、PID 和扰动抑制。</div>
+            </div>
+            <div class="stat-card">
+              <strong>1 条主线</strong>
+              <div class="mini-note">所有大题最终都在问：闭环极点怎么动，误差怎么变，稳定性怎么判。</div>
+            </div>
+          </div>
+
+          <h2 id="Lecture地图">Lecture 地图</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Lecture 组</th>
+                <th>核心内容</th>
+                <th>常见考法</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lecture 1-3</td>
+                <td>系统建模、拉普拉斯、传递函数、框图、扰动输入</td>
+                <td>画 block diagram、框图化简、写闭环传递函数</td>
+              </tr>
+              <tr>
+                <td>Lecture 4-6</td>
+                <td>极点零点、稳定性、Routh、P/I/D/PID</td>
+                <td>稳态误差、阻尼比、解释控制作用、参数范围</td>
+              </tr>
+              <tr>
+                <td>Lecture 7-10</td>
+                <td>Root locus、Nyquist、Bode、延迟、时间常数形式</td>
+                <td>画图、求 breakaway、求虚轴交点、写频域近似</td>
+              </tr>
+              <tr>
+                <td>Lecture 11-13</td>
+                <td>PM、GM、M/N 圆、lead / lag / lead-lag</td>
+                <td>算裕度、讨论稳定性、设计补偿器改善指标</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="速查">速查</h2>
+          <div class="formula-grid">
+            <div class="callout">
+              <strong>闭环基本式</strong>
+              <p class="formula">\[
+              T(s)=\frac{G(s)}{1+G(s)H(s)},\qquad
+              \frac{E(s)}{R(s)}=\frac{1}{1+G(s)H(s)}
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>二阶系统指标</strong>
+              <p class="formula">\[
+              T_s\approx\frac{4}{\zeta\omega_n},\quad
+              M_p=e^{-\zeta\pi/\sqrt{1-\zeta^2}}\times100\%
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>稳态误差常数</strong>
+              <p class="formula">\[
+              K_p=\lim_{s\to0}G(s),\quad
+              K_v=\lim_{s\to0}sG(s),\quad
+              K_a=\lim_{s\to0}s^2G(s)
+              \]</p>
+            </div>
+            <div class="callout">
+              <strong>频域裕度</strong>
+              <p class="formula">\[
+              \mathrm{PM}=180^\circ+\angle L(j\omega_{gc}),\quad
+              \mathrm{GM}_{dB}=-20\log_{10}|L(j\omega_{pc})|
+              \]</p>
+            </div>
+          </div>
+
+          <div class="figure-grid">
+            <figure class="figure-card">
+              <img src="assets/figures/root-locus.png" alt="Root locus slide" />
+              <figcaption>Root locus 不只是“会画”，还常和 Routh 连用，判断 K 的稳定区间。</figcaption>
+            </figure>
+            <figure class="figure-card">
+              <img src="assets/figures/lead-bode.png" alt="Lead compensator bode plot" />
+              <figcaption>Lead 补偿最常用来抬相位裕度、提带宽；lag 则更偏改善低频增益与稳态误差。</figcaption>
+            </figure>
+          </div>
+
+          <h2 id="素材来源">素材来源</h2>
+          <ul class="tight-list">
+            <li>`PPT/`：Lecture 1-13 课件。</li>
+            <li>`tutorial/`：Tutorial 1、Tutorial 2、Lecture 8/9 练习与答案。</li>
+            <li>`exam paper/`：2022-2025 exam paper。</li>
+            <li>`总学习笔记_浓缩版.md`：这套分站的文字主骨架。</li>
+          </ul>
+
+          <div class="banner-link">
+            <strong>另一个科目分站</strong>
+            <p><a href="https://hypnosomnus.github.io/">电磁场与波学习笔记</a> 仍保留在仓库根目录，这里新增的是 `dynamics-control/` 子站。</p>
+          </div>
+        </article>
+
+        <footer class="footer">
+          <p>Created for GitHub Pages. Structured from course PPTs, tutorials, exam papers, and the condensed study notes.</p>
+        </footer>
+      </main>
+
+      <aside class="toc-panel">
+        <p class="toc-title">目录</p>
+        <ul class="toc-list">
+          <li><a href="#总览">总览</a></li>
+          <li><a href="#目录">目录</a></li>
+          <li><a href="#复习路线">复习路线</a></li>
+          <li><a href="#Lecture地图">Lecture 地图</a></li>
+          <li><a href="#速查">速查</a></li>
+          <li><a href="#素材来源">素材来源</a></li>
+        </ul>
+        <p class="top-link"><a href="#">返回顶部</a></p>
+      </aside>
+    </div>
+  </body>
+</html>
